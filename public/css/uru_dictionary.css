@@ -1,0 +1,365 @@
+@charset "UTF-8";
+
+body{
+  font-family: "Yu Gothic Medium", "游ゴシック　Medium", Yugothic, "游ゴシック体","ヒラギノ角ゴ Pro W3", sans-serif;
+  line-height: 1.7;
+  color: #432;
+  background-color: ;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.pc_page-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.wrapper{
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+/*タツキのアカウント表示*/
+.account_name{
+  margin-top: 3%;
+  margin-right: 0%;
+  text-align: center;
+}
+
+
+
+
+
+.title{
+  text-align: center;
+  font-weight: bold;
+  margin-top: 3%;
+}
+
+
+.explanation{
+  text-align: center;
+
+}
+
+
+
+
+
+/*使い方*/
+
+
+.device{
+  text-align: center;
+  margin-top: 10%;
+}
+
+.swich1 input{
+width: 40%;
+margin-left: 47%;
+}
+
+.swich2 input{
+width: 40%;
+margin-right: 47%;
+}
+
+.swich_zone{
+display: flex;
+justify-content: center;
+text-align: center;
+margin-top: 3%;
+margin-bottom: 5%;
+
+}
+
+.howto_image{
+  width: 40%;
+  margin-left: 10%;
+  margin-top: 5%;
+
+}
+
+.howto_image2{
+  width: 20%;
+  margin-left: 20%;
+  margin-top: 5%;
+}
+
+aside{
+  width: 40%;
+  margin-right: 5%;
+  margin-top: 5%;
+}
+
+
+.contents1{
+ display: flex;
+ justify-content: space-between;
+
+}
+
+.contents1_text{
+  margin: 40px;
+  font-size: 17px;
+}
+
+
+.step{
+  margin: 40px;
+}
+
+
+
+
+
+
+/*ハンバーガー*/
+.nav_toggle {
+    display: block;
+    position: relative;
+    width: 3rem;
+    height: 1.5rem;
+    margin-left: %;
+   margin-top: 3%;
+}
+.nav_toggle i {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    position: absolute;
+    transition: transform .5s, opacity .5s;
+}
+.nav_toggle i:nth-child(1) {
+    top: 0;
+}
+.nav_toggle i:nth-child(2) {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.nav_toggle i:nth-child(3) {
+    bottom: 0;
+}
+
+
+.nav_toggle.show i:nth-child(1) {
+    transform: translateY(10px) rotate(-45deg);
+}
+.nav_toggle.show i:nth-child(2) {
+    opacity: 0;
+}
+.nav_toggle.show i:nth-child(3) {
+    transform: translateY(-12px) rotate(45deg);
+}
+
+.nav {
+    position: fixed;
+    top: 3rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s, visibility .5s;
+    background-color: #ffffff;
+    margin-left: 5%;
+    margin-top: 3%;
+}
+
+.nav.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.nav_menu_ul{
+  list-style: none;
+}
+
+.nav_menu_li{
+  margin-bottom: 2%;
+  font-size: 19px;
+}
+
+
+/*コンテンツ*/
+form{
+  text-align: center;
+}
+
+
+.button_area{
+  margin-top: %;
+}
+
+.button{
+  font-size: 15px;
+  background: #ddd;
+  color: #000000;
+  padding: 15px 29px;
+  border: none;
+}
+
+
+
+.button:hover{
+  background: #ffe62b;
+}
+
+
+
+.vocabrary{
+  text-align: center;
+}
+
+
+.textbox{
+  margin-top: %;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 5%;
+
+}
+
+.answer-text{
+  margin-top: 5%;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 10%;
+}
+
+.notfound-text {
+    margin-top: 5%;
+    font-size: 17px;
+    font-weight: bold;
+}
+.example-text{
+  font-size: 13px;
+  text-align: left;
+  margin-left: 10%;
+  margin-bottom: 7%;
+  font-weight: bold;
+}
+
+
+.swich input{
+width: 50%;
+
+}
+
+.image{
+  width: 10%;
+}
+
+
+
+
+@media (max-width:600px){
+
+  body{
+    font-family: "Yu Gothic Medium", "游ゴシック　Medium", Yugothic, "游ゴシック体","ヒラギノ角ゴ Pro W3", sans-serif;
+    line-height: 1.7;
+    color: #432;
+    background-color:;
+    background-repeat: no-repeat;
+    width: 100%;
+  }
+
+
+.container2{
+  margin-top: 0%;
+}
+
+
+
+  .menubar{
+    width: 60%;
+    margin-top: 5%;
+    margin-left: 3%;
+  }
+
+  .wrapper{
+    margin-top: 7%;
+  }
+
+  .account_name{
+    display: none;
+  }
+
+
+  .logo{
+display: none;
+  }
+
+
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px,1fr));
+    text-align: center;
+    margin-top: 8%;
+    grid-gap: 10%;
+    margin-right: 10%;
+  }
+
+  .nav_menu_li{
+    margin-bottom: 10%;
+    font-size: 19px;
+  }
+
+  .nav{
+    margin-top: 9%;
+  }
+
+
+
+  /*単語検索*/
+
+  .title{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 5%;
+    font-size: 20px;
+  }
+
+
+
+   .br_class{
+     display: none;
+   }
+
+
+
+.swich1 input{
+width: 70%;
+margin-left: 20%;
+}
+
+.swich2 input{
+width: 70%;
+margin-right: 20%;
+}
+
+.swich_zone{
+display: flex;
+justify-content: center;
+text-align: center;
+margin-top: 3%;
+}
+
+
+.button_area{
+  margin-top: 10%;
+}
+
+
+}
