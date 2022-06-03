@@ -4,19 +4,6 @@
 
 @section('content')
 
-<script src="{{ asset('js/app.js') }}" async></script>
-<h1>シンプルなデモ</h1>
-<input class="text" value="Web Speech API を使ってみよう！"/>
-<button onclick="speak()">speak()</button>
-<script>
-function speak(){
-  var text = document.querySelector('.text').value;
-  speechSynthesis.speak(
-    new SpeechSynthesisUtterance(text)
-  );
-}
-</script>
-
 <!--コンテンツ-->
 <h1 class="title"><?php echo $title; ?></h1>
 <p class="explanation"><?php echo $explanation; ?></p>

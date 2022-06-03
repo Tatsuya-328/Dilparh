@@ -209,7 +209,7 @@ class TopController extends Controller
         switch ($part) {
             case 'part1':
                 $limit_start = 0;
-                $limit_end = 600;
+                $limit_end = 396;
                 $totalNum = $limit_end - $limit_start;
 
                 $twocorrect = DB::table('words')
@@ -234,8 +234,8 @@ class TopController extends Controller
                 ];
                 break;
             case 'part2':
-                $limit_start = 600;
-                $limit_end = 600;
+                $limit_start = 397;
+                $limit_end = 106;
                 $totalNum = $limit_end - $limit_start;
 
                 $twocorrect = DB::table('words')
@@ -261,8 +261,8 @@ class TopController extends Controller
                 ];
                 break;
             case 'part3':
-                $limit_start = 1200;
-                $limit_end = 600;
+                $limit_start = 504;
+                $limit_end = 288;
                 $totalNum = $limit_end - $limit_start;
 
                 $twocorrect = DB::table('words')
@@ -288,8 +288,8 @@ class TopController extends Controller
                 ];
                 break;
             case 'part4':
-                $limit_start = 1800;
-                $limit_end = 600;
+                $limit_start = 793;
+                $limit_end = 6;
                 $totalNum = $limit_end - $limit_start;
 
                 $twocorrect = DB::table('words')
@@ -315,8 +315,8 @@ class TopController extends Controller
                 ];
                 break;
             case 'part5':
-                $limit_start = 2400;
-                $limit_end = 600;
+                $limit_start = 799;
+                $limit_end = 70;
                 $totalNum = $limit_end - $limit_start;
 
                 $twocorrect = DB::table('words')
@@ -342,8 +342,8 @@ class TopController extends Controller
                 ];
                 break;
             case 'part6':
-                $limit_start = 3000;
-                $limit_end = 208;
+                $limit_start = 870;
+                $limit_end = 223;
                 $totalNum = $limit_end - $limit_start;
 
                 $twocorrect = DB::table('words')
@@ -407,27 +407,27 @@ class TopController extends Controller
         switch ($part) {
             case 'part1':
                 $limit_start = 0;
-                $limit_end = 600;
+                $limit_end = 396;
                 break;
             case 'part2':
-                $limit_start = 600;
-                $limit_end = 600;
+                $limit_start = 397;
+                $limit_end = 106;
                 break;
             case 'part3':
-                $limit_start = 1200;
-                $limit_end = 600;
+                $limit_start = 504;
+                $limit_end = 288;
                 break;
             case 'part4':
-                $limit_start = 1800;
-                $limit_end = 600;
+                $limit_start = 793;
+                $limit_end = 6;
                 break;
             case 'part5':
-                $limit_start = 2400;
-                $limit_end = 600;
+                $limit_start = 799;
+                $limit_end = 70;
                 break;
             case 'part6':
-                $limit_start = 3000;
-                $limit_end = 208;
+                $limit_start = 870;
+                $limit_end = 223;
                 break;
         }
 
