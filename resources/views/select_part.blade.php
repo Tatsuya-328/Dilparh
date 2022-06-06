@@ -18,7 +18,7 @@ onmouseover="this.src='{{ asset('image/part1-2.png') }}'"
 onmouseout="this.src='{{ asset('image/part1.png') }}'" />
 </a>
 
-<p class="container2">語彙数：600 word</p>
+<p class="container2">語彙数：396 word</p>
 
 </div>
 
@@ -32,7 +32,7 @@ onmouseout="this.src='{{ asset('image/part1.png') }}'" />
   onmouseout="this.src='{{ asset('image/part2.png') }}'" />
 </a>
 
-<p class="container2">語彙数：600 word</p>
+<p class="container2">語彙数：106 word</p>
 
 </div>
 
@@ -44,7 +44,7 @@ onmouseout="this.src='{{ asset('image/part1.png') }}'" />
   onmouseover="this.src='{{ asset('image/part3-2.png') }}'"
   onmouseout="this.src='{{ asset('image/part3.png') }}'" />
 </a>
-<p class="container2">語彙数：600 word</p>
+<p class="container2">語彙数：288 word</p>
 </div>
 
 <!--part4-->
@@ -54,7 +54,7 @@ onmouseout="this.src='{{ asset('image/part1.png') }}'" />
   onmouseover="this.src='{{ asset('image/part4-2.png') }}'"
   onmouseout="this.src='{{ asset('image/part4.png') }}'" />
 </a>
-<p class="container2">語彙数：600 word</p>
+<p class="container2">語彙数：6 word</p>
 </div>
 
 <!--part5-->
@@ -64,7 +64,7 @@ onmouseout="this.src='{{ asset('image/part1.png') }}'" />
   onmouseover="this.src='{{ asset('image/part5-2.png') }}'"
   onmouseout="this.src='{{ asset('image/part5.png') }}'" />
 </a>
-<p class="container2">語彙数：600 word</p>
+<p class="container2">語彙数：70 word</p>
 </div>
 
 <!--part6-->
@@ -74,7 +74,7 @@ onmouseout="this.src='{{ asset('image/part1.png') }}'" />
   onmouseover="this.src='{{ asset('image/part6-2.png') }}'"
   onmouseout="this.src='{{ asset('image/part6.png') }}'" />
 </a>
-<p class="container2">語彙数：208 word</p>
+<p class="container2">語彙数：223 word</p>
 </div>
 </div>
 
