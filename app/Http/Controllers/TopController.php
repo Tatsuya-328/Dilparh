@@ -381,6 +381,7 @@ class TopController extends Controller
     {
         // 何問解くか
         $quantitiy = $quantitiy->input('quantitiy');
+        $quantitiy = str_replace('語', '', $quantitiy);  
 
         // 連想配列の差分消す関数
         function array_diff_assoc_recursive($array1, $array2)
@@ -518,7 +519,7 @@ class TopController extends Controller
                 $new_lisetwords[$add_lisetwords[$i]['word_id']] = $add_lisetwords[$i];
             }
             $add_lisetwords = $new_lisetwords;
-            
+
             if (!empty($add_lisetwords)) {
                 $words = array_merge_recursive($add_lisetwords, $words);
             }
