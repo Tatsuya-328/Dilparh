@@ -90,7 +90,7 @@ class TopController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function dictionary_result($language = 'null', Request $word)
+    public function dictionary_result(Request $word, $language = 'null')
     {
         $word = $word->input('word');
 
@@ -377,7 +377,7 @@ class TopController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function quiz($part = 'null', $review = 'null', Request $quantitiy)
+    public function quiz(Request $quantitiy, $part = 'null', $review = 'null')
     {
         // 何問解くか
         $quantitiy = $quantitiy->input('quantitiy');
