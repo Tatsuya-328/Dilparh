@@ -2483,6 +2483,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 function shuffleContent(container) {
   var content = $(".item_wrapper").find("> *");
   var total = content.length;
@@ -38328,6 +38338,19 @@ var render = function () {
             _vm._v(" "),
             _vm._l(this.words, function (word_id, index) {
               return _c("div", { key: word_id.word_id }, [
+                _c(
+                  "audio",
+                  { attrs: { id: "audio" + word_id.word_id, preload: "auto" } },
+                  [
+                    _c("source", {
+                      attrs: {
+                        src: "/audio/" + word_id.word_id + ".mp3",
+                        type: "audio/mp3",
+                      },
+                    }),
+                  ]
+                ),
+                _vm._v(" "),
                 word_id.japanese != _vm.answers[index]
                   ? _c("div", { staticClass: "textbox" }, [
                       _c(

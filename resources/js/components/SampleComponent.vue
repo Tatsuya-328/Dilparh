@@ -81,6 +81,16 @@
         v-for="(word_id, index) in this.words"
         :key="word_id.word_id"
       >
+              <!-- 音声ファイル読み込み -->
+        <audio
+          :id='"audio" + word_id.word_id'
+          preload="auto"
+        >
+          <source
+            :src='"/audio/" + word_id.word_id + ".mp3"'
+            type="audio/mp3"
+          >
+        </audio>
         <div
           class="textbox"
           v-if="word_id.japanese != answers[index]"
