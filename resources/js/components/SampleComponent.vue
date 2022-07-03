@@ -12,7 +12,6 @@
         <img :src="'/image/correct_button2.png'" />
         <img :src="'/image/wrong_button.png'" />
         <img :src="'/image/wrong_button2.png'" />
-
       </div>
 
       <!--クイズを表示する部分-->
@@ -98,6 +97,7 @@
               <div class="answer-wrapper">
                 <img
                   :src="'/image/voice.png'"
+                  v-on:click="ring(word_id.word_id);"
                   alt=""
                   class="voice"
                 />
@@ -107,6 +107,15 @@
                                         word_id.pron
                                     }}]：{{ word_id.japanese }}
                 </h2>
+              </div>
+              <div class="answer-wrapper">
+                <img
+                  :src="'/image/voice.png'"
+                  alt=""
+                  class="voice2"
+                />
+                <h6 class="example-text">اسلام علیکم، والیکم اسلام（例文）<br>
+                  （訳）こんにちは、こんにちは</h6>
               </div>
             </aside>
           </div>
@@ -126,11 +135,13 @@
           </p>
 
         </div>
-        <img
-          :src="'/image/teacher1_new.png'"
-          alt=""
-          class="teacher"
-        />
+        <div>
+          <img
+            :src="'/image/teacher1_new.png'"
+            alt=""
+            class="teacher lazyload"
+          />
+        </div>
       </div>
 
       <!--ボタン-->
@@ -180,6 +191,17 @@
         v-for="(word_id, index) in this.words"
         :key="word_id.word_id"
       >
+        <!-- 音声ファイル読み込み -->
+        <audio
+          :id='"audio" + word_id.word_id'
+          preload="auto"
+        >
+          <source
+            :src='"/audio/" + word_id.word_id + ".mp3"'
+            type="audio/mp3"
+          >
+        </audio>
+        <!-- 単語 -->
         <div class="textbox">
           <div class="whole-contents-wrapper">
             <article>
@@ -198,6 +220,7 @@
               <div class="answer-wrapper">
                 <img
                   :src="'/image/voice.png'"
+                  v-on:click="ring(word_id.word_id);"
                   alt=""
                   class="voice"
                 />
@@ -207,6 +230,15 @@
                                         word_id.pron
                                     }}]：{{ word_id.japanese }}
                 </h2>
+              </div>
+              <div class="answer-wrapper">
+                <img
+                  :src="'/image/voice.png'"
+                  alt=""
+                  class="voice2"
+                />
+                <h6 class="example-text">اسلام علیکم، والیکم اسلام（例文）<br>
+                  （訳）こんにちは、こんにちは</h6>
               </div>
             </aside>
           </div>
@@ -230,7 +262,7 @@
           <img
             :src="'/image/teacher1_new.png'"
             alt=""
-            class="teacher"
+            class="teacher lazyload"
           />
         </div>
       </div>
@@ -273,6 +305,7 @@
 </template>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
 <script>
 function shuffleContent(container) {
   var content = $(".item_wrapper").find("> *");
@@ -281,6 +314,8 @@ function shuffleContent(container) {
     content.eq(Math.floor(Math.random() * total)).prependTo(container);
   });
 }
+
+// クイズをシャッフル
 $(function () {
   shuffleContent($(".item_wrapper"));
 });
@@ -426,8 +461,9 @@ export default {
       // for (var i = 0; i < this.sendanswers.length; i++) {
       // 同時にwordsをループさせて、correctとwrongが入ってるか確認する。
       if (
-        (this.words[this.questionIndex].correct ==
-        this.words[this.questionIndex].japanese) && (this.words[this.questionIndex].liseted != '1')
+        this.words[this.questionIndex].correct ==
+          this.words[this.questionIndex].japanese &&
+        this.words[this.questionIndex].liseted != "1"
       ) {
         // 初めての回答なら登録
         console.log(this.sendanswers[this.questionIndex]);
@@ -470,6 +506,10 @@ export default {
       $(window).scrollTop(0);
     },
     finish_btn: function () {},
+    // 音声再生
+    ring: function (id) {
+      document.getElementById("audio" + id).play();
+    },
   },
   computed: {
     currentWord: function () {

@@ -11,6 +11,10 @@ body {
 
 a {
   text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: #00000063;
 }
 
 .pc_page-header {
@@ -252,7 +256,7 @@ aside {
 
 .dropdown-item {
   display: block;
-  width: 100%;
+  width: 70%;
   padding: 0.25rem 1.5rem;
   clear: both;
   font-weight: 400;

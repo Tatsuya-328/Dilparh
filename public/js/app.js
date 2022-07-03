@@ -2450,13 +2450,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 function shuffleContent(container) {
   var content = $(".item_wrapper").find("> *");
   var total = content.length;
   content.each(function () {
     content.eq(Math.floor(Math.random() * total)).prependTo(container);
   });
-}
+} // クイズをシャッフル
+
 
 $(function () {
   shuffleContent($(".item_wrapper"));
@@ -2599,7 +2633,7 @@ $(function () {
       // 同時にwordsをループさせて、correctとwrongが入ってるか確認する。
 
 
-      if (this.words[this.questionIndex].correct == this.words[this.questionIndex].japanese && this.words[this.questionIndex].liseted != '1') {
+      if (this.words[this.questionIndex].correct == this.words[this.questionIndex].japanese && this.words[this.questionIndex].liseted != "1") {
         // 初めての回答なら登録
         console.log(this.sendanswers[this.questionIndex]);
         axios.post("/api/answers", this.sendanswers[this.questionIndex]);
@@ -2631,7 +2665,11 @@ $(function () {
 
       $(window).scrollTop(0);
     },
-    finish_btn: function finish_btn() {}
+    finish_btn: function finish_btn() {},
+    // 音声再生
+    ring: function ring(id) {
+      document.getElementById("audio" + id).play();
+    }
   },
   computed: {
     currentWord: function currentWord() {
@@ -38298,6 +38336,11 @@ var render = function () {
                             _c("img", {
                               staticClass: "voice",
                               attrs: { src: "/image/voice.png", alt: "" },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.ring(word_id.word_id)
+                                },
+                              },
                             }),
                             _vm._v(" "),
                             _c("h2", { staticClass: "answer-text" }, [
@@ -38313,6 +38356,15 @@ var render = function () {
                                   "\n              "
                               ),
                             ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "answer-wrapper" }, [
+                            _c("img", {
+                              staticClass: "voice2",
+                              attrs: { src: "/image/voice.png", alt: "" },
+                            }),
+                            _vm._v(" "),
+                            _vm._m(0, true),
                           ]),
                         ]),
                       ]),
@@ -38347,10 +38399,12 @@ var render = function () {
                 ]),
               ]),
               _vm._v(" "),
-              _c("img", {
-                staticClass: "teacher",
-                attrs: { src: "/image/teacher1_new.png", alt: "" },
-              }),
+              _c("div", [
+                _c("img", {
+                  staticClass: "teacher lazyload",
+                  attrs: { src: "/image/teacher1_new.png", alt: "" },
+                }),
+              ]),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "button-area" }, [
@@ -38411,6 +38465,19 @@ var render = function () {
             _vm._v(" "),
             _vm._l(this.words, function (word_id, index) {
               return _c("div", { key: word_id.word_id }, [
+                _c(
+                  "audio",
+                  { attrs: { id: "audio" + word_id.word_id, preload: "auto" } },
+                  [
+                    _c("source", {
+                      attrs: {
+                        src: "/audio/" + word_id.word_id + ".mp3",
+                        type: "audio/mp3",
+                      },
+                    }),
+                  ]
+                ),
+                _vm._v(" "),
                 _c("div", { staticClass: "textbox" }, [
                   _c("div", { staticClass: "whole-contents-wrapper" }, [
                     _c("article", [
@@ -38428,6 +38495,11 @@ var render = function () {
                         _c("img", {
                           staticClass: "voice",
                           attrs: { src: "/image/voice.png", alt: "" },
+                          on: {
+                            click: function ($event) {
+                              return _vm.ring(word_id.word_id)
+                            },
+                          },
                         }),
                         _vm._v(" "),
                         _c("h2", { staticClass: "answer-text" }, [
@@ -38443,6 +38515,15 @@ var render = function () {
                               "\n              "
                           ),
                         ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "answer-wrapper" }, [
+                        _c("img", {
+                          staticClass: "voice2",
+                          attrs: { src: "/image/voice.png", alt: "" },
+                        }),
+                        _vm._v(" "),
+                        _vm._m(1, true),
                       ]),
                     ]),
                   ]),
@@ -38478,7 +38559,7 @@ var render = function () {
               _vm._v(" "),
               _c("div", [
                 _c("img", {
-                  staticClass: "teacher",
+                  staticClass: "teacher lazyload",
                   attrs: { src: "/image/teacher1_new.png", alt: "" },
                 }),
               ]),
@@ -38531,7 +38612,28 @@ var render = function () {
       : _vm._e(),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h6", { staticClass: "example-text" }, [
+      _vm._v("اسلام علیکم، والیکم اسلام（例文）"),
+      _c("br"),
+      _vm._v("\n                （訳）こんにちは、こんにちは"),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h6", { staticClass: "example-text" }, [
+      _vm._v("اسلام علیکم، والیکم اسلام（例文）"),
+      _c("br"),
+      _vm._v("\n                （訳）こんにちは、こんにちは"),
+    ])
+  },
+]
 render._withStripped = true
 
 

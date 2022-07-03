@@ -53,9 +53,15 @@
 
   <!--ボタン-->
   <div class="button-area">
-    <input type="image" src="{{ asset('image/try_button.png') }}" onmouseover="this.src='{{ asset('image/try_button2.png') }}'" onmouseout="this.src='{{ asset('image/try_button.png') }}'" width="220px" height="auto" formaction="/start/<?php echo $part; ?>/quiz"></input>
-    <input type="image" src="{{ asset('image/retry_button.png') }}" onmouseover="this.src='{{ asset('image/retry_button2.png') }}'" onmouseout="this.src='{{ asset('image/retry_button.png') }}'" width="220px" height="auto" formaction="/start/<?php echo $part; ?>/quiz/review">
-</form>
+    <?php if ($totalNum > 0): ?>
+      <input type="image" src="{{ asset('image/try_button.png') }}" onmouseover="this.src='{{ asset('image/try_button2.png') }}'" onmouseout="this.src='{{ asset('image/try_button.png') }}'" width="220px" height="auto" formaction="/start/part<?php echo $part; ?>/quiz"></input>
+      <input type="image" src="{{ asset('image/retry_button.png') }}" onmouseover="this.src='{{ asset('image/retry_button2.png') }}'" onmouseout="this.src='{{ asset('image/retry_button.png') }}'" width="220px" height="auto" formaction="/start/part<?php echo $part; ?>/quiz/review">
+    <?php else: ?>
+      <input disabled type="image" src="{{ asset('image/try_button.png') }}" onmouseover="this.src='{{ asset('image/try_button2.png') }}'" onmouseout="this.src='{{ asset('image/try_button.png') }}'" width="220px" height="auto" formaction="/start/part<?php echo $part; ?>/quiz"></input>
+      <input disabled type="image" src="{{ asset('image/retry_button.png') }}" onmouseover="this.src='{{ asset('image/retry_button2.png') }}'" onmouseout="this.src='{{ asset('image/retry_button.png') }}'" width="220px" height="auto" formaction="/start/part<?php echo $part; ?>/quiz/review">
+    <?php endif; ?>
+
+    </form>
 </div>
 
 @endsection

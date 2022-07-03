@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>ディルパル</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" async></script>
@@ -62,7 +62,8 @@
 
 
                     <!-- <li class="nav-item dropdown"> -->
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <!-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> -->
+                    <a id="navbarDropdown" class="nav-link" href="/config" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} のアカウント<span class="caret"></span>
                     </a>
 
