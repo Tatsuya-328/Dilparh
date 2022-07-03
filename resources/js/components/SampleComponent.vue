@@ -72,7 +72,7 @@
 
     <!-- 誤答のみ表示 -->
     <div v-else-if="show_wrong">
-      <div class="answer">
+      <div class="answer wrong">
         <h2 class="collect_answer">
           誤答：<b>{{ this.words.length - correct }}</b>
         </h2>
@@ -85,7 +85,7 @@
           class="textbox"
           v-if="word_id.japanese != answers[index]"
         >
-          <div class="whole-contents-wrapper">
+          <div class="whole-contents-wrapper_wrong">
             <!-- <article>
               <h2 class="answer-text2" v-if="word_id.japanese == answers[index]">
                 〇

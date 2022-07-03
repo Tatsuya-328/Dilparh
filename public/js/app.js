@@ -38319,7 +38319,7 @@ var render = function () {
       ? _c(
           "div",
           [
-            _c("div", { staticClass: "answer" }, [
+            _c("div", { staticClass: "answer wrong" }, [
               _c("h2", { staticClass: "collect_answer" }, [
                 _vm._v("\n        誤答："),
                 _c("b", [_vm._v(_vm._s(this.words.length - _vm.correct))]),
@@ -38330,44 +38330,48 @@ var render = function () {
               return _c("div", { key: word_id.word_id }, [
                 word_id.japanese != _vm.answers[index]
                   ? _c("div", { staticClass: "textbox" }, [
-                      _c("div", { staticClass: "whole-contents-wrapper" }, [
-                        _c("aside", [
-                          _c("div", { staticClass: "answer-wrapper" }, [
-                            _c("img", {
-                              staticClass: "voice",
-                              attrs: { src: "/image/voice.png", alt: "" },
-                              on: {
-                                click: function ($event) {
-                                  return _vm.ring(word_id.word_id)
+                      _c(
+                        "div",
+                        { staticClass: "whole-contents-wrapper_wrong" },
+                        [
+                          _c("aside", [
+                            _c("div", { staticClass: "answer-wrapper" }, [
+                              _c("img", {
+                                staticClass: "voice",
+                                attrs: { src: "/image/voice.png", alt: "" },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.ring(word_id.word_id)
+                                  },
                                 },
-                              },
-                            }),
+                              }),
+                              _vm._v(" "),
+                              _c("h2", { staticClass: "answer-text" }, [
+                                _vm._v(
+                                  "\n                " +
+                                    _vm._s(index + 1) +
+                                    ".\n                " +
+                                    _vm._s(word_id.word_urdu) +
+                                    "　[" +
+                                    _vm._s(word_id.pron) +
+                                    "]：" +
+                                    _vm._s(word_id.japanese) +
+                                    "\n              "
+                                ),
+                              ]),
+                            ]),
                             _vm._v(" "),
-                            _c("h2", { staticClass: "answer-text" }, [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(index + 1) +
-                                  ".\n                " +
-                                  _vm._s(word_id.word_urdu) +
-                                  "　[" +
-                                  _vm._s(word_id.pron) +
-                                  "]：" +
-                                  _vm._s(word_id.japanese) +
-                                  "\n              "
-                              ),
+                            _c("div", { staticClass: "answer-wrapper" }, [
+                              _c("img", {
+                                staticClass: "voice2",
+                                attrs: { src: "/image/voice.png", alt: "" },
+                              }),
+                              _vm._v(" "),
+                              _vm._m(0, true),
                             ]),
                           ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "answer-wrapper" }, [
-                            _c("img", {
-                              staticClass: "voice2",
-                              attrs: { src: "/image/voice.png", alt: "" },
-                            }),
-                            _vm._v(" "),
-                            _vm._m(0, true),
-                          ]),
-                        ]),
-                      ]),
+                        ]
+                      ),
                     ])
                   : _vm._e(),
               ])

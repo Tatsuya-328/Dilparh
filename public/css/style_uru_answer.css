@@ -153,6 +153,13 @@ p {
   display: flex;
   margin-left: 10%;
 }
+.whole-contents-wrapper_wrong {
+  display: flex;
+  margin-left: 275px;
+}
+.wrong {
+  margin-bottom: 40px;
+}
 
 article {
   width: 20%;
@@ -185,7 +192,7 @@ aside {
 }
 
 .example-text {
-  margin-top: 16px;
+  margin-top: 0px;
   font-size: 13px;
   text-align: left;
   margin-bottom: 7%;
@@ -215,8 +222,8 @@ aside {
   margin-right: 26px;
   width: auto;
   height: 31px;
-  margin-bottom: 8%;
-  margin-top: 4%;
+  margin-bottom: 8px;
+  margin-top: 4px;
 }
 
 .button1 {
