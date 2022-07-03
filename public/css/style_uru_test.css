@@ -200,12 +200,14 @@ button:hover {
   height: 187px;
   margin-top: 7px;
 }
+
 .teachermessage {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
 }
+
 .balloon2-right {
   transform: scale(0.8);
   position: relative;
@@ -256,10 +258,25 @@ button:hover {
   padding: 0;
   text-align: left;
 }
+
 .balloon2-right p.byteacher {
   margin: 0;
   padding: 0;
   text-align: right;
+}
+
+.box1 {
+  -webkit-box-ordinal-group: 1;
+  -ms-flex-order: 1;
+  -webkit-order: 1;
+  order: 1;
+}
+
+.box2 {
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: 2;
+  -webkit-order: 2;
+  order: 2;
 }
 
 @media (max-width:600px) {

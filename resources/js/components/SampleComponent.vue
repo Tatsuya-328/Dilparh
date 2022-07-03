@@ -124,7 +124,7 @@
 
       <!--先生の画像-->
       <div class="teachermessage">
-        <div class="balloon2-right">
+        <div class="balloon2-right box1">
           <p>
             今回は{{ this.words.length - correct }}問ミスだ！{{ this.words.length - correct }}問ミスしたということは<br>
             {{ correct }}問正解したということだ！<br>
@@ -135,7 +135,7 @@
           </p>
 
         </div>
-        <div>
+        <div class="box2">
           <img
             :src="'/image/teacher1_new.png'"
             alt=""
@@ -247,7 +247,7 @@
 
       <!--先生の画像-->
       <div class="teachermessage">
-        <div class="balloon2-right">
+        <div class="balloon2-right box1">
           <p>
             今回は{{ this.words.length - correct }}問ミスだ！{{ this.words.length - correct }}問ミスしたということは<br>
             {{ correct }}問正解したということだ！<br>
@@ -258,7 +258,7 @@
           </p>
 
         </div>
-        <div>
+        <div class="box2">
           <img
             :src="'/image/teacher1_new.png'"
             alt=""

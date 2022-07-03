@@ -243,7 +243,7 @@ aside {
   margin-bottom: 10%;
 }
 
-.button-area > input {
+.button-area>input {
   width: auto;
   height: 37px;
   margin: 0 15px;
@@ -367,12 +367,14 @@ aside {
     height: 187px;
     margin-top: 7px;
   }
+
   .teachermessage {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
   }
+
   .balloon2-right {
     transform: scale(0.8);
     position: relative;
@@ -389,7 +391,7 @@ aside {
     box-sizing: border-box;
     border-radius: 10px;
   }
-  
+
   .balloon2-right:before {
     content: "";
     position: absolute;
@@ -402,7 +404,7 @@ aside {
     border-top: 16px solid transparent;
     border-bottom: 17px solid transparent;
   }
-  
+
   .balloon2-right:after {
     content: "";
     position: absolute;
@@ -417,19 +419,20 @@ aside {
     /* border-width: 27px; */
     margin-top: -35px;
   }
-  
+
   .balloon2-right p {
     margin: 0;
     padding: 0;
     text-align: left;
   }
+
   .balloon2-right p.byteacher {
     margin: 0;
     padding: 0;
     text-align: right;
   }
 
-  
+
   /*正誤表示の音声*/
   .voice {
     margin-left: 0%;
@@ -446,6 +449,8 @@ aside {
     margin-bottom: 10%;
     margin-top: 4%;
   }
+
+  
 
   /*誤答のみの音声*/
   .voice3 {

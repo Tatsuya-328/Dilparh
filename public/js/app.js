@@ -38374,7 +38374,7 @@ var render = function () {
             }),
             _vm._v(" "),
             _c("div", { staticClass: "teachermessage" }, [
-              _c("div", { staticClass: "balloon2-right" }, [
+              _c("div", { staticClass: "balloon2-right box1" }, [
                 _c("p", [
                   _vm._v(
                     "\n          今回は" +
@@ -38399,7 +38399,7 @@ var render = function () {
                 ]),
               ]),
               _vm._v(" "),
-              _c("div", [
+              _c("div", { staticClass: "box2" }, [
                 _c("img", {
                   staticClass: "teacher lazyload",
                   attrs: { src: "/image/teacher1_new.png", alt: "" },
@@ -38532,7 +38532,7 @@ var render = function () {
             }),
             _vm._v(" "),
             _c("div", { staticClass: "teachermessage" }, [
-              _c("div", { staticClass: "balloon2-right" }, [
+              _c("div", { staticClass: "balloon2-right box1" }, [
                 _c("p", [
                   _vm._v(
                     "\n          今回は" +
@@ -38557,7 +38557,7 @@ var render = function () {
                 ]),
               ]),
               _vm._v(" "),
-              _c("div", [
+              _c("div", { staticClass: "box2" }, [
                 _c("img", {
                   staticClass: "teacher lazyload",
                   attrs: { src: "/image/teacher1_new.png", alt: "" },
