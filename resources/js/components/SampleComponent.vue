@@ -515,7 +515,7 @@ export default {
       if (!this.completed) {
         this.questionIndex++;
         // 音声再生二問目以降
-        document.getElementById("audio" + this.currentWord['word_id']).muted = false;
+        document.getElementById("audio" + this.currentWord['word_id']).play();
       }
     },
     show_wrong_btn: function () {

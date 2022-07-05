@@ -11,11 +11,9 @@ var_dump($words);
 </pre> -->
 
 <div id="app">
-    <?php foreach ($words as $word) : ?>
-        <audio id="audio{{ $word['word_id'] }}" preload="auto" muted autoplay>
-            <source src="/audio/{{ $word['word_id'] }}.mp3" type="audio/mp3">
+        <audio id="audio{{ $words[0]['word_id'] }}" preload="auto" muted autoplay>
+            <source src="/audio/{{ $words[0]['word_id'] }}.mp3" type="audio/mp3">
         </audio>
-    <?php endforeach; ?>
     <sample-component user_id="{{ Auth::id() }}" v-bind:words='@json($words)' v-bind:dummywords='@json($dummywords)'></sample-component>
 </div>
 
