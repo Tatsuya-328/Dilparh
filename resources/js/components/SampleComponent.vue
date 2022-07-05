@@ -15,10 +15,23 @@
       </div>
 
       <!--クイズを表示する部分-->
-      <div class="word_and_symbol">
+      <div
+        class="word_and_symbol"
+        v-on:click="ring(currentWord.word_id);"
+      >
         <h1>{{ currentWord.word_urdu }}</h1>
         <h6>[{{ currentWord.pron }}]</h6>
       </div>
+      <!-- 音声ファイル読み込み -->
+      <audio
+        :id='"audio" + currentWord.word_id'
+        preload="auto"
+      >
+        <source
+          :src='"/audio/" + currentWord.word_id + ".mp3"'
+          type="audio/mp3"
+        >
+      </audio>
 
       <div class="item_wrapper">
         <div class="item">
@@ -68,6 +81,8 @@
           >
         </a>
       </div>
+      {{ rings('/audio/' + currentWord.word_id + '.mp3') }}
+
     </div>
 
     <!-- 誤答のみ表示 -->
@@ -81,7 +96,7 @@
         v-for="(word_id, index) in this.words"
         :key="word_id.word_id"
       >
-              <!-- 音声ファイル読み込み -->
+        <!-- 音声ファイル読み込み -->
         <audio
           :id='"audio" + word_id.word_id'
           preload="auto"
@@ -330,6 +345,11 @@ $(function () {
   shuffleContent($(".item_wrapper"));
 });
 
+// $(function ring() {
+//   alert(this.currentWord);
+//         document.getElementById("audio" + this.currentWord.word_id).play();
+//       });
+
 export default {
   name: "SampleComponent",
   props: {
@@ -360,6 +380,22 @@ export default {
     };
   },
   methods: {
+    rings: function (id) {
+fetch(id)
+    .then(response => response.blob())
+    .then(blob => {
+      video.srcObject = blob;
+      return video.play();
+    })
+    .then(_ => {
+      // Video playback started ;)
+    })
+    .catch(e => {
+      // Video playback failed ;(
+    })
+  
+      // document.getElementById("audio" + id).play();
+    },
     addAnswer: function (answerdjapanese) {
       // 回答表示画面用にpush
       this.answers.push(answerdjapanese);
@@ -493,9 +529,9 @@ export default {
         // axios.put("/api/answers", this.sendanswers[i]);
       }
       // }
-
       if (!this.completed) {
         this.questionIndex++;
+        // rings();
       }
     },
     show_wrong_btn: function () {
@@ -537,7 +573,27 @@ export default {
     completed: function () {
       return this.words.length == this.answers.length;
     },
+    // rings: function () {
+    //   alert(this.words[this.questionIndex].word_id);
+    //   document
+    //     .getElementById("audio" + this.words[this.questionIndex].word_id)
+    //     .play();
+    //   return null;
+    // },
+    // ring: function (id) {
+    //   // alert(this.words[this.questionIndex].word_id);
+    //   document
+    //     .getElementById("audio" + id)
+    //     .play();
+    //   return null;
+    // },
   },
+  // watch: {
+  //   rings: function() {
+  //     // alert(this.words[this.questionIndex].word_id);
+  //     return document.getElementById("audio" + this.currentWord.word_id).play();
+  //   }
+  // }
 };
 // シャッフルが終わってから表示させる
 // document.getElementsByClassName("item_wrapper").style.visibility ="visible";

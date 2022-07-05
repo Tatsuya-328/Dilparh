@@ -2493,6 +2493,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 function shuffleContent(container) {
   var content = $(".item_wrapper").find("> *");
   var total = content.length;
@@ -2504,7 +2519,11 @@ function shuffleContent(container) {
 
 $(function () {
   shuffleContent($(".item_wrapper"));
-});
+}); // $(function ring() {
+//   alert(this.currentWord);
+//         document.getElementById("audio" + this.currentWord.word_id).play();
+//       });
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "SampleComponent",
   props: {
@@ -2537,6 +2556,16 @@ $(function () {
     };
   },
   methods: {
+    rings: function rings(id) {
+      fetch(id).then(function (response) {
+        return response.blob();
+      }).then(function (blob) {
+        video.srcObject = blob;
+        return video.play();
+      }).then(function (_) {// Video playback started ;)
+      })["catch"](function (e) {// Video playback failed ;(
+      }); // document.getElementById("audio" + id).play();
+    },
     addAnswer: function addAnswer(answerdjapanese) {
       // 回答表示画面用にpush
       this.answers.push(answerdjapanese);
@@ -2654,7 +2683,7 @@ $(function () {
 
 
       if (!this.completed) {
-        this.questionIndex++;
+        this.questionIndex++; // rings();
       }
     },
     show_wrong_btn: function show_wrong_btn() {
@@ -2696,8 +2725,28 @@ $(function () {
     },
     completed: function completed() {
       return this.words.length == this.answers.length;
-    }
-  }
+    } // rings: function () {
+    //   alert(this.words[this.questionIndex].word_id);
+    //   document
+    //     .getElementById("audio" + this.words[this.questionIndex].word_id)
+    //     .play();
+    //   return null;
+    // },
+    // ring: function (id) {
+    //   // alert(this.words[this.questionIndex].word_id);
+    //   document
+    //     .getElementById("audio" + id)
+    //     .play();
+    //   return null;
+    // },
+
+  } // watch: {
+  //   rings: function() {
+  //     // alert(this.words[this.questionIndex].word_id);
+  //     return document.getElementById("audio" + this.currentWord.word_id).play();
+  //   }
+  // }
+
 }); // シャッフルが終わってから表示させる
 // document.getElementsByClassName("item_wrapper").style.visibility ="visible";
 
@@ -38211,11 +38260,37 @@ var render = function () {
             _c("img", { attrs: { src: "/image/wrong_button2.png" } }),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "word_and_symbol" }, [
-            _c("h1", [_vm._v(_vm._s(_vm.currentWord.word_urdu))]),
-            _vm._v(" "),
-            _c("h6", [_vm._v("[" + _vm._s(_vm.currentWord.pron) + "]")]),
-          ]),
+          _c(
+            "div",
+            {
+              staticClass: "word_and_symbol",
+              on: {
+                click: function ($event) {
+                  return _vm.ring(_vm.currentWord.word_id)
+                },
+              },
+            },
+            [
+              _c("h1", [_vm._v(_vm._s(_vm.currentWord.word_urdu))]),
+              _vm._v(" "),
+              _c("h6", [_vm._v("[" + _vm._s(_vm.currentWord.pron) + "]")]),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "audio",
+            {
+              attrs: { id: "audio" + _vm.currentWord.word_id, preload: "auto" },
+            },
+            [
+              _c("source", {
+                attrs: {
+                  src: "/audio/" + _vm.currentWord.word_id + ".mp3",
+                  type: "audio/mp3",
+                },
+              }),
+            ]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "item_wrapper" }, [
             _c("div", { staticClass: "item" }, [
@@ -38324,6 +38399,11 @@ var render = function () {
               ]
             ),
           ]),
+          _vm._v(
+            "\n    " +
+              _vm._s(_vm.rings("/audio/" + _vm.currentWord.word_id + ".mp3")) +
+              "\n\n  "
+          ),
         ])
       : _vm.show_wrong
       ? _c(

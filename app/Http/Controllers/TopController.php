@@ -217,7 +217,7 @@ class TopController extends Controller
         // select_gameでどのパートを選んだかによって、start_gameのテンプレートに当てはめる値を変える
         switch ($part) {
             case '1':
-                $data = $this->getPartData($part, "ウルドゥー語は初めてか？大丈夫、初級の単語を覚えれば<br class='br-none'>ネイティブの言うことを大体理解すことができる！何度も演習して必ず覚えよう！");
+                $data = $this->getPartData($part, "ウルドゥー語は初めてか？大丈夫、初級の単語を覚えれば<br class='br-none'>ネイティブの言うことを大体理解することができる！何度も演習して必ず覚えよう！");
                 // $whole_part = DB::table('words')
                 //     ->select('words.id as word_id')
                 //     ->where('words.part', '=', '1')
@@ -275,7 +275,7 @@ class TopController extends Controller
                 // ];
                 break;
             case '3':
-                $data = $this->getPartData($part, "ウルドゥー語は初めてか？大丈夫、初級の単語を覚えれば<br class='br-none'>ネイティブの言うことを大体理解すことができる！何度も演習して必ず覚えよう！");
+                $data = $this->getPartData($part, "このパートでは固有名詞に特化して学習を進めていくぞ！<br class='br-none'>現地で一番知らずに困るのは名詞だったりするから、気を入れて学習に取り組もう！");
 
                 // $limit_start = 504;
                 // $limit_end = 288;
