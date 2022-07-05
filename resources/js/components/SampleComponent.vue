@@ -81,7 +81,7 @@
           >
         </a>
       </div>
-      {{ rings(currentWord.word_id) }}
+      {{ rings(firstWord.word_id) }}
 
     </div>
 
@@ -518,7 +518,7 @@ export default {
       // }
       if (!this.completed) {
         this.questionIndex++;
-        // rings();
+        document.getElementById("audio" + this.currentWord['word_id']).play();
       }
     },
     show_wrong_btn: function () {
@@ -547,6 +547,9 @@ export default {
   computed: {
     currentWord: function () {
       return this.words[this.questionIndex];
+    },
+    firstWord: function () {
+      return this.words[0];
     },
     randomWord1: function () {
       return this.dummywords[this.random1];
