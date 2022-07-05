@@ -2557,14 +2557,7 @@ $(function () {
   },
   methods: {
     rings: function rings(id) {
-      fetch(id).then(function (response) {
-        return response.blob();
-      }).then(function (blob) {
-        video.srcObject = blob;
-        return video.play();
-      }).then(function (_) {// Video playback started ;)
-      })["catch"](function (e) {// Video playback failed ;(
-      }); // document.getElementById("audio" + id).play();
+      document.getElementById("audio" + id).muted = false;
     },
     addAnswer: function addAnswer(answerdjapanese) {
       // 回答表示画面用にpush
@@ -2683,7 +2676,8 @@ $(function () {
 
 
       if (!this.completed) {
-        this.questionIndex++; // rings();
+        this.questionIndex++;
+        document.getElementById("audio" + this.currentWord['word_id']).play();
       }
     },
     show_wrong_btn: function show_wrong_btn() {
@@ -2713,6 +2707,9 @@ $(function () {
   computed: {
     currentWord: function currentWord() {
       return this.words[this.questionIndex];
+    },
+    firstWord: function firstWord() {
+      return this.words[0];
     },
     randomWord1: function randomWord1() {
       return this.dummywords[this.random1];
@@ -38400,9 +38397,7 @@ var render = function () {
             ),
           ]),
           _vm._v(
-            "\n    " +
-              _vm._s(_vm.rings("/audio/" + _vm.currentWord.word_id + ".mp3")) +
-              "\n\n  "
+            "\n    " + _vm._s(_vm.rings(_vm.firstWord.word_id)) + "\n\n  "
           ),
         ])
       : _vm.show_wrong
