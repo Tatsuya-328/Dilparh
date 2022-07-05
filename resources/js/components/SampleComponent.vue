@@ -23,17 +23,6 @@
         <h6>[{{ currentWord.pron }}]</h6>
       </div>
       <!-- 音声ファイル読み込み -->
-      <audio
-        :id='"audio" + currentWord.word_id'
-        preload="auto"
-        muted
-        autoplay
-      >
-        <source
-          :src='"/audio/" + currentWord.word_id + ".mp3"'
-          type="audio/mp3"
-        >
-      </audio>
 
       <div class="item_wrapper">
         <div class="item">
@@ -220,18 +209,6 @@
         v-for="(word_id, index) in this.words"
         :key="word_id.word_id"
       >
-        <!-- 音声ファイル読み込み -->
-        <audio
-          :id='"audio" + word_id.word_id'
-          preload="auto"
-          muted
-          autoplay
-        >
-          <source
-            :src='"/audio/" + word_id.word_id + ".mp3"'
-            type="audio/mp3"
-          >
-        </audio>
         <!-- 単語 -->
         <div class="textbox">
           <div class="whole-contents-wrapper">
@@ -382,7 +359,7 @@ export default {
   },
   methods: {
     rings: function (id) {
-      console.log(id);
+      // console.log(id);
       // 音声再生、一問目のみ用
       document.getElementById("preaudio" + id).muted = false;
     },

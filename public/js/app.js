@@ -2491,29 +2491,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 function shuffleContent(container) {
   var content = $(".item_wrapper").find("> *");
   var total = content.length;
@@ -2559,8 +2536,8 @@ $(function () {
   },
   methods: {
     rings: function rings(id) {
-      console.log(id); // 音声再生、一問目のみ用
-
+      // console.log(id);
+      // 音声再生、一問目のみ用
       document.getElementById("preaudio" + id).muted = false;
     },
     addAnswer: function addAnswer(answerdjapanese) {
@@ -38281,26 +38258,6 @@ var render = function () {
             ]
           ),
           _vm._v(" "),
-          _c(
-            "audio",
-            {
-              attrs: {
-                id: "audio" + _vm.currentWord.word_id,
-                preload: "auto",
-                muted: "",
-                autoplay: "",
-              },
-            },
-            [
-              _c("source", {
-                attrs: {
-                  src: "/audio/" + _vm.currentWord.word_id + ".mp3",
-                  type: "audio/mp3",
-                },
-              }),
-            ]
-          ),
-          _vm._v(" "),
           _c("div", { staticClass: "item_wrapper" }, [
             _c("div", { staticClass: "item" }, [
               _c(
@@ -38566,26 +38523,6 @@ var render = function () {
             _vm._v(" "),
             _vm._l(this.words, function (word_id, index) {
               return _c("div", { key: word_id.word_id }, [
-                _c(
-                  "audio",
-                  {
-                    attrs: {
-                      id: "audio" + word_id.word_id,
-                      preload: "auto",
-                      muted: "",
-                      autoplay: "",
-                    },
-                  },
-                  [
-                    _c("source", {
-                      attrs: {
-                        src: "/audio/" + word_id.word_id + ".mp3",
-                        type: "audio/mp3",
-                      },
-                    }),
-                  ]
-                ),
-                _vm._v(" "),
                 _c("div", { staticClass: "textbox" }, [
                   _c("div", { staticClass: "whole-contents-wrapper" }, [
                     _c("article", [
