@@ -2679,10 +2679,10 @@ $(function () {
 
       if (!this.completed) {
         this.questionIndex++; // 音声再生二問目以降
+        // console.log('二回目');
+        // console.log("audio" + this.currentWord["word_id"]);
 
-        console.log('二回目');
-        console.log("audio" + this.currentWord["word_id"]);
-        document.getElementById("audio" + this.currentWord["word_id"]).muted = false;
+        document.getElementById("''" + "audio" + this.currentWord["word_id"] + "''").play();
       }
     },
     show_wrong_btn: function show_wrong_btn() {
@@ -2706,8 +2706,8 @@ $(function () {
     finish_btn: function finish_btn() {},
     // 音声再生ボタン押したら
     ring: function ring(id) {
-      console.log("audio" + id);
-      document.getElementById("audio" + id).muted = false;
+      // console.log("audio" + id);
+      document.getElementById("''" + "audio" + id + "''").play();
     }
   },
   computed: {

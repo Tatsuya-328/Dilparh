@@ -520,11 +520,9 @@ export default {
       if (!this.completed) {
         this.questionIndex++;
         // 音声再生二問目以降
-        console.log('二回目');
-        console.log("audio" + this.currentWord["word_id"]);
-        document.getElementById(
-          "audio" + this.currentWord["word_id"]
-        ).muted = false;
+        // console.log('二回目');
+        // console.log("audio" + this.currentWord["word_id"]);
+        document.getElementById("''" + "audio" + this.currentWord["word_id"] + "''").play();
       }
     },
     show_wrong_btn: function () {
@@ -547,8 +545,8 @@ export default {
     finish_btn: function () {},
     // 音声再生ボタン押したら
     ring: function (id) {
-      console.log("audio" + id);
-      document.getElementById("audio" + id).muted = false;
+      // console.log("audio" + id);
+      document.getElementById("''" + "audio" + id + "''").play();
     },
   },
   computed: {
