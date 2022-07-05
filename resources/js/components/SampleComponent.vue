@@ -81,7 +81,7 @@
           >
         </a>
       </div>
-      {{ rings('/audio/' + currentWord.word_id + '.mp3') }}
+      {{ rings(currentWord.word_id) }}
 
     </div>
 
@@ -381,20 +381,7 @@ export default {
   },
   methods: {
     rings: function (id) {
-fetch(id)
-    .then(response => response.blob())
-    .then(blob => {
-      video.srcObject = blob;
-      return video.play();
-    })
-    .then(_ => {
-      // Video playback started ;)
-    })
-    .catch(e => {
-      // Video playback failed ;(
-    })
-  
-      // document.getElementById("audio" + id).play();
+      document.getElementById("audio" + id).muted = false;
     },
     addAnswer: function (answerdjapanese) {
       // 回答表示画面用にpush
