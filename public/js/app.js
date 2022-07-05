@@ -2510,6 +2510,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 function shuffleContent(container) {
   var content = $(".item_wrapper").find("> *");
   var total = content.length;
@@ -2556,7 +2560,7 @@ $(function () {
   methods: {
     rings: function rings(id) {
       // 音声再生、一問目のみ用
-      document.getElementById("audio" + id).muted = false;
+      document.getElementById("preaudio" + id).muted = false;
     },
     addAnswer: function addAnswer(answerdjapanese) {
       // 回答表示画面用にpush
@@ -2676,7 +2680,7 @@ $(function () {
       if (!this.completed) {
         this.questionIndex++; // 音声再生二問目以降
 
-        document.getElementById("audio" + this.currentWord['word_id']).muted = false;
+        document.getElementById("audio" + this.currentWord["word_id"]).muted = false;
       }
     },
     show_wrong_btn: function show_wrong_btn() {
@@ -38420,7 +38424,14 @@ var render = function () {
               return _c("div", { key: word_id.word_id }, [
                 _c(
                   "audio",
-                  { attrs: { id: "audio" + word_id.word_id, preload: "auto" } },
+                  {
+                    attrs: {
+                      id: "audio" + word_id.word_id,
+                      preload: "auto",
+                      muted: "",
+                      autoplay: "",
+                    },
+                  },
                   [
                     _c("source", {
                       attrs: {
@@ -38574,7 +38585,14 @@ var render = function () {
               return _c("div", { key: word_id.word_id }, [
                 _c(
                   "audio",
-                  { attrs: { id: "audio" + word_id.word_id, preload: "auto" } },
+                  {
+                    attrs: {
+                      id: "audio" + word_id.word_id,
+                      preload: "auto",
+                      muted: "",
+                      autoplay: "",
+                    },
+                  },
                   [
                     _c("source", {
                       attrs: {

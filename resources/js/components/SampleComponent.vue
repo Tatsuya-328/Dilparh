@@ -102,6 +102,8 @@
         <audio
           :id='"audio" + word_id.word_id'
           preload="auto"
+          muted
+          autoplay
         >
           <source
             :src='"/audio/" + word_id.word_id + ".mp3"'
@@ -222,6 +224,8 @@
         <audio
           :id='"audio" + word_id.word_id'
           preload="auto"
+          muted
+          autoplay
         >
           <source
             :src='"/audio/" + word_id.word_id + ".mp3"'
@@ -379,7 +383,7 @@ export default {
   methods: {
     rings: function (id) {
       // 音声再生、一問目のみ用
-      document.getElementById("audio" + id).muted = false;
+      document.getElementById("preaudio" + id).muted = false;
     },
     addAnswer: function (answerdjapanese) {
       // 回答表示画面用にpush
@@ -516,7 +520,9 @@ export default {
       if (!this.completed) {
         this.questionIndex++;
         // 音声再生二問目以降
-        document.getElementById("audio" + this.currentWord['word_id']).muted = false;
+        document.getElementById(
+          "audio" + this.currentWord["word_id"]
+        ).muted = false;
       }
     },
     show_wrong_btn: function () {
