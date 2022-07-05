@@ -345,11 +345,6 @@ $(function () {
   shuffleContent($(".item_wrapper"));
 });
 
-// $(function ring() {
-//   alert(this.currentWord);
-//         document.getElementById("audio" + this.currentWord.word_id).play();
-//       });
-
 export default {
   name: "SampleComponent",
   props: {
@@ -381,6 +376,7 @@ export default {
   },
   methods: {
     rings: function (id) {
+      // 音声再生、一問目のみ用
       document.getElementById("audio" + id).muted = false;
     },
     addAnswer: function (answerdjapanese) {
@@ -518,7 +514,8 @@ export default {
       // }
       if (!this.completed) {
         this.questionIndex++;
-        document.getElementById("audio" + this.currentWord['word_id']).play();
+        // 音声再生二問目以降
+        document.getElementById("audio" + this.currentWord['word_id']).muted = false;
       }
     },
     show_wrong_btn: function () {
@@ -539,7 +536,7 @@ export default {
       $(window).scrollTop(0);
     },
     finish_btn: function () {},
-    // 音声再生
+    // 音声再生ボタン押したら
     ring: function (id) {
       document.getElementById("audio" + id).play();
     },
