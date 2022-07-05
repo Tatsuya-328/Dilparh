@@ -99,7 +99,7 @@
         :key="word_id.word_id"
       >
         <!-- 音声ファイル読み込み -->
-        <audio
+        <!-- <audio
           :id='"audio" + word_id.word_id'
           preload="auto"
           muted
@@ -109,7 +109,7 @@
             :src='"/audio/" + word_id.word_id + ".mp3"'
             type="audio/mp3"
           >
-        </audio>
+        </audio> -->
         <div
           class="textbox"
           v-if="word_id.japanese != answers[index]"
@@ -382,6 +382,7 @@ export default {
   },
   methods: {
     rings: function (id) {
+      console.log(id);
       // 音声再生、一問目のみ用
       document.getElementById("preaudio" + id).muted = false;
     },
@@ -522,7 +523,7 @@ export default {
         // 音声再生二問目以降
         // console.log('二回目');
         // console.log("audio" + this.currentWord["word_id"]);
-        document.getElementById("''" + "audio" + this.currentWord["word_id"] + "''").play();
+        document.getElementById("audio" + this.currentWord["word_id"]).play();
       }
     },
     show_wrong_btn: function () {
@@ -546,7 +547,7 @@ export default {
     // 音声再生ボタン押したら
     ring: function (id) {
       // console.log("audio" + id);
-      document.getElementById("''" + "audio" + id + "''").play();
+      document.getElementById("audio" + id).play();
     },
   },
   computed: {

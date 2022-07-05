@@ -2559,7 +2559,8 @@ $(function () {
   },
   methods: {
     rings: function rings(id) {
-      // 音声再生、一問目のみ用
+      console.log(id); // 音声再生、一問目のみ用
+
       document.getElementById("preaudio" + id).muted = false;
     },
     addAnswer: function addAnswer(answerdjapanese) {
@@ -2682,7 +2683,7 @@ $(function () {
         // console.log('二回目');
         // console.log("audio" + this.currentWord["word_id"]);
 
-        document.getElementById("''" + "audio" + this.currentWord["word_id"] + "''").play();
+        document.getElementById("audio" + this.currentWord["word_id"]).play();
       }
     },
     show_wrong_btn: function show_wrong_btn() {
@@ -2707,7 +2708,7 @@ $(function () {
     // 音声再生ボタン押したら
     ring: function ring(id) {
       // console.log("audio" + id);
-      document.getElementById("''" + "audio" + id + "''").play();
+      document.getElementById("audio" + id).play();
     }
   },
   computed: {
@@ -38424,26 +38425,6 @@ var render = function () {
             _vm._v(" "),
             _vm._l(this.words, function (word_id, index) {
               return _c("div", { key: word_id.word_id }, [
-                _c(
-                  "audio",
-                  {
-                    attrs: {
-                      id: "audio" + word_id.word_id,
-                      preload: "auto",
-                      muted: "",
-                      autoplay: "",
-                    },
-                  },
-                  [
-                    _c("source", {
-                      attrs: {
-                        src: "/audio/" + word_id.word_id + ".mp3",
-                        type: "audio/mp3",
-                      },
-                    }),
-                  ]
-                ),
-                _vm._v(" "),
                 word_id.japanese != _vm.answers[index]
                   ? _c("div", { staticClass: "textbox" }, [
                       _c(
