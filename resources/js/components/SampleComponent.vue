@@ -26,6 +26,8 @@
       <audio
         :id='"audio" + currentWord.word_id'
         preload="auto"
+        muted
+        autoplay
       >
         <source
           :src='"/audio/" + currentWord.word_id + ".mp3"'
@@ -495,7 +497,6 @@ export default {
         this.words[this.questionIndex].liseted != "1"
       ) {
         // 初めての回答なら登録
-        console.log(this.sendanswers[this.questionIndex]);
         axios.post("/api/answers", this.sendanswers[this.questionIndex]);
       } else {
         // 既出なら更新
@@ -515,7 +516,7 @@ export default {
       if (!this.completed) {
         this.questionIndex++;
         // 音声再生二問目以降
-        document.getElementById("audio" + this.currentWord['word_id']).play();
+        document.getElementById("audio" + this.currentWord['word_id']).muted = false;
       }
     },
     show_wrong_btn: function () {
@@ -538,7 +539,8 @@ export default {
     finish_btn: function () {},
     // 音声再生ボタン押したら
     ring: function (id) {
-      document.getElementById("audio" + id).play();
+      console.log(id);
+      document.getElementById("audio" + id).muted = false;
     },
   },
   computed: {

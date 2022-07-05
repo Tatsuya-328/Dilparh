@@ -2508,6 +2508,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 function shuffleContent(container) {
   var content = $(".item_wrapper").find("> *");
   var total = content.length;
@@ -2664,7 +2666,6 @@ $(function () {
 
       if (this.words[this.questionIndex].correct == this.words[this.questionIndex].japanese && this.words[this.questionIndex].liseted != "1") {
         // 初めての回答なら登録
-        console.log(this.sendanswers[this.questionIndex]);
         axios.post("/api/answers", this.sendanswers[this.questionIndex]);
       } else {
         // 既出なら更新
@@ -2675,7 +2676,7 @@ $(function () {
       if (!this.completed) {
         this.questionIndex++; // 音声再生二問目以降
 
-        document.getElementById("audio" + this.currentWord['word_id']).play();
+        document.getElementById("audio" + this.currentWord['word_id']).muted = false;
       }
     },
     show_wrong_btn: function show_wrong_btn() {
@@ -2699,7 +2700,8 @@ $(function () {
     finish_btn: function finish_btn() {},
     // 音声再生ボタン押したら
     ring: function ring(id) {
-      document.getElementById("audio" + id).play();
+      console.log(id);
+      document.getElementById("audio" + id).muted = false;
     }
   },
   computed: {
@@ -38275,7 +38277,12 @@ var render = function () {
           _c(
             "audio",
             {
-              attrs: { id: "audio" + _vm.currentWord.word_id, preload: "auto" },
+              attrs: {
+                id: "audio" + _vm.currentWord.word_id,
+                preload: "auto",
+                muted: "",
+                autoplay: "",
+              },
             },
             [
               _c("source", {
