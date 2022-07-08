@@ -357,9 +357,10 @@ button:hover {
     width: inherit;
     display: inline-block;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-appearance: none;
   }
 
-  
+
   button:active {
     /* border-style: inherit; */
   }
