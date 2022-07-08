@@ -358,6 +358,7 @@ button:hover {
     display: inline-block;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-appearance: none;
+    color: #432;
   }
 
 
