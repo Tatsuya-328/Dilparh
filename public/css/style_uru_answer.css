@@ -132,7 +132,7 @@ p {
 
 
 .button input {
-  width: 17%;
+  width: 175px;
   margin-top: 5%;
 }
 
@@ -153,10 +153,12 @@ p {
   display: flex;
   margin-left: 10%;
 }
+
 .whole-contents-wrapper_wrong {
   display: flex;
   margin-left: 28%;
 }
+
 .wrong {
   margin-bottom: 40px;
 }
@@ -248,18 +250,18 @@ aside {
   text-align: center;
   margin-top: 15%;
   margin-bottom: 10%;
+  
 }
 
 .button-area>input {
   width: auto;
   height: 37px;
-  margin: 0 15px;
+  margin: 3px 15px;
 }
 
 
 .swich input {
   width: 50%;
-
 }
 
 
@@ -341,7 +343,9 @@ aside {
 
   .button input {
     width: 70%;
-    margin-top: 1%;
+    margin-top: 5%;
+    max-width: 185px;
+    width: 40%;
   }
 
   .answer {
@@ -371,8 +375,8 @@ aside {
 
   .teacher {
     width: auto;
-    height: 187px;
-    margin-top: 7px;
+    height: 180px;
+    margin-top: 20px;
   }
 
   .teachermessage {
@@ -391,12 +395,13 @@ aside {
     min-width: 120px;
     max-width: 100%;
     color: black;
-    font-size: 16px;
+    font-size: 10px;
     font-weight: bold;
     background: #faf7f7;
     border: solid 2px black;
     box-sizing: border-box;
     border-radius: 10px;
+    width: 47%;
   }
 
   .balloon2-right:before {
@@ -444,7 +449,8 @@ aside {
   .voice {
     margin-left: 0%;
     margin-right: 1%;
-    width: 10%;
+    height: 40px;
+    width: auto;
     margin-top: 4%;
     margin-bottom: 4%;
   }
@@ -452,12 +458,13 @@ aside {
   .voice2 {
     margin-left: 0%;
     margin-right: 1%;
-    width: 7%;
+    height: 25px;
+    width: auto;
     margin-bottom: 10%;
     margin-top: 4%;
   }
 
-  
+
 
   /*誤答のみの音声*/
   .voice3 {
@@ -510,18 +517,18 @@ aside {
   }
 
   .answer-text2 {
-    margin-top: 20%;
+    margin-top: 230%;
     font-size: 20px;
     font-weight: bold;
-    margin-left: 20%;
+    margin-left: 5%;
     color: Red;
   }
 
   .answer-text3 {
-    margin-top: 20%;
+    margin-top: 230%;
     font-size: 25px;
     font-weight: bold;
-    margin-left: 20%;
+    margin-left: 5%;
     color: Blue;
   }
 
@@ -553,29 +560,31 @@ aside {
 
   .button-area {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-    margin-top: 15%;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 5%;
     margin-bottom: 10%;
   }
 
 
+  .item_wrapper {
+    display: flex;
+    flex-flow: column;
+    width: 85%;
+    margin: auto;
+    align-items: center;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  .whole-contents-wrapper, .whole-contents-wrapper_wrong {
+    display: flex;
+    margin-left: 10%;
+    width: 50%;
+  }
+  .button-area>input {
+    width: auto;
+    height: 37px;
+    margin: 0 15px;
+}
 }
 
 

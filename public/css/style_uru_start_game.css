@@ -187,13 +187,13 @@ form {
 }
 
 /* background: white; */
-    /* color: #432; */
-    /* border: black; */
-    /* border: 2px solid black;
+/* color: #432; */
+/* border: black; */
+/* border: 2px solid black;
     border-radius: 18px;
     font-weight: bold; */
 
-form > .form-group > .form-control {
+form>.form-group>.form-control {
   cursor: pointer;
   height: 32px;
   padding: 4px 12px 6px 12px;
@@ -213,7 +213,8 @@ form > .form-group > .form-control {
   border-radius: 0.25rem;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
-form > .form-group > label {
+
+form>.form-group>label {
   font-size: 1.17em;
   margin-left: 7px;
 }
@@ -222,6 +223,7 @@ form > .form-group > label {
   width: 50%;
   margin-left: 43%;
 }
+
 /* .button1 {
   background: transparent url('/image/try_button2.png') no-repeat left top  ;
 } */
@@ -242,7 +244,8 @@ form > .form-group > label {
   text-align: center;
   margin-top: 5%;
 }
-.button-area > input {
+
+.button-area>input {
   margin: 0 10px;
 }
 
@@ -377,7 +380,9 @@ form > .form-group > label {
   }
 
 
-
+  .progress_bar {
+    width: 80%;
+  }
 
 
 
@@ -397,7 +402,8 @@ form > .form-group > label {
     font-size: 20px;
   }
 
-
-
-
+  .button-area > input {
+    max-width: 185px;
+    width: 80%;
+  }
 }

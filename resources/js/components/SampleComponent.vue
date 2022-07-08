@@ -17,6 +17,7 @@
       <!--クイズを表示する部分-->
       <div
         class="word_and_symbol"
+        id="audio_start"
         v-on:click="ring(currentWord.word_id);"
       >
         <h1>{{ currentWord.word_urdu }}</h1>
@@ -72,7 +73,7 @@
           >
         </a>
       </div>
-      {{ rings(firstWord.word_id) }}
+      <!-- {{ rings(firstWord.word_id) }} -->
 
     </div>
 
@@ -322,7 +323,9 @@ function shuffleContent(container) {
     content.eq(Math.floor(Math.random() * total)).prependTo(container);
   });
 }
-
+window.onload = function(){
+// ページ読み込み時に実行したい処理
+}
 // クイズをシャッフル
 $(function () {
   shuffleContent($(".item_wrapper"));
@@ -359,9 +362,9 @@ export default {
   },
   methods: {
     rings: function (id) {
-      // console.log(id);
+      console.log('一問目');
       // 音声再生、一問目のみ用
-      document.getElementById("preaudio" + id).muted = false;
+      // document.getElementById("preaudio" + id).muted = false;
     },
     addAnswer: function (answerdjapanese) {
       // 回答表示画面用にpush
@@ -498,7 +501,7 @@ export default {
       if (!this.completed) {
         this.questionIndex++;
         // 音声再生二問目以降
-        // console.log('二回目');
+        console.log('二回目');
         // console.log("audio" + this.currentWord["word_id"]);
         document.getElementById("audio" + this.currentWord["word_id"]).play();
       }
@@ -561,6 +564,25 @@ export default {
     //   return null;
     // },
   },
+  mounted: function() {
+    // console.dir(this.words[0]);
+    // alert(this.words[0][0]);
+    // alert(this.words['words_id']);
+    var promise = document.getElementById("audio" + this.words[0]['word_id']).play();
+    if (promise !== undefined) {
+  promise.then(_ => {
+    // Autoplay started!
+  }).catch(error => {
+    // document.getElementById("audio" + this.words[0]['word_id']).muted = false;
+    // document.getElementById("audio" + this.words[0]['word_id']).play();
+    document.getElementById('audio_start').click();
+    // Autoplay was prevented.
+    // Show a "Play" button so that user can start playback.
+  });
+          
+    }
+    }
+
   // watch: {
   //   rings: function() {
   //     // alert(this.words[this.questionIndex].word_id);

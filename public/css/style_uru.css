@@ -13,6 +13,7 @@ a {
   text-decoration: none;
   color: black;
 }
+
 a:hover {
   color: #00000063;
 }
@@ -317,8 +318,13 @@ aside {
     background-color: ;
     background-repeat: no-repeat;
     width: 100%;
+    margin-bottom: 100px;
   }
 
+  /* .pc_page-header {
+    display: flex;
+    justify-content: space-between;
+  } */
 
   .menubar {
     width: 60%;
@@ -331,10 +337,12 @@ aside {
   }
 
   .account_name {
-    display: none;
+    /* display: none; */
   }
 
-
+  .nav-link {
+   display: none; 
+  }
   .logo {
     display: none;
   }

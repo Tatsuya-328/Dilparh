@@ -2491,13 +2491,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 function shuffleContent(container) {
   var content = $(".item_wrapper").find("> *");
   var total = content.length;
   content.each(function () {
     content.eq(Math.floor(Math.random() * total)).prependTo(container);
   });
-} // クイズをシャッフル
+}
+
+window.onload = function () {// ページ読み込み時に実行したい処理
+}; // クイズをシャッフル
 
 
 $(function () {
@@ -2536,9 +2540,8 @@ $(function () {
   },
   methods: {
     rings: function rings(id) {
-      // console.log(id);
-      // 音声再生、一問目のみ用
-      document.getElementById("preaudio" + id).muted = false;
+      console.log('一問目'); // 音声再生、一問目のみ用
+      // document.getElementById("preaudio" + id).muted = false;
     },
     addAnswer: function addAnswer(answerdjapanese) {
       // 回答表示画面用にpush
@@ -2657,8 +2660,8 @@ $(function () {
 
       if (!this.completed) {
         this.questionIndex++; // 音声再生二問目以降
-        // console.log('二回目');
-        // console.log("audio" + this.currentWord["word_id"]);
+
+        console.log('二回目'); // console.log("audio" + this.currentWord["word_id"]);
 
         document.getElementById("audio" + this.currentWord["word_id"]).play();
       }
@@ -2721,6 +2724,22 @@ $(function () {
     //   return null;
     // },
 
+  },
+  mounted: function mounted() {
+    // console.dir(this.words[0]);
+    // alert(this.words[0][0]);
+    // alert(this.words['words_id']);
+    var promise = document.getElementById("audio" + this.words[0]['word_id']).play();
+
+    if (promise !== undefined) {
+      promise.then(function (_) {// Autoplay started!
+      })["catch"](function (error) {
+        // document.getElementById("audio" + this.words[0]['word_id']).muted = false;
+        // document.getElementById("audio" + this.words[0]['word_id']).play();
+        document.getElementById('audio_start').click(); // Autoplay was prevented.
+        // Show a "Play" button so that user can start playback.
+      });
+    }
   } // watch: {
   //   rings: function() {
   //     // alert(this.words[this.questionIndex].word_id);
@@ -38245,6 +38264,7 @@ var render = function () {
             "div",
             {
               staticClass: "word_and_symbol",
+              attrs: { id: "audio_start" },
               on: {
                 click: function ($event) {
                   return _vm.ring(_vm.currentWord.word_id)
@@ -38365,9 +38385,6 @@ var render = function () {
               ]
             ),
           ]),
-          _vm._v(
-            "\n    " + _vm._s(_vm.rings(_vm.firstWord.word_id)) + "\n\n  "
-          ),
         ])
       : _vm.show_wrong
       ? _c(

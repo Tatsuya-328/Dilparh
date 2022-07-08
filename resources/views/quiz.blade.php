@@ -11,7 +11,7 @@ var_dump($words);
 </pre> -->
 
 <div id="app">
-    <audio id="preaudio{{ $words[0]['word_id'] }}" preload="auto" muted autoplay>
+    <audio id="preaudio{{ $words[0]['word_id'] }}" preload="auto">
         <source src="/audio/{{ $words[0]['word_id'] }}.mp3" type="audio/mp3">
     </audio>
     <?php foreach ($words as $word) : ?>
