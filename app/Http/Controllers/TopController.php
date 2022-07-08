@@ -504,7 +504,6 @@ class TopController extends Controller
         $words = json_decode(json_encode($words), true);
         // 誤答の選択肢用
         $dummywords = $words;
-
         $new_words = [];
         for ($i = 0; $i < count($words); $i++) {
             $new_words[$words[$i]['word_id']] = $words[$i];
@@ -517,8 +516,8 @@ class TopController extends Controller
             $userswords = DB::table('words')
                 ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
                 ->where('answers.users_id', '=', Auth::id())
-                ->orwhere('answers.correct', '>', 0)
-                ->orwhere('answers.wrong', '>', 0)
+                ->where('answers.correct', '>', 0)
+                ->where('answers.wrong', '>', 0)
                 ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'japanese as correct', 'japanese as wrong', 'ExampleSentence', 'ExampleMeaning')
                 ->get();
             $userswords = json_decode(json_encode($userswords), true);
