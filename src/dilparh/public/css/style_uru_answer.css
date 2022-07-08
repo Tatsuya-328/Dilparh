@@ -132,7 +132,7 @@ p {
 
 
 .button input {
-  width: 17%;
+  width: 175px;
   margin-top: 5%;
 }
 
@@ -145,14 +145,22 @@ p {
 /*真ん中の要素ここに問題の正誤が表示される*/
 
 .textbox {
-  margin-top: 5%;
-  margin-bottom: 8%;
+  margin-top: 3%;
+  margin-bottom: 3%;
 }
 
 .whole-contents-wrapper {
   display: flex;
-  margin-bottom: 3%;
   margin-left: 10%;
+}
+
+.whole-contents-wrapper_wrong {
+  display: flex;
+  margin-left: 28%;
+}
+
+.wrong {
+  margin-bottom: 40px;
 }
 
 article {
@@ -170,7 +178,7 @@ aside {
 }
 
 .answer-text2 {
-  margin-top: 32%;
+  margin-top: 80px;
   font-size: 30px;
   font-weight: bold;
   margin-left: 50%;
@@ -178,7 +186,7 @@ aside {
 }
 
 .answer-text3 {
-  margin-top: 26%;
+  margin-top: 80px;
   font-size: 40px;
   font-weight: bold;
   margin-left: 46%;
@@ -186,6 +194,7 @@ aside {
 }
 
 .example-text {
+  margin-top: 0px;
   font-size: 13px;
   text-align: left;
   margin-bottom: 7%;
@@ -202,19 +211,21 @@ aside {
 
 .voice {
   margin-left: 0%;
-  margin-right: 1%;
+  margin-right: 26px;
   width: 35px;
   margin-top: 2.5%;
   /* margin-bottom: 5%; */
   height: 41px;
+  cursor: pointer;
 }
 
 .voice2 {
   margin-left: 0%;
-  margin-right: 1%;
-  width: 2%;
-  margin-bottom: 8%;
-  margin-top: 4%;
+  margin-right: 26px;
+  width: auto;
+  height: 31px;
+  margin-bottom: 8px;
+  margin-top: 4px;
 }
 
 .button1 {
@@ -241,16 +252,15 @@ aside {
   margin-bottom: 10%;
 }
 
-.button-area > input {
+.button-area>input {
   width: auto;
   height: 37px;
-  margin: 0 15px;
+  margin: 3px 15px;
 }
 
 
 .swich input {
   width: 50%;
-
 }
 
 
@@ -332,7 +342,9 @@ aside {
 
   .button input {
     width: 70%;
-    margin-top: 1%;
+    margin-top: 5%;
+    max-width: 185px;
+    width: 40%;
   }
 
   .answer {
@@ -362,15 +374,17 @@ aside {
 
   .teacher {
     width: auto;
-    height: 187px;
-    margin-top: 7px;
+    height: 180px;
+    margin-top: 20px;
   }
+
   .teachermessage {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
   }
+
   .balloon2-right {
     transform: scale(0.8);
     position: relative;
@@ -380,14 +394,15 @@ aside {
     min-width: 120px;
     max-width: 100%;
     color: black;
-    font-size: 16px;
+    font-size: 10px;
     font-weight: bold;
     background: #faf7f7;
     border: solid 2px black;
     box-sizing: border-box;
     border-radius: 10px;
+    width: 47%;
   }
-  
+
   .balloon2-right:before {
     content: "";
     position: absolute;
@@ -400,7 +415,7 @@ aside {
     border-top: 16px solid transparent;
     border-bottom: 17px solid transparent;
   }
-  
+
   .balloon2-right:after {
     content: "";
     position: absolute;
@@ -415,24 +430,26 @@ aside {
     /* border-width: 27px; */
     margin-top: -35px;
   }
-  
+
   .balloon2-right p {
     margin: 0;
     padding: 0;
     text-align: left;
   }
+
   .balloon2-right p.byteacher {
     margin: 0;
     padding: 0;
     text-align: right;
   }
 
-  
+
   /*正誤表示の音声*/
   .voice {
     margin-left: 0%;
     margin-right: 1%;
-    width: 10%;
+    height: 40px;
+    width: auto;
     margin-top: 4%;
     margin-bottom: 4%;
   }
@@ -440,10 +457,13 @@ aside {
   .voice2 {
     margin-left: 0%;
     margin-right: 1%;
-    width: 7%;
+    height: 25px;
+    width: auto;
     margin-bottom: 10%;
     margin-top: 4%;
   }
+
+
 
   /*誤答のみの音声*/
   .voice3 {
@@ -496,18 +516,18 @@ aside {
   }
 
   .answer-text2 {
-    margin-top: 20%;
+    margin-top: 230%;
     font-size: 20px;
     font-weight: bold;
-    margin-left: 20%;
+    margin-left: 5%;
     color: Red;
   }
 
   .answer-text3 {
-    margin-top: 20%;
+    margin-top: 230%;
     font-size: 25px;
     font-weight: bold;
-    margin-left: 20%;
+    margin-left: 5%;
     color: Blue;
   }
 
@@ -539,29 +559,31 @@ aside {
 
   .button-area {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-    margin-top: 15%;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 5%;
     margin-bottom: 10%;
   }
 
 
+  .item_wrapper {
+    display: flex;
+    flex-flow: column;
+    width: 85%;
+    margin: auto;
+    align-items: center;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  .whole-contents-wrapper, .whole-contents-wrapper_wrong {
+    display: flex;
+    margin-left: 10%;
+    width: 50%;
+  }
+  .button-area>input {
+    width: auto;
+    height: 37px;
+    margin: 0 15px;
+}
 }
 
 

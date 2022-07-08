@@ -1,20 +1,31 @@
 
 # どんな docker イメージを利用して構築をするか
 # FROM : ここではPHPの公式イメージである「php:7.4-apache」というあらかじめPHPとApacheがインストールされているイメージを、Docker Hubというサイトからダウンロードしてくるようになっている。
-FROM php:7.4-apache
+FROM php:8.0.2-apache
 
 # 設定ファイルをdockerコンテナ内のPHP、Apacheに読み込ませる
 # ADD：ローカルのファイルをDockerコンテナ内にコピーする
 ADD php.ini /usr/local/etc/php/
 ADD 000-default.conf /etc/apache2/sites-enabled/
 
-# Composerのインストール
-# RUN：コンテナ内でコマンド実行する
-RUN cd /usr/bin && curl -s http://getcomposer.org/installer | php && ln -s /usr/bin/composer.phar /usr/bin/composer
+# windows
+# # Composerのインストール
+# # RUN：コンテナ内でコマンド実行する
+# RUN cd /usr/bin && curl -s http://getcomposer.org/installer | php && ln -s /usr/bin/composer.phar /usr/bin/composer
 
-# Node.jsをインストール
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN apt-get install -y nodejs
+# # Node.jsをインストール
+# RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+# RUN apt-get install -y nodejs
+# winここまで
+
+# mac
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install NPM & node
+RUN curl -sl https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs build-essential
+# macここまで
 
 # ミドルウェアのインストール
 RUN apt-get update \

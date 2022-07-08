@@ -200,12 +200,14 @@ button:hover {
   height: 187px;
   margin-top: 7px;
 }
+
 .teachermessage {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
 }
+
 .balloon2-right {
   transform: scale(0.8);
   position: relative;
@@ -256,10 +258,25 @@ button:hover {
   padding: 0;
   text-align: left;
 }
+
 .balloon2-right p.byteacher {
   margin: 0;
   padding: 0;
   text-align: right;
+}
+
+.box1 {
+  -webkit-box-ordinal-group: 1;
+  -ms-flex-order: 1;
+  -webkit-order: 1;
+  order: 1;
+}
+
+.box2 {
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: 2;
+  -webkit-order: 2;
+  order: 2;
 }
 
 @media (max-width:600px) {
@@ -331,11 +348,19 @@ button:hover {
     background: #ffffff;
     padding: 4%;
     border-radius: 5px;
+    border-color: #333;
     height: 50px;
     width: 320px;
     margin-top: 5px;
     font-weight: bold;
+    /* 新しいボタン対応 */
+    width: inherit;
+    display: inline-block;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
 
+  button:active {
+    /* border-style: inherit; */
   }
 
 
@@ -354,6 +379,20 @@ button:hover {
     width: 50%;
     text-align: center;
     margin-top: 20%;
+  }
+
+  .item {
+    /* 新しいボタン対応 */
+    text-align: center;
+    padding: 3px;
+    width: inherit;
+    display: inline-block;
+  }
+
+  button:hover {
+    color: #333;
+    background-color: unset;
+    border-color: #333;
   }
 
 

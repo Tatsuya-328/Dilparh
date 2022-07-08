@@ -25,6 +25,7 @@ services:
 # MySQLを動かすコンテナ
 # ----------------------------------
  db:
+   platform: linux/x86_64 # M1チップ対応のため追記
    # Docker HubからMySQL5.7の公式イメージをダウンロードしてくる指定
    image: mysql:5.7
    container_name: laravel_db

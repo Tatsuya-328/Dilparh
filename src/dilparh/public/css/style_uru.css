@@ -11,6 +11,11 @@ body {
 
 a {
   text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #00000063;
 }
 
 .pc_page-header {
@@ -252,7 +257,7 @@ aside {
 
 .dropdown-item {
   display: block;
-  width: 100%;
+  width: 70%;
   padding: 0.25rem 1.5rem;
   clear: both;
   font-weight: 400;
@@ -313,8 +318,13 @@ aside {
     background-color: ;
     background-repeat: no-repeat;
     width: 100%;
+    margin-bottom: 100px;
   }
 
+  /* .pc_page-header {
+    display: flex;
+    justify-content: space-between;
+  } */
 
   .menubar {
     width: 60%;
@@ -327,10 +337,12 @@ aside {
   }
 
   .account_name {
-    display: none;
+    /* display: none; */
   }
 
-
+  .nav-link {
+   display: none; 
+  }
   .logo {
     display: none;
   }

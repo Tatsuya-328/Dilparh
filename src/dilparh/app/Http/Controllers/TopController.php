@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\words;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class TopController extends Controller
 {
@@ -90,7 +91,7 @@ class TopController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function dictionary_result($language = 'null', Request $word)
+    public function dictionary_result(Request $word, $language = 'null')
     {
         $word = $word->input('word');
 
@@ -121,7 +122,13 @@ class TopController extends Controller
      */
     public function select_part()
     {
-        return view('select_part');
+        $part = [];
+        for ($i = 1; $i < 7; $i++) {
+            $part[$i] = $this->getPartData($i)['totalNum'];
+        }
+        return view('select_part', [
+            'part' => $part
+        ]);
     }
 
     /**
@@ -148,41 +155,42 @@ class TopController extends Controller
     public function delete(Request $part)
     {
         $part = $part->input('part');
-        switch ($part) {
-            case 'part1':
-                $limit_start = 0;
-                $limit_end = 600;
-                break;
-            case 'part2':
-                $limit_start = 600;
-                $limit_end = 600;
-                break;
-            case 'part3':
-                $limit_start = 1200;
-                $limit_end = 600;
-                break;
-            case 'part4':
-                $limit_start = 1800;
-                $limit_end = 600;
-                break;
-            case 'part5':
-                $limit_start = 2400;
-                $limit_end = 600;
-                break;
-            case 'part6':
-                $limit_start = 3000;
-                $limit_end = 208;
-                break;
-            case 'all':
-                $limit_start = 0;
-                $limit_end = 3208;
-                break;
-        }
+        $part = str_replace('part', '', $part);
+
+        // switch ($part) {
+        //     case 'part1':
+        //         $limit_start = 0;
+        //         $limit_end = 600;
+        //         break;
+        //     case 'part2':
+        //         $limit_start = 600;
+        //         $limit_end = 600;
+        //         break;
+        //     case 'part3':
+        //         $limit_start = 1200;
+        //         $limit_end = 600;
+        //         break;
+        //     case 'part4':
+        //         $limit_start = 1800;
+        //         $limit_end = 600;
+        //         break;
+        //     case 'part5':
+        //         $limit_start = 2400;
+        //         $limit_end = 600;
+        //         break;
+        //     case 'part6':
+        //         $limit_start = 3000;
+        //         $limit_end = 208;
+        //         break;
+        //     case 'all':
+        //         $limit_start = 0;
+        //         $limit_end = 3208;
+        //         break;
+        // }
 
         $ids = DB::table('words')
             ->select('id')
-            ->offset($limit_start)
-            ->limit($limit_end)
+            ->where('words.part', '=', $part)
             ->get();
         $ids = json_decode(json_encode($ids), true);
 
@@ -205,171 +213,222 @@ class TopController extends Controller
      */
     public function start($part = 'null')
     {
+        $part = str_replace('part', '', $part);
         // select_gameでどのパートを選んだかによって、start_gameのテンプレートに当てはめる値を変える
         switch ($part) {
-            case 'part1':
-                $limit_start = 0;
-                $limit_end = 396;
-                $totalNum = $limit_end - $limit_start;
+            case '1':
+                $data = $this->getPartData($part, "ウルドゥー語は初めてか？大丈夫、初級の単語を覚えれば<br class='br-none'>ネイティブの言うことを大体理解することができる！何度も演習して必ず覚えよう！");
+                // $whole_part = DB::table('words')
+                //     ->select('words.id as word_id')
+                //     ->where('words.part', '=', '1')
+                //     ->get();
+                // $whole_part = json_decode(json_encode($whole_part), true);
+                // $whole_partNum = count($whole_part);
 
-                $twocorrect = DB::table('words')
-                    ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                    ->select('words.id as word_id')
-                    ->offset($limit_start)
-                    ->limit($limit_end)
-                    ->where('answers.users_id', '=', Auth::id())
-                    ->where('answers.correct', '>=', '2')
-                    ->get();
-                $twocorrect = json_decode(json_encode($twocorrect), true);
+                // $twocorrect = DB::table('words')
+                //     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
+                //     ->select('words.id as word_id')
+                //     ->where('words.part', '=', '1')
+                //     ->where('answers.users_id', '=', Auth::id())
+                //     ->where('answers.correct', '>=', '2')
+                //     ->get();
+                // $twocorrect = json_decode(json_encode($twocorrect), true);
 
-                $masterNum = count($twocorrect);
+                // $masterNum = count($twocorrect);
 
-                $data = [
-                    'title' => 'PART 1',
-                    'explanation' => "ウルドゥー語は初めてか？大丈夫、初級の単語を覚えれば<br class='br-none'>ネイティブの言うことを大体理解すことができる！何度も演習して必ず覚えよう！",
-                    'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
-                    'part' => $part,
-                    'masterNum' => $masterNum,
-                    'totalNum' => $limit_end
-                ];
+                // $data = [
+                //     'title' => 'PART 1',
+                //     'explanation' => "ウルドゥー語は初めてか？大丈夫、初級の単語を覚えれば<br class='br-none'>ネイティブの言うことを大体理解すことができる！何度も演習して必ず覚えよう！",
+                //     'level' => "<b>" . $masterNum . "</b>/" . $whole_partNum . "語　マスター",
+                //     'part' => $part,
+                //     'masterNum' => $masterNum,
+                //     'totalNum' => $whole_partNum
+                // ];
                 break;
-            case 'part2':
-                $limit_start = 397;
-                $limit_end = 106;
-                $totalNum = $limit_end - $limit_start;
+            case '2':
+                $data = $this->getPartData($part, "このパートでは固有名詞に特化して学習を進めていくぞ！<br class='br-none'>現地で一番知らずに困るのは名詞だったりするから、気を入れて学習に取り組もう！");
 
-                $twocorrect = DB::table('words')
-                    ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                    ->select('words.id as word_id')
-                    ->offset($limit_start)
-                    ->limit($limit_end)
-                    ->where('answers.users_id', '=', Auth::id())
-                    ->where('answers.correct', '>=', '2')
-                    ->get();
-                $twocorrect = json_decode(json_encode($twocorrect), true);
+                // $limit_start = 397;
+                // $limit_end = 106;
+                // $totalNum = $limit_end - $limit_start;
 
-                $masterNum = count($twocorrect);
+                // $twocorrect = DB::table('words')
+                //     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
+                //     ->select('words.id as word_id')
+                //     ->offset($limit_start)
+                //     ->limit($limit_end)
+                //     ->where('answers.users_id', '=', Auth::id())
+                //     ->where('answers.correct', '>=', '2')
+                //     ->get();
+                // $twocorrect = json_decode(json_encode($twocorrect), true);
 
-                $data = [
-                    'title' => 'PART 2',
-                    'explanation' => "このパートでは日常生活で使う中級レベルの単語を学習していくぞ！<br class='br-none'>このパートが終われば胸を張ってウルドゥー語専攻を名乗れる！",
-                    // 'level_bar'=>"",
-                    'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
-                    'part' => $part,
-                    'masterNum' => $masterNum,
-                    'totalNum' => $limit_end
-                ];
+                // $masterNum = count($twocorrect);
+
+                // $data = [
+                //     'title' => 'PART 2',
+                //     'explanation' => "このパートでは日常生活で使う中級レベルの単語を学習していくぞ！<br class='br-none'>このパートが終われば胸を張ってウルドゥー語専攻を名乗れる！",
+                //     // 'level_bar'=>"",
+                //     'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
+                //     'part' => $part,
+                //     'masterNum' => $masterNum,
+                //     'totalNum' => $limit_end
+                // ];
                 break;
-            case 'part3':
-                $limit_start = 504;
-                $limit_end = 288;
-                $totalNum = $limit_end - $limit_start;
+            case '3':
+                $data = $this->getPartData($part, "このパートでは固有名詞に特化して学習を進めていくぞ！<br class='br-none'>現地で一番知らずに困るのは名詞だったりするから、気を入れて学習に取り組もう！");
 
-                $twocorrect = DB::table('words')
-                    ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                    ->select('words.id as word_id')
-                    ->offset($limit_start)
-                    ->limit($limit_end)
-                    ->where('answers.users_id', '=', Auth::id())
-                    ->where('answers.correct', '>=', '2')
-                    ->get();
-                $twocorrect = json_decode(json_encode($twocorrect), true);
+                // $limit_start = 504;
+                // $limit_end = 288;
+                // $totalNum = $limit_end - $limit_start;
 
-                $masterNum = count($twocorrect);
+                // $twocorrect = DB::table('words')
+                //     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
+                //     ->select('words.id as word_id')
+                //     ->offset($limit_start)
+                //     ->limit($limit_end)
+                //     ->where('answers.users_id', '=', Auth::id())
+                //     ->where('answers.correct', '>=', '2')
+                //     ->get();
+                // $twocorrect = json_decode(json_encode($twocorrect), true);
 
-                $data = [
-                    'title' => 'PART 3',
-                    'explanation' => "このパートでは固有名詞に特化して学習を進めていくぞ！<br class='br-none'>現地で一番知らずに困るのは名詞だったりするから、気を入れて学習に取り組もう！",
-                    // 'level_bar'=>"",
-                    'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
-                    'part' => $part,
-                    'masterNum' => $masterNum,
-                    'totalNum' => $limit_end
-                ];
+                // $masterNum = count($twocorrect);
+
+                // $data = [
+                //     'title' => 'PART 3',
+                //     'explanation' => "このパートでは固有名詞に特化して学習を進めていくぞ！<br class='br-none'>現地で一番知らずに困るのは名詞だったりするから、気を入れて学習に取り組もう！",
+                //     // 'level_bar'=>"",
+                //     'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
+                //     'part' => $part,
+                //     'masterNum' => $masterNum,
+                //     'totalNum' => $limit_end
+                // ];
                 break;
-            case 'part4':
-                $limit_start = 793;
-                $limit_end = 6;
-                $totalNum = $limit_end - $limit_start;
+            case '4':
+                $data = $this->getPartData($part, "このパートでは会話に出てくる少しレベルの高い語彙を学習する！<br class='br-none'>ここまで来たら二年生修了レベルだ！");
 
-                $twocorrect = DB::table('words')
-                    ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                    ->select('words.id as word_id')
-                    ->offset($limit_start)
-                    ->limit($limit_end)
-                    ->where('answers.users_id', '=', Auth::id())
-                    ->where('answers.correct', '>=', '2')
-                    ->get();
-                $twocorrect = json_decode(json_encode($twocorrect), true);
+                // $limit_start = 793;
+                // $limit_end = 6;
+                // $totalNum = $limit_end - $limit_start;
 
-                $masterNum = count($twocorrect);
+                // $twocorrect = DB::table('words')
+                //     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
+                //     ->select('words.id as word_id')
+                //     ->offset($limit_start)
+                //     ->limit($limit_end)
+                //     ->where('answers.users_id', '=', Auth::id())
+                //     ->where('answers.correct', '>=', '2')
+                //     ->get();
+                // $twocorrect = json_decode(json_encode($twocorrect), true);
 
-                $data = [
-                    'title' => 'PART 4',
-                    'explanation' => "このパートでは会話に出てくる少しレベルの高い語彙を学習する！<br class='br-none'>ここまで来たら二年生修了レベルだ！",
-                    // 'level_bar'=>"",
-                    'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
-                    'part' => $part,
-                    'masterNum' => $masterNum,
-                    'totalNum' => $limit_end
-                ];
+                // $masterNum = count($twocorrect);
+
+                // $data = [
+                //     'title' => 'PART 4',
+                //     'explanation' => "このパートでは会話に出てくる少しレベルの高い語彙を学習する！<br class='br-none'>ここまで来たら二年生修了レベルだ！",
+                //     // 'level_bar'=>"",
+                //     'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
+                //     'part' => $part,
+                //     'masterNum' => $masterNum,
+                //     'totalNum' => $limit_end
+                // ];
                 break;
-            case 'part5':
-                $limit_start = 799;
-                $limit_end = 70;
-                $totalNum = $limit_end - $limit_start;
+            case '5':
+                $data = $this->getPartData($part, "このパートではニュースや本で頻出する語彙を学習していく！<br class='br-none'>このパートを修了すると三年次でとる翻訳の授業に自信をもって参加できるぞ！");
 
-                $twocorrect = DB::table('words')
-                    ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                    ->select('words.id as word_id')
-                    ->offset($limit_start)
-                    ->limit($limit_end)
-                    ->where('answers.users_id', '=', Auth::id())
-                    ->where('answers.correct', '>=', '2')
-                    ->get();
-                $twocorrect = json_decode(json_encode($twocorrect), true);
+                // $limit_start = 799;
+                // $limit_end = 70;
+                // $totalNum = $limit_end - $limit_start;
 
-                $masterNum = count($twocorrect);
+                // $twocorrect = DB::table('words')
+                //     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
+                //     ->select('words.id as word_id')
+                //     ->offset($limit_start)
+                //     ->limit($limit_end)
+                //     ->where('answers.users_id', '=', Auth::id())
+                //     ->where('answers.correct', '>=', '2')
+                //     ->get();
+                // $twocorrect = json_decode(json_encode($twocorrect), true);
 
-                $data = [
-                    'title' => 'PART 5',
-                    'explanation' => "このパートではニュースや本で頻出する語彙を学習していく！<br class='br-none'>このパートを修了すると三年次でとる翻訳の授業に自信をもって参加できるぞ！",
-                    // 'level_bar'=>"",
-                    'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
-                    'part' => $part,
-                    'masterNum' => $masterNum,
-                    'totalNum' => $limit_end
-                ];
+                // $masterNum = count($twocorrect);
+
+                // $data = [
+                //     'title' => 'PART 5',
+                //     'explanation' => "このパートではニュースや本で頻出する語彙を学習していく！<br class='br-none'>このパートを修了すると三年次でとる翻訳の授業に自信をもって参加できるぞ！",
+                //     // 'level_bar'=>"",
+                //     'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
+                //     'part' => $part,
+                //     'masterNum' => $masterNum,
+                //     'totalNum' => $limit_end
+                // ];
                 break;
-            case 'part6':
-                $limit_start = 870;
-                $limit_end = 223;
-                $totalNum = $limit_end - $limit_start;
+            case '6':
+                $data = $this->getPartData($part, "最後のパートだな。ここでは頻度が高くない名詞を学習していくぞ。<br class='br-none'>ここまで修了すると卒業レベルだ！");
 
-                $twocorrect = DB::table('words')
-                    ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                    ->select('words.id as word_id')
-                    ->offset($limit_start)
-                    ->limit($limit_end)
-                    ->where('answers.users_id', '=', Auth::id())
-                    ->where('answers.correct', '>=', '2')
-                    ->get();
-                $twocorrect = json_decode(json_encode($twocorrect), true);
+                // $limit_start = 870;
+                // $limit_end = 223;
+                // $totalNum = $limit_end - $limit_start;
 
-                $masterNum = count($twocorrect);
+                // $twocorrect = DB::table('words')
+                //     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
+                //     ->select('words.id as word_id')
+                //     ->offset($limit_start)
+                //     ->limit($limit_end)
+                //     ->where('answers.users_id', '=', Auth::id())
+                //     ->where('answers.correct', '>=', '2')
+                //     ->get();
+                // $twocorrect = json_decode(json_encode($twocorrect), true);
 
-                $data = [
-                    'title' => 'PART 6',
-                    'explanation' => "最後のパートだな。ここでは頻度が高くない名詞を学習していくぞ。<br class='br-none'>ここまで修了すると卒業レベルだ！",
-                    // 'level_bar'=>"",
-                    'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
-                    'part' => $part,
-                    'masterNum' => $masterNum,
-                    'totalNum' => $limit_end
-                ];
+                // $masterNum = count($twocorrect);
+
+                // $data = [
+                //     'title' => 'PART 6',
+                //     'explanation' => "最後のパートだな。ここでは頻度が高くない名詞を学習していくぞ。<br class='br-none'>ここまで修了すると卒業レベルだ！",
+                //     // 'level_bar'=>"",
+                //     'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
+                //     'part' => 'part' . $part,
+                //     'masterNum' => $masterNum,
+                //     'totalNum' => $limit_end
+                // ];
                 break;
         }
         return view('start', $data);
+    }
+
+
+    public function getPartData($part, $explanation = null)
+    {
+        $whole_part = DB::table('words')
+            ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'japanese as correct', 'japanese as wrong')
+            ->where('words.part', '=', $part)
+            ->get();
+        $whole_part = json_decode(json_encode($whole_part), true);
+        $whole_partNum = count($whole_part);
+
+        $twocorrect = DB::table('words')
+            ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
+            ->select('words.id as word_id')
+            ->where('words.part', '=', $part)
+            ->where('answers.users_id', '=', Auth::id())
+            ->where('answers.correct', '>=', '2')
+            ->get();
+        if (count($twocorrect) > 0) {
+            $twocorrect = json_decode(json_encode($twocorrect), true);
+            $masterNum = count($twocorrect);
+        } else {
+            $twocorrect = 0;
+            $masterNum = 0;
+        };
+
+        $data = [
+            'title' => 'PART' . $part,
+            'explanation' => $explanation,
+            'level' => "<b>" . $masterNum . "</b>/" . $whole_partNum . "語　マスター",
+            'part' => $part,
+            'masterNum' => $masterNum,
+            'totalNum' => $whole_partNum
+        ];
+
+        return $data;
     }
 
     /**
@@ -377,10 +436,13 @@ class TopController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function quiz($part = 'null', $review = 'null', Request $quantitiy)
+    public function quiz(Request $quantitiy, $part = 'null', $review = 'null')
     {
+        $part = str_replace('part', '', $part);
+
         // 何問解くか
         $quantitiy = $quantitiy->input('quantitiy');
+        $quantitiy = str_replace('語', '', $quantitiy);
 
         // 連想配列の差分消す関数
         function array_diff_assoc_recursive($array1, $array2)
@@ -404,39 +466,38 @@ class TopController extends Controller
         }
 
         // partによってwordsの取得する範囲を決める
-        switch ($part) {
-            case 'part1':
-                $limit_start = 0;
-                $limit_end = 396;
-                break;
-            case 'part2':
-                $limit_start = 397;
-                $limit_end = 106;
-                break;
-            case 'part3':
-                $limit_start = 504;
-                $limit_end = 288;
-                break;
-            case 'part4':
-                $limit_start = 793;
-                $limit_end = 6;
-                break;
-            case 'part5':
-                $limit_start = 799;
-                $limit_end = 70;
-                break;
-            case 'part6':
-                $limit_start = 870;
-                $limit_end = 223;
-                break;
-        }
+        // switch ($part) {
+        //     case 'part1':
+        //         $limit_start = 0;
+        //         $limit_end = 396;
+        //         break;
+        //     case 'part2':
+        //         $limit_start = 397;
+        //         $limit_end = 106;
+        //         break;
+        //     case 'part3':
+        //         $limit_start = 504;
+        //         $limit_end = 288;
+        //         break;
+        //     case 'part4':
+        //         $limit_start = 793;
+        //         $limit_end = 6;
+        //         break;
+        //     case 'part5':
+        //         $limit_start = 799;
+        //         $limit_end = 70;
+        //         break;
+        //     case 'part6':
+        //         $limit_start = 870;
+        //         $limit_end = 223;
+        //         break;
+        // }
 
         // すべての単語取得
         $words = DB::table('words')
             ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'japanese as correct', 'japanese as wrong')
             ->orderBy('words.id')
-            ->offset($limit_start)
-            ->limit($limit_end)
+            ->where('words.part', '=', $part)
             ->get();
         $words = json_decode(json_encode($words), true);
         // 誤答の選択肢用
@@ -518,7 +579,7 @@ class TopController extends Controller
                 $new_lisetwords[$add_lisetwords[$i]['word_id']] = $add_lisetwords[$i];
             }
             $add_lisetwords = $new_lisetwords;
-            
+
             if (!empty($add_lisetwords)) {
                 $words = array_merge_recursive($add_lisetwords, $words);
             }
@@ -529,8 +590,7 @@ class TopController extends Controller
                     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
                     ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id')
                     ->orderBy('words.id')
-                    ->offset($limit_start)
-                    ->limit($limit_end)
+                    ->where('words.part', '=', $part)
                     ->where('answers.users_id', '=', Auth::id())
                     ->where('answers.correct', '=', '1')
                     ->get();
@@ -548,8 +608,7 @@ class TopController extends Controller
                     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
                     ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id')
                     ->orderBy('words.id')
-                    ->offset($limit_start)
-                    ->limit($limit_end)
+                    ->where('words.part', '=', $part)
                     ->where('answers.users_id', '=', Auth::id())
                     ->where('answers.correct', '>=', '2')
                     ->get();
@@ -567,8 +626,7 @@ class TopController extends Controller
                 ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
                 ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id')
                 ->orderBy('words.id')
-                ->offset($limit_start)
-                ->limit($limit_end)
+                ->where('words.part', '=', $part)
                 ->where('answers.users_id', '=', Auth::id())
                 ->where('answers.wrong', '=', '1')
                 ->get();
@@ -580,8 +638,7 @@ class TopController extends Controller
                     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
                     ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id')
                     ->orderBy('words.id')
-                    ->offset($limit_start)
-                    ->limit($limit_end)
+                    ->where('words.part', '=', $part)
                     ->where('answers.users_id', '=', Auth::id())
                     ->where('answers.correct', '=', '1')
                     ->get();
@@ -593,8 +650,7 @@ class TopController extends Controller
                     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
                     ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id')
                     ->orderBy('words.id')
-                    ->offset($limit_start)
-                    ->limit($limit_end)
+                    ->where('words.part', '=', $part)
                     ->where('answers.users_id', '=', Auth::id())
                     ->where('answers.correct', '>=', '2')
                     ->get();

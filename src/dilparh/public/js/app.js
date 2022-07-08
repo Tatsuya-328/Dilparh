@@ -2450,6 +2450,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 function shuffleContent(container) {
   var content = $(".item_wrapper").find("> *");
   var total = content.length;
@@ -2457,6 +2499,10 @@ function shuffleContent(container) {
     content.eq(Math.floor(Math.random() * total)).prependTo(container);
   });
 }
+
+window.onload = function () {// ページ読み込み時に実行したい処理
+}; // クイズをシャッフル
+
 
 $(function () {
   shuffleContent($(".item_wrapper"));
@@ -2493,6 +2539,10 @@ $(function () {
     };
   },
   methods: {
+    rings: function rings(id) {
+      console.log('一問目'); // 音声再生、一問目のみ用
+      // document.getElementById("preaudio" + id).muted = false;
+    },
     addAnswer: function addAnswer(answerdjapanese) {
       // 回答表示画面用にpush
       this.answers.push(answerdjapanese);
@@ -2599,9 +2649,8 @@ $(function () {
       // 同時にwordsをループさせて、correctとwrongが入ってるか確認する。
 
 
-      if (this.words[this.questionIndex].correct == this.words[this.questionIndex].japanese && this.words[this.questionIndex].liseted != '1') {
+      if (this.words[this.questionIndex].correct == this.words[this.questionIndex].japanese && this.words[this.questionIndex].liseted != "1") {
         // 初めての回答なら登録
-        console.log(this.sendanswers[this.questionIndex]);
         axios.post("/api/answers", this.sendanswers[this.questionIndex]);
       } else {
         // 既出なら更新
@@ -2610,7 +2659,11 @@ $(function () {
 
 
       if (!this.completed) {
-        this.questionIndex++;
+        this.questionIndex++; // 音声再生二問目以降
+
+        console.log('二回目'); // console.log("audio" + this.currentWord["word_id"]);
+
+        document.getElementById("audio" + this.currentWord["word_id"]).play();
       }
     },
     show_wrong_btn: function show_wrong_btn() {
@@ -2631,11 +2684,19 @@ $(function () {
 
       $(window).scrollTop(0);
     },
-    finish_btn: function finish_btn() {}
+    finish_btn: function finish_btn() {},
+    // 音声再生ボタン押したら
+    ring: function ring(id) {
+      // console.log("audio" + id);
+      document.getElementById("audio" + id).play();
+    }
   },
   computed: {
     currentWord: function currentWord() {
       return this.words[this.questionIndex];
+    },
+    firstWord: function firstWord() {
+      return this.words[0];
     },
     randomWord1: function randomWord1() {
       return this.dummywords[this.random1];
@@ -2648,8 +2709,44 @@ $(function () {
     },
     completed: function completed() {
       return this.words.length == this.answers.length;
+    } // rings: function () {
+    //   alert(this.words[this.questionIndex].word_id);
+    //   document
+    //     .getElementById("audio" + this.words[this.questionIndex].word_id)
+    //     .play();
+    //   return null;
+    // },
+    // ring: function (id) {
+    //   // alert(this.words[this.questionIndex].word_id);
+    //   document
+    //     .getElementById("audio" + id)
+    //     .play();
+    //   return null;
+    // },
+
+  },
+  mounted: function mounted() {
+    // console.dir(this.words[0]);
+    // alert(this.words[0][0]);
+    // alert(this.words['words_id']);
+    var promise = document.getElementById("audio" + this.words[0]['word_id']).play();
+
+    if (promise !== undefined) {
+      promise.then(function (_) {// Autoplay started!
+      })["catch"](function (error) {
+        // document.getElementById("audio" + this.words[0]['word_id']).muted = false;
+        // document.getElementById("audio" + this.words[0]['word_id']).play();
+        document.getElementById('audio_start').click(); // Autoplay was prevented.
+        // Show a "Play" button so that user can start playback.
+      });
     }
-  }
+  } // watch: {
+  //   rings: function() {
+  //     // alert(this.words[this.questionIndex].word_id);
+  //     return document.getElementById("audio" + this.currentWord.word_id).play();
+  //   }
+  // }
+
 }); // シャッフルが終わってから表示させる
 // document.getElementsByClassName("item_wrapper").style.visibility ="visible";
 
@@ -38163,11 +38260,23 @@ var render = function () {
             _c("img", { attrs: { src: "/image/wrong_button2.png" } }),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "word_and_symbol" }, [
-            _c("h1", [_vm._v(_vm._s(_vm.currentWord.word_urdu))]),
-            _vm._v(" "),
-            _c("h6", [_vm._v("[" + _vm._s(_vm.currentWord.pron) + "]")]),
-          ]),
+          _c(
+            "div",
+            {
+              staticClass: "word_and_symbol",
+              attrs: { id: "audio_start" },
+              on: {
+                click: function ($event) {
+                  return _vm.ring(_vm.currentWord.word_id)
+                },
+              },
+            },
+            [
+              _c("h1", [_vm._v(_vm._s(_vm.currentWord.word_urdu))]),
+              _vm._v(" "),
+              _c("h6", [_vm._v("[" + _vm._s(_vm.currentWord.pron) + "]")]),
+            ]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "item_wrapper" }, [
             _c("div", { staticClass: "item" }, [
@@ -38281,7 +38390,7 @@ var render = function () {
       ? _c(
           "div",
           [
-            _c("div", { staticClass: "answer" }, [
+            _c("div", { staticClass: "answer wrong" }, [
               _c("h2", { staticClass: "collect_answer" }, [
                 _vm._v("\n        誤答："),
                 _c("b", [_vm._v(_vm._s(this.words.length - _vm.correct))]),
@@ -38292,37 +38401,55 @@ var render = function () {
               return _c("div", { key: word_id.word_id }, [
                 word_id.japanese != _vm.answers[index]
                   ? _c("div", { staticClass: "textbox" }, [
-                      _c("div", { staticClass: "whole-contents-wrapper" }, [
-                        _c("aside", [
-                          _c("div", { staticClass: "answer-wrapper" }, [
-                            _c("img", {
-                              staticClass: "voice",
-                              attrs: { src: "/image/voice.png", alt: "" },
-                            }),
+                      _c(
+                        "div",
+                        { staticClass: "whole-contents-wrapper_wrong" },
+                        [
+                          _c("aside", [
+                            _c("div", { staticClass: "answer-wrapper" }, [
+                              _c("img", {
+                                staticClass: "voice",
+                                attrs: { src: "/image/voice.png", alt: "" },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.ring(word_id.word_id)
+                                  },
+                                },
+                              }),
+                              _vm._v(" "),
+                              _c("h2", { staticClass: "answer-text" }, [
+                                _vm._v(
+                                  "\n                " +
+                                    _vm._s(index + 1) +
+                                    ".\n                " +
+                                    _vm._s(word_id.word_urdu) +
+                                    "　[" +
+                                    _vm._s(word_id.pron) +
+                                    "]：" +
+                                    _vm._s(word_id.japanese) +
+                                    "\n              "
+                                ),
+                              ]),
+                            ]),
                             _vm._v(" "),
-                            _c("h2", { staticClass: "answer-text" }, [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(index + 1) +
-                                  ".\n                " +
-                                  _vm._s(word_id.word_urdu) +
-                                  "　[" +
-                                  _vm._s(word_id.pron) +
-                                  "]：" +
-                                  _vm._s(word_id.japanese) +
-                                  "\n              "
-                              ),
+                            _c("div", { staticClass: "answer-wrapper" }, [
+                              _c("img", {
+                                staticClass: "voice2",
+                                attrs: { src: "/image/voice.png", alt: "" },
+                              }),
+                              _vm._v(" "),
+                              _vm._m(0, true),
                             ]),
                           ]),
-                        ]),
-                      ]),
+                        ]
+                      ),
                     ])
                   : _vm._e(),
               ])
             }),
             _vm._v(" "),
             _c("div", { staticClass: "teachermessage" }, [
-              _c("div", { staticClass: "balloon2-right" }, [
+              _c("div", { staticClass: "balloon2-right box1" }, [
                 _c("p", [
                   _vm._v(
                     "\n          今回は" +
@@ -38347,10 +38474,12 @@ var render = function () {
                 ]),
               ]),
               _vm._v(" "),
-              _c("img", {
-                staticClass: "teacher",
-                attrs: { src: "/image/teacher1_new.png", alt: "" },
-              }),
+              _c("div", { staticClass: "box2" }, [
+                _c("img", {
+                  staticClass: "teacher lazyload",
+                  attrs: { src: "/image/teacher1_new.png", alt: "" },
+                }),
+              ]),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "button-area" }, [
@@ -38428,6 +38557,11 @@ var render = function () {
                         _c("img", {
                           staticClass: "voice",
                           attrs: { src: "/image/voice.png", alt: "" },
+                          on: {
+                            click: function ($event) {
+                              return _vm.ring(word_id.word_id)
+                            },
+                          },
                         }),
                         _vm._v(" "),
                         _c("h2", { staticClass: "answer-text" }, [
@@ -38444,6 +38578,15 @@ var render = function () {
                           ),
                         ]),
                       ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "answer-wrapper" }, [
+                        _c("img", {
+                          staticClass: "voice2",
+                          attrs: { src: "/image/voice.png", alt: "" },
+                        }),
+                        _vm._v(" "),
+                        _vm._m(1, true),
+                      ]),
                     ]),
                   ]),
                 ]),
@@ -38451,7 +38594,7 @@ var render = function () {
             }),
             _vm._v(" "),
             _c("div", { staticClass: "teachermessage" }, [
-              _c("div", { staticClass: "balloon2-right" }, [
+              _c("div", { staticClass: "balloon2-right box1" }, [
                 _c("p", [
                   _vm._v(
                     "\n          今回は" +
@@ -38476,9 +38619,9 @@ var render = function () {
                 ]),
               ]),
               _vm._v(" "),
-              _c("div", [
+              _c("div", { staticClass: "box2" }, [
                 _c("img", {
-                  staticClass: "teacher",
+                  staticClass: "teacher lazyload",
                   attrs: { src: "/image/teacher1_new.png", alt: "" },
                 }),
               ]),
@@ -38531,7 +38674,28 @@ var render = function () {
       : _vm._e(),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h6", { staticClass: "example-text" }, [
+      _vm._v("اسلام علیکم، والیکم اسلام（例文）"),
+      _c("br"),
+      _vm._v("\n                （訳）こんにちは、こんにちは"),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h6", { staticClass: "example-text" }, [
+      _vm._v("اسلام علیکم، والیکم اسلام（例文）"),
+      _c("br"),
+      _vm._v("\n                （訳）こんにちは、こんにちは"),
+    ])
+  },
+]
 render._withStripped = true
 
 

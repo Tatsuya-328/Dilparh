@@ -12,14 +12,18 @@
         <img :src="'/image/correct_button2.png'" />
         <img :src="'/image/wrong_button.png'" />
         <img :src="'/image/wrong_button2.png'" />
-
       </div>
 
       <!--クイズを表示する部分-->
-      <div class="word_and_symbol">
+      <div
+        class="word_and_symbol"
+        id="audio_start"
+        v-on:click="ring(currentWord.word_id);"
+      >
         <h1>{{ currentWord.word_urdu }}</h1>
         <h6>[{{ currentWord.pron }}]</h6>
       </div>
+      <!-- 音声ファイル読み込み -->
 
       <div class="item_wrapper">
         <div class="item">
@@ -69,11 +73,13 @@
           >
         </a>
       </div>
+      <!-- {{ rings(firstWord.word_id) }} -->
+
     </div>
 
     <!-- 誤答のみ表示 -->
     <div v-else-if="show_wrong">
-      <div class="answer">
+      <div class="answer wrong">
         <h2 class="collect_answer">
           誤答：<b>{{ this.words.length - correct }}</b>
         </h2>
@@ -82,11 +88,23 @@
         v-for="(word_id, index) in this.words"
         :key="word_id.word_id"
       >
+        <!-- 音声ファイル読み込み -->
+        <!-- <audio
+          :id='"audio" + word_id.word_id'
+          preload="auto"
+          muted
+          autoplay
+        >
+          <source
+            :src='"/audio/" + word_id.word_id + ".mp3"'
+            type="audio/mp3"
+          >
+        </audio> -->
         <div
           class="textbox"
           v-if="word_id.japanese != answers[index]"
         >
-          <div class="whole-contents-wrapper">
+          <div class="whole-contents-wrapper_wrong">
             <!-- <article>
               <h2 class="answer-text2" v-if="word_id.japanese == answers[index]">
                 〇
@@ -98,6 +116,7 @@
               <div class="answer-wrapper">
                 <img
                   :src="'/image/voice.png'"
+                  v-on:click="ring(word_id.word_id);"
                   alt=""
                   class="voice"
                 />
@@ -108,6 +127,15 @@
                                     }}]：{{ word_id.japanese }}
                 </h2>
               </div>
+              <div class="answer-wrapper">
+                <img
+                  :src="'/image/voice.png'"
+                  alt=""
+                  class="voice2"
+                />
+                <h6 class="example-text">اسلام علیکم، والیکم اسلام（例文）<br>
+                  （訳）こんにちは、こんにちは</h6>
+              </div>
             </aside>
           </div>
         </div>
@@ -115,7 +143,7 @@
 
       <!--先生の画像-->
       <div class="teachermessage">
-        <div class="balloon2-right">
+        <div class="balloon2-right box1">
           <p>
             今回は{{ this.words.length - correct }}問ミスだ！{{ this.words.length - correct }}問ミスしたということは<br>
             {{ correct }}問正解したということだ！<br>
@@ -126,11 +154,13 @@
           </p>
 
         </div>
-        <img
-          :src="'/image/teacher1_new.png'"
-          alt=""
-          class="teacher"
-        />
+        <div class="box2">
+          <img
+            :src="'/image/teacher1_new.png'"
+            alt=""
+            class="teacher lazyload"
+          />
+        </div>
       </div>
 
       <!--ボタン-->
@@ -180,6 +210,7 @@
         v-for="(word_id, index) in this.words"
         :key="word_id.word_id"
       >
+        <!-- 単語 -->
         <div class="textbox">
           <div class="whole-contents-wrapper">
             <article>
@@ -198,6 +229,7 @@
               <div class="answer-wrapper">
                 <img
                   :src="'/image/voice.png'"
+                  v-on:click="ring(word_id.word_id);"
                   alt=""
                   class="voice"
                 />
@@ -208,6 +240,15 @@
                                     }}]：{{ word_id.japanese }}
                 </h2>
               </div>
+              <div class="answer-wrapper">
+                <img
+                  :src="'/image/voice.png'"
+                  alt=""
+                  class="voice2"
+                />
+                <h6 class="example-text">اسلام علیکم، والیکم اسلام（例文）<br>
+                  （訳）こんにちは、こんにちは</h6>
+              </div>
             </aside>
           </div>
         </div>
@@ -215,7 +256,7 @@
 
       <!--先生の画像-->
       <div class="teachermessage">
-        <div class="balloon2-right">
+        <div class="balloon2-right box1">
           <p>
             今回は{{ this.words.length - correct }}問ミスだ！{{ this.words.length - correct }}問ミスしたということは<br>
             {{ correct }}問正解したということだ！<br>
@@ -226,11 +267,11 @@
           </p>
 
         </div>
-        <div>
+        <div class="box2">
           <img
             :src="'/image/teacher1_new.png'"
             alt=""
-            class="teacher"
+            class="teacher lazyload"
           />
         </div>
       </div>
@@ -273,6 +314,7 @@
 </template>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
 <script>
 function shuffleContent(container) {
   var content = $(".item_wrapper").find("> *");
@@ -281,6 +323,10 @@ function shuffleContent(container) {
     content.eq(Math.floor(Math.random() * total)).prependTo(container);
   });
 }
+window.onload = function(){
+// ページ読み込み時に実行したい処理
+}
+// クイズをシャッフル
 $(function () {
   shuffleContent($(".item_wrapper"));
 });
@@ -315,6 +361,11 @@ export default {
     };
   },
   methods: {
+    rings: function (id) {
+      console.log('一問目');
+      // 音声再生、一問目のみ用
+      // document.getElementById("preaudio" + id).muted = false;
+    },
     addAnswer: function (answerdjapanese) {
       // 回答表示画面用にpush
       this.answers.push(answerdjapanese);
@@ -426,11 +477,11 @@ export default {
       // for (var i = 0; i < this.sendanswers.length; i++) {
       // 同時にwordsをループさせて、correctとwrongが入ってるか確認する。
       if (
-        (this.words[this.questionIndex].correct ==
-        this.words[this.questionIndex].japanese) && (this.words[this.questionIndex].liseted != '1')
+        this.words[this.questionIndex].correct ==
+          this.words[this.questionIndex].japanese &&
+        this.words[this.questionIndex].liseted != "1"
       ) {
         // 初めての回答なら登録
-        console.log(this.sendanswers[this.questionIndex]);
         axios.post("/api/answers", this.sendanswers[this.questionIndex]);
       } else {
         // 既出なら更新
@@ -447,9 +498,12 @@ export default {
         // axios.put("/api/answers", this.sendanswers[i]);
       }
       // }
-
       if (!this.completed) {
         this.questionIndex++;
+        // 音声再生二問目以降
+        console.log('二回目');
+        // console.log("audio" + this.currentWord["word_id"]);
+        document.getElementById("audio" + this.currentWord["word_id"]).play();
       }
     },
     show_wrong_btn: function () {
@@ -470,10 +524,18 @@ export default {
       $(window).scrollTop(0);
     },
     finish_btn: function () {},
+    // 音声再生ボタン押したら
+    ring: function (id) {
+      // console.log("audio" + id);
+      document.getElementById("audio" + id).play();
+    },
   },
   computed: {
     currentWord: function () {
       return this.words[this.questionIndex];
+    },
+    firstWord: function () {
+      return this.words[0];
     },
     randomWord1: function () {
       return this.dummywords[this.random1];
@@ -487,7 +549,46 @@ export default {
     completed: function () {
       return this.words.length == this.answers.length;
     },
+    // rings: function () {
+    //   alert(this.words[this.questionIndex].word_id);
+    //   document
+    //     .getElementById("audio" + this.words[this.questionIndex].word_id)
+    //     .play();
+    //   return null;
+    // },
+    // ring: function (id) {
+    //   // alert(this.words[this.questionIndex].word_id);
+    //   document
+    //     .getElementById("audio" + id)
+    //     .play();
+    //   return null;
+    // },
   },
+  mounted: function() {
+    // console.dir(this.words[0]);
+    // alert(this.words[0][0]);
+    // alert(this.words['words_id']);
+    var promise = document.getElementById("audio" + this.words[0]['word_id']).play();
+    if (promise !== undefined) {
+  promise.then(_ => {
+    // Autoplay started!
+  }).catch(error => {
+    // document.getElementById("audio" + this.words[0]['word_id']).muted = false;
+    // document.getElementById("audio" + this.words[0]['word_id']).play();
+    document.getElementById('audio_start').click();
+    // Autoplay was prevented.
+    // Show a "Play" button so that user can start playback.
+  });
+          
+    }
+    }
+
+  // watch: {
+  //   rings: function() {
+  //     // alert(this.words[this.questionIndex].word_id);
+  //     return document.getElementById("audio" + this.currentWord.word_id).play();
+  //   }
+  // }
 };
 // シャッフルが終わってから表示させる
 // document.getElementsByClassName("item_wrapper").style.visibility ="visible";
