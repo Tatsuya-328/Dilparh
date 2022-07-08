@@ -1,0 +1,437 @@
+@charset "UTF-8";
+
+body {
+  font-family: "Yu Gothic Medium", "游ゴシック　Medium", Yugothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif;
+  line-height: 1.7;
+  color: #432;
+  background-color: ;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: #00000063;
+}
+
+.pc_page-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.right_btn {
+  justify-content: right;
+}
+
+
+.wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+/*タツキのアカウント表示*/
+.account_name {
+  margin-top: 2%;
+  margin-right: 0%;
+  text-align: center;
+}
+
+.account_name>a {
+  float: left;
+}
+
+
+/**/
+.logo input {
+  width: 45%;
+}
+
+.logo {
+  text-align: center;
+}
+
+/*コンテナ全体の位置*/
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  text-align: center;
+}
+
+/*↓それぞれの要素の大きさ*/
+.item input {
+  width: 50%;
+}
+
+
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 5%;
+}
+
+
+.explanation {
+  text-align: center;
+
+}
+
+
+
+
+
+/*使い方*/
+
+
+.device {
+  text-align: center;
+  margin-top: 10%;
+}
+
+.swich1 input {
+  width: 50%;
+  margin-left: 43%;
+}
+
+.swich2 input {
+  width: 50%;
+  margin-right: 44%;
+}
+
+.swich_zone {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 3%;
+
+}
+
+.howto_image {
+  width: 40%;
+  margin-left: 10%;
+  margin-top: 5%;
+
+}
+
+.howto_image2 {
+  width: 20%;
+  margin-left: 20%;
+  margin-top: 5%;
+}
+
+aside {
+  width: 40%;
+  margin-right: 5%;
+  margin-top: 5%;
+}
+
+
+.contents1 {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.contents1_text {
+  margin: 40px;
+  font-size: 17px;
+}
+
+
+.step {
+  margin: 40px;
+}
+
+
+
+
+
+
+/*ハンバーガー*/
+.nav_toggle {
+  display: block;
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  margin-top: 3%;
+  cursor: pointer;
+}
+
+.nav_toggle i {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  position: absolute;
+  transition: transform .5s, opacity .5s;
+}
+
+.nav_toggle i:nth-child(1) {
+  top: 0;
+}
+
+.nav_toggle i:nth-child(2) {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.nav_toggle i:nth-child(3) {
+  bottom: 0;
+}
+
+
+.nav_toggle.show i:nth-child(1) {
+  transform: translateY(10px) rotate(-45deg);
+}
+
+.nav_toggle.show i:nth-child(2) {
+  opacity: 0;
+}
+
+.nav_toggle.show i:nth-child(3) {
+  transform: translateY(-12px) rotate(45deg);
+}
+
+.nav {
+  position: fixed;
+  top: 3rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s, visibility .5s;
+  background-color: #ffffff;
+  margin-left: 5%;
+  margin-top: 3%;
+}
+
+.nav.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.nav_menu_ul {
+  list-style: none;
+}
+
+.nav_menu_li {
+  margin-bottom: 2%;
+  font-size: 19px;
+}
+
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 0.25rem;
+}
+
+.dropdown-item {
+  display: block;
+  width: 70%;
+  padding: 0.25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+
+.account_name>a {
+  float: left;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-toggle::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu[x-placement^=bottom],
+.dropdown-menu[x-placement^=left],
+.dropdown-menu[x-placement^=right],
+.dropdown-menu[x-placement^=top] {
+  right: auto;
+  bottom: auto;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+  color: #16181b;
+  text-decoration: none;
+  background-color: #f8f9fa;
+}
+
+@media (max-width:600px) {
+
+  body {
+    font-family: "Yu Gothic Medium", "游ゴシック　Medium", Yugothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif;
+    line-height: 1.7;
+    color: #432;
+    background-color: ;
+    background-repeat: no-repeat;
+    width: 100%;
+  }
+
+
+  .menubar {
+    width: 60%;
+    margin-top: 5%;
+    margin-left: 3%;
+  }
+
+  .wrapper {
+    margin-top: 7%;
+  }
+
+  .account_name {
+    display: none;
+  }
+
+
+  .logo {
+    display: none;
+  }
+
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    text-align: center;
+    margin-top: 8%;
+    grid-gap: 10%;
+    margin-right: 10%;
+  }
+
+  .nav_menu_li {
+    margin-bottom: 10%;
+    font-size: 19px;
+  }
+
+  .nav {
+    margin-top: 9%;
+  }
+
+  /*使い方*/
+
+  .title {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 5%;
+    font-size: 20px;
+  }
+
+  .howto_image {
+    width: 60%;
+    margin-left: 0%;
+    margin-top: 10%;
+  }
+
+  .howto_image2 {
+    width: 60%;
+    margin-left: 0%;
+    margin-top: 10%;
+  }
+
+  aside {
+    width: 100%;
+    margin-right: 5%;
+    margin-top: 5%;
+  }
+
+
+
+  .br_class {
+    display: none;
+  }
+
+  .contents1 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contents1_text {
+    margin: 0;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .flex_wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step {
+    display: none;
+  }
+
+
+  .device {
+    text-align: center;
+    margin-top: 6%;
+  }
+
+  .swich1 input {
+    width: 70%;
+    margin-left: 30%;
+  }
+
+  .swich2 input {
+    width: 70%;
+    margin-right: 30%;
+  }
+
+  .swich_zone {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 3%;
+
+  }
+}

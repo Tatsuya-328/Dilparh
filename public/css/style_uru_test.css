@@ -1,0 +1,385 @@
+@charset "UTF-8";
+
+
+
+
+
+/* デフォルト */
+body {
+  font-family: "Yu Gothic Medium", "游ゴシック　Medium", Yugothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif;
+  line-height: 1.7;
+  color: #432;
+  /* background-color: ; */
+  background-repeat: no-repeat;
+}
+
+
+
+
+.pc_page-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+/*タツキのアカウント表示*/
+.account_name {
+  margin-top: 3%;
+  margin-right: 0%;
+  text-align: center;
+}
+
+
+
+p {
+  margin-top: 50px;
+  text-align: center;
+}
+
+
+
+/*ハンバーガー*/
+.nav_toggle {
+  display: block;
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  /* margin-left: %; */
+  margin-top: 3%;
+}
+
+.nav_toggle i {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  position: absolute;
+  transition: transform .5s, opacity .5s;
+}
+
+.nav_toggle i:nth-child(1) {
+  top: 0;
+}
+
+.nav_toggle i:nth-child(2) {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.nav_toggle i:nth-child(3) {
+  bottom: 0;
+}
+
+
+.nav_toggle.show i:nth-child(1) {
+  transform: translateY(10px) rotate(-45deg);
+}
+
+.nav_toggle.show i:nth-child(2) {
+  opacity: 0;
+}
+
+.nav_toggle.show i:nth-child(3) {
+  transform: translateY(-12px) rotate(45deg);
+}
+
+.nav {
+  position: fixed;
+  top: 3rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s, visibility .5s;
+  background-color: #ffffff;
+  margin-left: 5%;
+  margin-top: 3%;
+}
+
+.nav.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.nav_menu_ul {
+  list-style: none;
+}
+
+.nav_menu_li {
+  margin-bottom: 2%;
+  font-size: 19px;
+}
+
+nav-link:focus,
+.nav-link:hover {
+  text-decoration: none;
+}
+
+.dropdown-toggle::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+
+
+/*問題のコンテンツ*/
+
+.word_and_symbol {
+  text-align: center;
+  font-weight: bold;
+
+}
+
+button {
+  background: #ffffff;
+  border-radius: 5px;
+  height: 130px;
+  width: 230px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+/* クイズ */
+.item_wrapper {
+  width: 480;
+  margin: auto;
+}
+
+.item {
+  float: left;
+  padding: 3px;
+}
+
+.button {
+  clear: both;
+}
+
+.exit_button {
+  text-align: center;
+}
+
+
+.button input {
+  width: 15%;
+  text-align: center;
+  margin-top: 5%;
+}
+
+
+.back {
+  text-align: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.teacher {
+  width: auto;
+  height: 187px;
+  margin-top: 7px;
+}
+
+.teachermessage {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+.balloon2-right {
+  transform: scale(0.8);
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0;
+  padding: 20px 30px;
+  min-width: 120px;
+  max-width: 100%;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  background: #faf7f7;
+  border: solid 2px black;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.balloon2-right:before {
+  content: "";
+  position: absolute;
+  top: 44%;
+  right: -51px;
+  margin-top: -18px;
+  /* border: 12px solid transparent; */
+  border-left: 55px solid #faf7f7;
+  z-index: 2;
+  border-top: 16px solid transparent;
+  border-bottom: 17px solid transparent;
+}
+
+.balloon2-right:after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  right: -56px;
+  margin-top: -14px;
+  /* border: 14px solid transparent; */
+  border-left: 55px solid black;
+  z-index: 1;
+  border-top: 16px solid transparent;
+  border-bottom: 17px solid transparent;
+  /* border-width: 27px; */
+  margin-top: -35px;
+}
+
+.balloon2-right p {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.balloon2-right p.byteacher {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+.box1 {
+  -webkit-box-ordinal-group: 1;
+  -ms-flex-order: 1;
+  -webkit-order: 1;
+  order: 1;
+}
+
+.box2 {
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: 2;
+  -webkit-order: 2;
+  order: 2;
+}
+
+@media (max-width:600px) {
+
+  body {
+    font-family: "Yu Gothic Medium", "游ゴシック　Medium", Yugothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif;
+    line-height: 1.7;
+    color: #432;
+    /* background-color:; */
+    background-repeat: no-repeat;
+    width: 100%;
+  }
+
+
+  .container2 {
+    margin-top: 0%;
+  }
+
+
+  .menubar {
+    width: 60%;
+    margin-top: 5%;
+    margin-left: 3%;
+  }
+
+  .wrapper {
+    margin-top: 7%;
+  }
+
+  .account_name {
+    display: none;
+  }
+
+
+  .logo {
+    display: none;
+  }
+
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    text-align: center;
+    margin-top: 8%;
+    grid-gap: 10%;
+    margin-right: 10%;
+  }
+
+  .nav_menu_li {
+    margin-bottom: 10%;
+    font-size: 19px;
+  }
+
+  .nav {
+    margin-top: 9%;
+  }
+
+
+
+  /*問題のコンテンツ*/
+
+  .word_and_symbol {
+    text-align: center;
+    font-weight: bold;
+
+  }
+
+  button {
+    background: #ffffff;
+    padding: 4%;
+    border-radius: 5px;
+    height: 50px;
+    width: 320px;
+    margin-top: 5px;
+    font-weight: bold;
+
+  }
+
+
+  .button1 {
+    max-width: 40%;
+  }
+
+
+  .back {
+    text-align: center;
+    justify-content: center;
+    margin-top: 60px;
+  }
+
+  .button input {
+    width: 50%;
+    text-align: center;
+    margin-top: 20%;
+  }
+
+
+}
+
+
+
+
+
+
+
+/**/
