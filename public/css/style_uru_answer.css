@@ -250,13 +250,13 @@ aside {
   text-align: center;
   margin-top: 15%;
   margin-bottom: 10%;
-  
+
 }
 
 .button-area>input {
   width: auto;
   height: 37px;
-  margin: 3px 15px;
+  margin: 0 15px;
 }
 
 
@@ -583,7 +583,7 @@ aside {
   .button-area>input {
     width: auto;
     height: 37px;
-    margin: 0 15px;
+    margin: 3px 15px;
 }
 }
 
