@@ -1,0 +1,596 @@
+@charset "UTF-8";
+
+/* デフォルト */
+body {
+  font-family: "Yu Gothic Medium", "游ゴシック　Medium", Yugothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif;
+  line-height: 1.7;
+  color: #432;
+  background-color: ;
+  background-repeat: no-repeat;
+}
+
+
+
+.pc_page-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+/*タツキのアカウント表示*/
+.account_name {
+  margin-top: 3%;
+  margin-right: %;
+  text-align: center;
+}
+
+
+
+p {
+  margin-top: 50px;
+  text-align: center;
+}
+
+
+
+
+/*ハンバーガー*/
+.nav_toggle {
+  display: block;
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  margin-left: %;
+  margin-top: 3%;
+}
+
+.nav_toggle i {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  position: absolute;
+  transition: transform .5s, opacity .5s;
+}
+
+.nav_toggle i:nth-child(1) {
+  top: 0;
+}
+
+.nav_toggle i:nth-child(2) {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.nav_toggle i:nth-child(3) {
+  bottom: 0;
+}
+
+
+.nav_toggle.show i:nth-child(1) {
+  transform: translateY(10px) rotate(-45deg);
+}
+
+.nav_toggle.show i:nth-child(2) {
+  opacity: 0;
+}
+
+.nav_toggle.show i:nth-child(3) {
+  transform: translateY(-12px) rotate(45deg);
+}
+
+.nav {
+  position: fixed;
+  top: 3rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s, visibility .5s;
+  background-color: #ffffff;
+  margin-left: 5%;
+  margin-top: 3%;
+}
+
+.nav.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.nav_menu_ul {
+  list-style: none;
+}
+
+.nav_menu_li {
+  margin-bottom: 2%;
+  font-size: 19px;
+}
+
+
+
+
+
+/*コンテンツ*/
+.collect_answer {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 4%;
+  margin-left: 10%;
+
+}
+
+
+
+.button input {
+  width: 175px;
+  margin-top: 5%;
+}
+
+
+
+.button {
+  margin-bottom: 5%;
+}
+
+/*真ん中の要素ここに問題の正誤が表示される*/
+
+.textbox {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.whole-contents-wrapper {
+  display: flex;
+  margin-left: 10%;
+}
+
+.whole-contents-wrapper_wrong {
+  display: flex;
+  margin-left: 28%;
+}
+
+.wrong {
+  margin-bottom: 40px;
+}
+
+article {
+  width: 20%;
+}
+
+aside {
+  width: 70%;
+}
+
+.answer-text {
+  margin-top: 2.5%;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.answer-text2 {
+  margin-top: 80px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 50%;
+  color: Red;
+}
+
+.answer-text3 {
+  margin-top: 80px;
+  font-size: 40px;
+  font-weight: bold;
+  margin-left: 46%;
+  color: Blue;
+}
+
+.example-text {
+  margin-top: 0px;
+  font-size: 13px;
+  text-align: left;
+  margin-bottom: 7%;
+  font-weight: bold;
+  margin-left: 1%;
+}
+
+
+.answer-wrapper {
+  display: flex;
+  width: 180%;
+  word-break: break-word;
+}
+
+.voice {
+  margin-left: 0%;
+  margin-right: 26px;
+  width: 35px;
+  margin-top: 2.5%;
+  /* margin-bottom: 5%; */
+  height: 41px;
+  cursor: pointer;
+}
+
+.voice2 {
+  margin-left: 0%;
+  margin-right: 26px;
+  width: auto;
+  height: 31px;
+  margin-bottom: 8px;
+  margin-top: 4px;
+}
+
+.button1 {
+  max-width: 50%;
+  margin-left: 30%;
+}
+
+.button2 {
+  max-width: 50%;
+}
+
+.button3 {
+  max-width: 50%;
+  margin-right: 30%;
+}
+
+
+.button-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  margin-top: 15%;
+  margin-bottom: 10%;
+  
+}
+
+.button-area>input {
+  width: auto;
+  height: 37px;
+  margin: 3px 15px;
+}
+
+
+.swich input {
+  width: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:600px) {
+
+  body {
+    font-family: "Yu Gothic Medium", "游ゴシック　Medium", Yugothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif;
+    line-height: 1.7;
+    color: #432;
+    background-color: ;
+    background-repeat: no-repeat;
+    width: 100%;
+  }
+
+
+  .container2 {
+    margin-top: 0%;
+  }
+
+
+
+  .menubar {
+    width: 60%;
+    margin-top: 5%;
+    margin-left: 3%;
+  }
+
+  .wrapper {
+    margin-top: 7%;
+  }
+
+  .account_name {
+    display: none;
+  }
+
+
+  .logo {
+    display: none;
+  }
+
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    text-align: center;
+    margin-top: 8%;
+    grid-gap: 10%;
+    margin-right: 10%;
+  }
+
+  .nav_menu_li {
+    margin-bottom: 10%;
+    font-size: 19px;
+  }
+
+  .nav {
+    margin-top: 9%;
+  }
+
+
+
+
+
+  /*コンテンツ*/
+
+  .button input {
+    width: 70%;
+    margin-top: 5%;
+    max-width: 185px;
+    width: 40%;
+  }
+
+  .answer {
+    display: block;
+    margin-left: 7%;
+    margin-top: 5%;
+    padding: 0 20%;
+  }
+
+  .collect_answer {
+    font-size: 25px;
+    font-weight: bold;
+
+  }
+
+  .download_button {
+    display: none;
+  }
+
+  article {
+    width: 15%;
+  }
+
+  aside {
+    width: 83%;
+  }
+
+  .teacher {
+    width: auto;
+    height: 180px;
+    margin-top: 20px;
+  }
+
+  .teachermessage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .balloon2-right {
+    transform: scale(0.8);
+    position: relative;
+    display: inline-block;
+    margin: 1.5em 0;
+    padding: 20px 30px;
+    min-width: 120px;
+    max-width: 100%;
+    color: black;
+    font-size: 10px;
+    font-weight: bold;
+    background: #faf7f7;
+    border: solid 2px black;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 47%;
+  }
+
+  .balloon2-right:before {
+    content: "";
+    position: absolute;
+    top: 44%;
+    right: -51px;
+    margin-top: -18px;
+    /* border: 12px solid transparent; */
+    border-left: 55px solid #faf7f7;
+    z-index: 2;
+    border-top: 16px solid transparent;
+    border-bottom: 17px solid transparent;
+  }
+
+  .balloon2-right:after {
+    content: "";
+    position: absolute;
+    top: 55%;
+    right: -56px;
+    margin-top: -14px;
+    /* border: 14px solid transparent; */
+    border-left: 55px solid black;
+    z-index: 1;
+    border-top: 16px solid transparent;
+    border-bottom: 17px solid transparent;
+    /* border-width: 27px; */
+    margin-top: -35px;
+  }
+
+  .balloon2-right p {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  .balloon2-right p.byteacher {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+  }
+
+
+  /*正誤表示の音声*/
+  .voice {
+    margin-left: 0%;
+    margin-right: 1%;
+    height: 40px;
+    width: auto;
+    margin-top: 4%;
+    margin-bottom: 4%;
+  }
+
+  .voice2 {
+    margin-left: 0%;
+    margin-right: 1%;
+    height: 25px;
+    width: auto;
+    margin-bottom: 10%;
+    margin-top: 4%;
+  }
+
+
+
+  /*誤答のみの音声*/
+  .voice3 {
+    margin-left: %;
+    margin-right: 1%;
+    width: 10%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+  }
+
+  .voice4 {
+    margin-left: %;
+    margin-right: 1%;
+    width: 7%;
+    margin-bottom: 10%;
+    margin-top: 4%;
+  }
+
+  /*真ん中の要素ここに問題の正誤が表示される*/
+
+
+  .textbox {
+    margin-top: 3%;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 8%;
+
+  }
+
+  .textbox2 {
+    border-top: 2px solid #dddddd;
+  }
+
+
+
+
+  .answer-text {
+    margin-top: 5%;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 5%;
+  }
+
+  .example-text {
+    font-size: 10px;
+    text-align: right;
+    margin-left: 8%;
+    margin-bottom: 7%;
+  }
+
+  .answer-text2 {
+    margin-top: 230%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 5%;
+    color: Red;
+  }
+
+  .answer-text3 {
+    margin-top: 230%;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 5%;
+    color: Blue;
+  }
+
+  .answer-wrapper {
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+
+
+
+
+
+  .button1 {
+    max-width: 50%;
+    margin-left: 0%;
+  }
+
+  .button2 {
+    max-width: 50%;
+  }
+
+  .button3 {
+    max-width: 50%;
+    margin-right: 0%;
+  }
+
+
+  .button-area {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 10%;
+  }
+
+
+  .item_wrapper {
+    display: flex;
+    flex-flow: column;
+    width: 85%;
+    margin: auto;
+    align-items: center;
+  }
+
+  .whole-contents-wrapper, .whole-contents-wrapper_wrong {
+    display: flex;
+    margin-left: 10%;
+    width: 50%;
+  }
+  .button-area>input {
+    width: auto;
+    height: 37px;
+    margin: 0 15px;
+}
+}
+
+
+
+
+
+
+
+/**/
