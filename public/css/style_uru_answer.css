@@ -456,7 +456,7 @@ aside {
   }
 
   .voice2 {
-    margin-left: 0%;
+    margin-left: 2%;
     margin-right: 1%;
     height: 25px;
     width: auto;
@@ -511,9 +511,7 @@ aside {
 
   .example-text {
     font-size: 10px;
-    text-align: right;
-    margin-left: 8%;
-    margin-bottom: 7%;
+    margin: 4% 0px 7% 10%;
   }
 
   .answer-text2 {
@@ -534,7 +532,7 @@ aside {
 
   .answer-wrapper {
     display: flex;
-    margin-left: 5%;
+    margin-left: 15%;
     margin-right: 5%;
   }
 
@@ -577,7 +575,7 @@ aside {
 
   .whole-contents-wrapper, .whole-contents-wrapper_wrong {
     display: flex;
-    margin-left: 10%;
+    margin-left: 5%;
     width: 50%;
   }
   .button-area>input {

@@ -97,13 +97,15 @@ class TopController extends Controller
 
         if ($language === 'japanese') {
             $results = DB::table('words')
-                ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese')
-                ->where('japanese', 'LIKE', "%$word%")
+                ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'ExampleSentence', 'ExampleMeaning')
+                ->where('hiragana', 'LIKE', "%$word%")
+                ->OrWhere('japanese', 'LIKE', "%$word%")
                 ->get();
             $results = json_decode(json_encode($results), true);
         } else {
+            // ウルドゥー語検索
             $results = DB::table('words')
-                ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese')
+                ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'ExampleSentence', 'ExampleMeaning')
                 ->where('word_urdu', 'LIKE', "%$word%")
                 ->get();
             $results = json_decode(json_encode($results), true);
@@ -398,7 +400,7 @@ class TopController extends Controller
     public function getPartData($part, $explanation = null)
     {
         $whole_part = DB::table('words')
-            ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'japanese as correct', 'japanese as wrong')
+            ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'japanese as correct', 'japanese as wrong', 'ExampleSentence', 'ExampleMeaning')
             ->where('words.part', '=', $part)
             ->get();
         $whole_part = json_decode(json_encode($whole_part), true);
@@ -495,7 +497,7 @@ class TopController extends Controller
 
         // すべての単語取得
         $words = DB::table('words')
-            ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'japanese as correct', 'japanese as wrong')
+            ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'japanese as correct', 'japanese as wrong', 'ExampleSentence', 'ExampleMeaning')
             ->orderBy('words.id')
             ->where('words.part', '=', $part)
             ->get();
@@ -517,7 +519,7 @@ class TopController extends Controller
                 ->where('answers.users_id', '=', Auth::id())
                 ->orwhere('answers.correct', '>', 0)
                 ->orwhere('answers.wrong', '>', 0)
-                ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'japanese as correct', 'japanese as wrong')
+                ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'japanese as correct', 'japanese as wrong', 'ExampleSentence', 'ExampleMeaning')
                 ->get();
             $userswords = json_decode(json_encode($userswords), true);
 
@@ -534,7 +536,7 @@ class TopController extends Controller
                 ->where('answers.users_id', '=', Auth::id())
                 ->where('answers.correct', '=', 0)
                 ->where('answers.wrong', '=', 0)
-                ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'japanese as correct', 'japanese as wrong')
+                ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'japanese as correct', 'japanese as wrong', 'ExampleSentence', 'ExampleMeaning')
                 ->get();
             $lisetwords = json_decode(json_encode($lisetwords), true);
             // var_dump($limit_start,$limit_end,$userswords);
@@ -569,7 +571,7 @@ class TopController extends Controller
                 ->where('answers.users_id', '=', Auth::id())
                 ->where('answers.correct', '=', 0)
                 ->where('answers.wrong', '=', 0)
-                ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id', 'japanese as liseted')
+                ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id', 'japanese as liseted', 'ExampleSentence', 'ExampleMeaning')
                 ->get();
             $add_lisetwords = json_decode(json_encode($add_lisetwords), true);
             // var_dump($limit_start,$limit_end,$userswords);
@@ -588,7 +590,7 @@ class TopController extends Controller
             if (count($words) < $quantitiy) {
                 $onecorrectwords = DB::table('words')
                     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                    ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id')
+                    ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id', 'ExampleSentence', 'ExampleMeaning')
                     ->orderBy('words.id')
                     ->where('words.part', '=', $part)
                     ->where('answers.users_id', '=', Auth::id())
@@ -606,7 +608,7 @@ class TopController extends Controller
             if (count($words) < $quantitiy) {
                 $twocorrectwords = DB::table('words')
                     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                    ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id')
+                    ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id', 'ExampleSentence', 'ExampleMeaning')
                     ->orderBy('words.id')
                     ->where('words.part', '=', $part)
                     ->where('answers.users_id', '=', Auth::id())
@@ -624,7 +626,7 @@ class TopController extends Controller
             // 間違えた問題
             $reviewwords = DB::table('words')
                 ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id')
+                ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id', 'ExampleSentence', 'ExampleMeaning')
                 ->orderBy('words.id')
                 ->where('words.part', '=', $part)
                 ->where('answers.users_id', '=', Auth::id())
@@ -636,7 +638,7 @@ class TopController extends Controller
             if (count($reviewwords) < 1) {
                 $reviewwords2 = DB::table('words')
                     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                    ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id')
+                    ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id', 'ExampleSentence', 'ExampleMeaning')
                     ->orderBy('words.id')
                     ->where('words.part', '=', $part)
                     ->where('answers.users_id', '=', Auth::id())
@@ -648,7 +650,7 @@ class TopController extends Controller
             if (count($reviewwords) < 1) {
                 $reviewwords3 = DB::table('words')
                     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                    ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id')
+                    ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'answers.correct', 'answers.wrong', 'answers.id as answers_id', 'ExampleSentence', 'ExampleMeaning')
                     ->orderBy('words.id')
                     ->where('words.part', '=', $part)
                     ->where('answers.users_id', '=', Auth::id())

@@ -2539,8 +2539,8 @@ $(function () {
     };
   },
   methods: {
-    rings: function rings(id) {
-      console.log('一問目'); // 音声再生、一問目のみ用
+    rings: function rings(id) {// console.log('一問目');
+      // 音声再生、一問目のみ用
       // document.getElementById("preaudio" + id).muted = false;
     },
     addAnswer: function addAnswer(answerdjapanese) {
@@ -2661,7 +2661,12 @@ $(function () {
       if (!this.completed) {
         this.questionIndex++; // 音声再生二問目以降
 
-        console.log('二回目'); // console.log("audio" + this.currentWord["word_id"]);
+        console.log("二回目");
+
+        for (var i; i < 10; i++) {
+          console.log(this.words[i]["word_id"]);
+          document.getElementById("audio" + this.words[i]["word_id"]).pause();
+        }
 
         document.getElementById("audio" + this.currentWord["word_id"]).play();
       }
@@ -2687,7 +2692,14 @@ $(function () {
     finish_btn: function finish_btn() {},
     // 音声再生ボタン押したら
     ring: function ring(id) {
-      // console.log("audio" + id);
+      // console.log("audio" + (id - 1));
+      // 再生中のものは停止してから
+      if (document.getElementById("audio" + (id - 1))) {
+        console.log("audio" + document.getElementById("audio" + (id - 1)));
+        document.getElementById("audio" + (id - 1)).pause();
+      }
+
+      document.getElementById("audio" + id).pause();
       document.getElementById("audio" + id).play();
     }
   },
@@ -2729,14 +2741,14 @@ $(function () {
     // console.dir(this.words[0]);
     // alert(this.words[0][0]);
     // alert(this.words['words_id']);
-    var promise = document.getElementById("audio" + this.words[0]['word_id']).play();
+    var promise = document.getElementById("audio" + this.words[0]["word_id"]).play();
 
     if (promise !== undefined) {
       promise.then(function (_) {// Autoplay started!
       })["catch"](function (error) {
         // document.getElementById("audio" + this.words[0]['word_id']).muted = false;
         // document.getElementById("audio" + this.words[0]['word_id']).play();
-        document.getElementById('audio_start').click(); // Autoplay was prevented.
+        document.getElementById("audio_start").click(); // Autoplay was prevented.
         // Show a "Play" button so that user can start playback.
       });
     }
@@ -38438,7 +38450,14 @@ var render = function () {
                                 attrs: { src: "/image/voice.png", alt: "" },
                               }),
                               _vm._v(" "),
-                              _vm._m(0, true),
+                              _c("h6", { staticClass: "example-text" }, [
+                                _vm._v(_vm._s(word_id.ExampleSentence)),
+                                _c("br"),
+                                _vm._v(
+                                  "\n                " +
+                                    _vm._s(word_id.ExampleMeaning)
+                                ),
+                              ]),
                             ]),
                           ]),
                         ]
@@ -38585,7 +38604,14 @@ var render = function () {
                           attrs: { src: "/image/voice.png", alt: "" },
                         }),
                         _vm._v(" "),
-                        _vm._m(1, true),
+                        _c("h6", { staticClass: "example-text" }, [
+                          _vm._v(_vm._s(word_id.ExampleSentence)),
+                          _c("br"),
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(word_id.ExampleMeaning)
+                          ),
+                        ]),
                       ]),
                     ]),
                   ]),
@@ -38674,28 +38700,7 @@ var render = function () {
       : _vm._e(),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h6", { staticClass: "example-text" }, [
-      _vm._v("اسلام علیکم، والیکم اسلام（例文）"),
-      _c("br"),
-      _vm._v("\n                （訳）こんにちは、こんにちは"),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h6", { staticClass: "example-text" }, [
-      _vm._v("اسلام علیکم، والیکم اسلام（例文）"),
-      _c("br"),
-      _vm._v("\n                （訳）こんにちは、こんにちは"),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

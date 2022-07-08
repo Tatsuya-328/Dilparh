@@ -133,8 +133,8 @@
                   alt=""
                   class="voice2"
                 />
-                <h6 class="example-text">اسلام علیکم، والیکم اسلام（例文）<br>
-                  （訳）こんにちは、こんにちは</h6>
+                <h6 class="example-text">{{ word_id.ExampleSentence }}<br>
+                  {{ word_id.ExampleMeaning }}</h6>
               </div>
             </aside>
           </div>
@@ -246,8 +246,8 @@
                   alt=""
                   class="voice2"
                 />
-                <h6 class="example-text">اسلام علیکم، والیکم اسلام（例文）<br>
-                  （訳）こんにちは、こんにちは</h6>
+                <h6 class="example-text">{{ word_id.ExampleSentence }}<br>
+                  {{ word_id.ExampleMeaning }}</h6>
               </div>
             </aside>
           </div>
@@ -323,9 +323,9 @@ function shuffleContent(container) {
     content.eq(Math.floor(Math.random() * total)).prependTo(container);
   });
 }
-window.onload = function(){
-// ページ読み込み時に実行したい処理
-}
+window.onload = function () {
+  // ページ読み込み時に実行したい処理
+};
 // クイズをシャッフル
 $(function () {
   shuffleContent($(".item_wrapper"));
@@ -362,7 +362,7 @@ export default {
   },
   methods: {
     rings: function (id) {
-      console.log('一問目');
+      // console.log('一問目');
       // 音声再生、一問目のみ用
       // document.getElementById("preaudio" + id).muted = false;
     },
@@ -501,8 +501,11 @@ export default {
       if (!this.completed) {
         this.questionIndex++;
         // 音声再生二問目以降
-        console.log('二回目');
-        // console.log("audio" + this.currentWord["word_id"]);
+        console.log("二回目");
+        for (let i; i < 10; i++) {
+          console.log(this.words[i]["word_id"]);
+          document.getElementById("audio" + this.words[i]["word_id"]).pause();
+        }
         document.getElementById("audio" + this.currentWord["word_id"]).play();
       }
     },
@@ -526,7 +529,13 @@ export default {
     finish_btn: function () {},
     // 音声再生ボタン押したら
     ring: function (id) {
-      // console.log("audio" + id);
+      // console.log("audio" + (id - 1));
+      // 再生中のものは停止してから
+      if (document.getElementById("audio" + (id - 1))) {
+        console.log("audio" + document.getElementById("audio" + (id - 1)));
+        document.getElementById("audio" + (id - 1)).pause();
+      }
+      document.getElementById("audio" + id).pause();
       document.getElementById("audio" + id).play();
     },
   },
@@ -564,24 +573,28 @@ export default {
     //   return null;
     // },
   },
-  mounted: function() {
+  mounted: function () {
     // console.dir(this.words[0]);
     // alert(this.words[0][0]);
     // alert(this.words['words_id']);
-    var promise = document.getElementById("audio" + this.words[0]['word_id']).play();
+
+    var promise = document
+      .getElementById("audio" + this.words[0]["word_id"])
+      .play();
     if (promise !== undefined) {
-  promise.then(_ => {
-    // Autoplay started!
-  }).catch(error => {
-    // document.getElementById("audio" + this.words[0]['word_id']).muted = false;
-    // document.getElementById("audio" + this.words[0]['word_id']).play();
-    document.getElementById('audio_start').click();
-    // Autoplay was prevented.
-    // Show a "Play" button so that user can start playback.
-  });
-          
+      promise
+        .then((_) => {
+          // Autoplay started!
+        })
+        .catch((error) => {
+          // document.getElementById("audio" + this.words[0]['word_id']).muted = false;
+          // document.getElementById("audio" + this.words[0]['word_id']).play();
+          document.getElementById("audio_start").click();
+          // Autoplay was prevented.
+          // Show a "Play" button so that user can start playback.
+        });
     }
-    }
+  },
 
   // watch: {
   //   rings: function() {
