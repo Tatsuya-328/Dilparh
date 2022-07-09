@@ -502,7 +502,7 @@ export default {
         this.questionIndex++;
         // 音声再生二問目以降
         console.log("二回目");
-        for (let i; i < 10; i++) {
+        for (let i = 0; i < 10; i++) {
           console.log(this.words[i]["word_id"]);
           document.getElementById("audio" + this.words[i]["word_id"]).pause();
         }
@@ -531,9 +531,9 @@ export default {
     ring: function (id) {
       // console.log("audio" + (id - 1));
       // 再生中のものは停止してから
-      if (document.getElementById("audio" + (id - 1))) {
-        console.log("audio" + document.getElementById("audio" + (id - 1)));
-        document.getElementById("audio" + (id - 1)).pause();
+      for (let i = 0; i < 10; i++) {
+        console.log(this.words[i]["word_id"]);
+        document.getElementById("audio" + this.words[i]["word_id"]).pause();
       }
       document.getElementById("audio" + id).pause();
       document.getElementById("audio" + id).play();
@@ -577,7 +577,6 @@ export default {
     // console.dir(this.words[0]);
     // alert(this.words[0][0]);
     // alert(this.words['words_id']);
-
     // var promise = document
     //   .getElementById("preaudio" + this.words[0]["word_id"])
     //   .play();
@@ -585,7 +584,6 @@ export default {
     //   promise
     //     .then((_) => {
     //       // Autoplay started!
-
     //     })
     //     .catch((error) => {
     //       alert('hoge');
