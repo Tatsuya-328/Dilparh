@@ -578,22 +578,24 @@ export default {
     // alert(this.words[0][0]);
     // alert(this.words['words_id']);
 
-    var promise = document
-      .getElementById("audio" + this.words[0]["word_id"])
-      .play();
-    if (promise !== undefined) {
-      promise
-        .then((_) => {
-          // Autoplay started!
-        })
-        .catch((error) => {
-          // document.getElementById("audio" + this.words[0]['word_id']).muted = false;
-          // document.getElementById("audio" + this.words[0]['word_id']).play();
-          document.getElementById("audio_start").click();
-          // Autoplay was prevented.
-          // Show a "Play" button so that user can start playback.
-        });
-    }
+    // var promise = document
+    //   .getElementById("preaudio" + this.words[0]["word_id"])
+    //   .play();
+    // if (promise !== undefined) {
+    //   promise
+    //     .then((_) => {
+    //       // Autoplay started!
+
+    //     })
+    //     .catch((error) => {
+    //       alert('hoge');
+    //       // document.getElementById("audio" + this.words[0]['word_id']).muted = false;
+    //       // document.getElementById("audio" + this.words[0]['word_id']).play();
+    //       // document.getElementById("audio_start").click();
+    //       // Autoplay was prevented.
+    //       // Show a "Play" button so that user can start playback.
+    //     });
+    // }
   },
 
   // watch: {

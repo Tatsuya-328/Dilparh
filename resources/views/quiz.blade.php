@@ -11,9 +11,10 @@ var_dump($words);
 </pre> -->
 
 <div id="app">
-    <audio id="preaudio{{ $words[0]['word_id'] }}" preload="auto">
+<iframe src="/audio/{{ $words[0]['word_id'] }}.mp3" allow="autoplay" id="preaudio{{ $words[0]['word_id'] }}" style="display:none"></iframe>
+    <!-- <audio id="preaudio{{ $words[0]['word_id'] }}" preload="auto">
         <source src="/audio/{{ $words[0]['word_id'] }}.mp3" type="audio/mp3">
-    </audio>
+    </audio> -->
     <?php foreach ($words as $word) : ?>
         <audio id="audio{{ $word['word_id'] }}" preload="auto">
             <source src="/audio/{{ $word['word_id'] }}.mp3" type="audio/mp3">
