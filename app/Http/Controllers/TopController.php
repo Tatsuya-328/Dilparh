@@ -467,34 +467,6 @@ class TopController extends Controller
             return $difference;
         }
 
-        // partによってwordsの取得する範囲を決める
-        // switch ($part) {
-        //     case 'part1':
-        //         $limit_start = 0;
-        //         $limit_end = 396;
-        //         break;
-        //     case 'part2':
-        //         $limit_start = 397;
-        //         $limit_end = 106;
-        //         break;
-        //     case 'part3':
-        //         $limit_start = 504;
-        //         $limit_end = 288;
-        //         break;
-        //     case 'part4':
-        //         $limit_start = 793;
-        //         $limit_end = 6;
-        //         break;
-        //     case 'part5':
-        //         $limit_start = 799;
-        //         $limit_end = 70;
-        //         break;
-        //     case 'part6':
-        //         $limit_start = 870;
-        //         $limit_end = 223;
-        //         break;
-        // }
-
         // すべての単語取得
         $words = DB::table('words')
             ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'japanese as correct', 'japanese as wrong', 'ExampleSentence', 'ExampleMeaning')
@@ -516,12 +488,11 @@ class TopController extends Controller
             $userswords = DB::table('words')
                 ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
                 ->where('answers.users_id', '=', Auth::id())
-                ->where('answers.correct', '>', 0)
-                ->where('answers.wrong', '>', 0)
+                ->where('answers.correct', '>=', 0)
+                ->where('answers.wrong', '>=', 0)
                 ->select('words.id as word_id', 'word_urdu', 'pron', 'hinshi', 'gogen', 'japanese', 'japanese as correct', 'japanese as wrong', 'ExampleSentence', 'ExampleMeaning')
                 ->get();
             $userswords = json_decode(json_encode($userswords), true);
-
             $new_userswords = [];
             for ($i = 0; $i < count($userswords); $i++) {
                 $new_userswords[$userswords[$i]['word_id']] = $userswords[$i];
@@ -546,10 +517,12 @@ class TopController extends Controller
             }
             $lisetwords = $new_lisetwords;
             // ログインユーザが一度説いた問題から、リセット済みの問題を省く
-            $userswords = array_diff_assoc_recursive($userswords, $lisetwords);
-
+            if (!empty($lisetwords)) {
+                $userswords = array_diff_assoc_recursive($userswords, $lisetwords);
+            }
             // ログインユーザーが一度解いた問題を省く
             $words = array_diff_assoc_recursive($words, $userswords);
+
             // リセットされた問題も省く
             if (!empty($lisetwords)) {
                 $words = array_diff_assoc_recursive($words, $lisetwords);
