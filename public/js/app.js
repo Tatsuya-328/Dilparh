@@ -2741,7 +2741,7 @@ $(function () {
     // console.dir(this.words[0]);
     // alert(this.words[0][0]);
     // alert(this.words['words_id']);
-    var promise = document.getElementById("audio" + this.words[0]["word_id"]).play();
+    var promise = document.getElementById("preaudio" + this.words[0]["word_id"]).play();
 
     if (promise !== undefined) {
       promise.then(function (_) {// Autoplay started!
