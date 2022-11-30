@@ -2663,7 +2663,7 @@ $(function () {
 
         console.log("二回目");
 
-        for (var i; i < 10; i++) {
+        for (var i = 0; i < 10; i++) {
           console.log(this.words[i]["word_id"]);
           document.getElementById("audio" + this.words[i]["word_id"]).pause();
         }
@@ -2737,21 +2737,26 @@ $(function () {
     // },
 
   },
-  mounted: function mounted() {
-    // console.dir(this.words[0]);
+  mounted: function mounted() {// console.dir(this.words[0]);
     // alert(this.words[0][0]);
     // alert(this.words['words_id']);
-    var promise = document.getElementById("audio" + this.words[0]["word_id"]).play();
-
-    if (promise !== undefined) {
-      promise.then(function (_) {// Autoplay started!
-      })["catch"](function (error) {
-        // document.getElementById("audio" + this.words[0]['word_id']).muted = false;
-        // document.getElementById("audio" + this.words[0]['word_id']).play();
-        document.getElementById("audio_start").click(); // Autoplay was prevented.
-        // Show a "Play" button so that user can start playback.
-      });
-    }
+    // var promise = document
+    //   .getElementById("preaudio" + this.words[0]["word_id"])
+    //   .play();
+    // if (promise !== undefined) {
+    //   promise
+    //     .then((_) => {
+    //       // Autoplay started!
+    //     })
+    //     .catch((error) => {
+    //       alert('hoge');
+    //       // document.getElementById("audio" + this.words[0]['word_id']).muted = false;
+    //       // document.getElementById("audio" + this.words[0]['word_id']).play();
+    //       // document.getElementById("audio_start").click();
+    //       // Autoplay was prevented.
+    //       // Show a "Play" button so that user can start playback.
+    //     });
+    // }
   } // watch: {
   //   rings: function() {
   //     // alert(this.words[this.questionIndex].word_id);
