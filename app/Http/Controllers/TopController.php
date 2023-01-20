@@ -24,9 +24,7 @@ class TopController extends Controller
 
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * HOME画面
      */
     public function index()
     {
@@ -34,9 +32,7 @@ class TopController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * PC使い方
      */
     public function how()
     {
@@ -44,9 +40,7 @@ class TopController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * SP使い方
      */
     public function how_sp()
     {
@@ -54,18 +48,14 @@ class TopController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * アプリについて画面
      */
     public function about()
     {
         return view('about');
     }
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * 設定画面
      */
     public function config()
     {
@@ -73,9 +63,7 @@ class TopController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * 辞書画面
      */
     public function dictionary($language = 'null')
     {
@@ -87,9 +75,7 @@ class TopController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * 辞書 検索結果表示
      */
     public function dictionary_result(Request $word, $language = 'null')
     {
@@ -118,9 +104,7 @@ class TopController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * 回答するパートの選択.
      */
     public function select_part()
     {
@@ -135,8 +119,6 @@ class TopController extends Controller
 
     /**
      * アカウントのメールアドレスを変更する
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function edit_account(Request $email)
     {
@@ -151,44 +133,11 @@ class TopController extends Controller
 
     /**
      * 回答記録を削除する
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function delete(Request $part)
     {
         $part = $part->input('part');
         $part = str_replace('part', '', $part);
-
-        // switch ($part) {
-        //     case 'part1':
-        //         $limit_start = 0;
-        //         $limit_end = 600;
-        //         break;
-        //     case 'part2':
-        //         $limit_start = 600;
-        //         $limit_end = 600;
-        //         break;
-        //     case 'part3':
-        //         $limit_start = 1200;
-        //         $limit_end = 600;
-        //         break;
-        //     case 'part4':
-        //         $limit_start = 1800;
-        //         $limit_end = 600;
-        //         break;
-        //     case 'part5':
-        //         $limit_start = 2400;
-        //         $limit_end = 600;
-        //         break;
-        //     case 'part6':
-        //         $limit_start = 3000;
-        //         $limit_end = 208;
-        //         break;
-        //     case 'all':
-        //         $limit_start = 0;
-        //         $limit_end = 3208;
-        //         break;
-        // }
 
         $ids = DB::table('words')
             ->select('id')
@@ -209,9 +158,7 @@ class TopController extends Controller
 
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     *　スタート画面
      */
     public function start($part = 'null')
     {
@@ -220,183 +167,29 @@ class TopController extends Controller
         switch ($part) {
             case '1':
                 $data = $this->getPartData($part, "ウルドゥー語は初めてか？大丈夫、初級の単語を覚えれば<br class='br-none'>ネイティブの言うことを大体理解することができる！何度も演習して必ず覚えよう！");
-                // $whole_part = DB::table('words')
-                //     ->select('words.id as word_id')
-                //     ->where('words.part', '=', '1')
-                //     ->get();
-                // $whole_part = json_decode(json_encode($whole_part), true);
-                // $whole_partNum = count($whole_part);
-
-                // $twocorrect = DB::table('words')
-                //     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                //     ->select('words.id as word_id')
-                //     ->where('words.part', '=', '1')
-                //     ->where('answers.users_id', '=', Auth::id())
-                //     ->where('answers.correct', '>=', '2')
-                //     ->get();
-                // $twocorrect = json_decode(json_encode($twocorrect), true);
-
-                // $masterNum = count($twocorrect);
-
-                // $data = [
-                //     'title' => 'PART 1',
-                //     'explanation' => "ウルドゥー語は初めてか？大丈夫、初級の単語を覚えれば<br class='br-none'>ネイティブの言うことを大体理解すことができる！何度も演習して必ず覚えよう！",
-                //     'level' => "<b>" . $masterNum . "</b>/" . $whole_partNum . "語　マスター",
-                //     'part' => $part,
-                //     'masterNum' => $masterNum,
-                //     'totalNum' => $whole_partNum
-                // ];
                 break;
             case '2':
                 $data = $this->getPartData($part, "このパートでは固有名詞に特化して学習を進めていくぞ！<br class='br-none'>現地で一番知らずに困るのは名詞だったりするから、気を入れて学習に取り組もう！");
-
-                // $limit_start = 397;
-                // $limit_end = 106;
-                // $totalNum = $limit_end - $limit_start;
-
-                // $twocorrect = DB::table('words')
-                //     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                //     ->select('words.id as word_id')
-                //     ->offset($limit_start)
-                //     ->limit($limit_end)
-                //     ->where('answers.users_id', '=', Auth::id())
-                //     ->where('answers.correct', '>=', '2')
-                //     ->get();
-                // $twocorrect = json_decode(json_encode($twocorrect), true);
-
-                // $masterNum = count($twocorrect);
-
-                // $data = [
-                //     'title' => 'PART 2',
-                //     'explanation' => "このパートでは日常生活で使う中級レベルの単語を学習していくぞ！<br class='br-none'>このパートが終われば胸を張ってウルドゥー語専攻を名乗れる！",
-                //     // 'level_bar'=>"",
-                //     'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
-                //     'part' => $part,
-                //     'masterNum' => $masterNum,
-                //     'totalNum' => $limit_end
-                // ];
                 break;
             case '3':
                 $data = $this->getPartData($part, "このパートでは固有名詞に特化して学習を進めていくぞ！<br class='br-none'>現地で一番知らずに困るのは名詞だったりするから、気を入れて学習に取り組もう！");
-
-                // $limit_start = 504;
-                // $limit_end = 288;
-                // $totalNum = $limit_end - $limit_start;
-
-                // $twocorrect = DB::table('words')
-                //     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                //     ->select('words.id as word_id')
-                //     ->offset($limit_start)
-                //     ->limit($limit_end)
-                //     ->where('answers.users_id', '=', Auth::id())
-                //     ->where('answers.correct', '>=', '2')
-                //     ->get();
-                // $twocorrect = json_decode(json_encode($twocorrect), true);
-
-                // $masterNum = count($twocorrect);
-
-                // $data = [
-                //     'title' => 'PART 3',
-                //     'explanation' => "このパートでは固有名詞に特化して学習を進めていくぞ！<br class='br-none'>現地で一番知らずに困るのは名詞だったりするから、気を入れて学習に取り組もう！",
-                //     // 'level_bar'=>"",
-                //     'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
-                //     'part' => $part,
-                //     'masterNum' => $masterNum,
-                //     'totalNum' => $limit_end
-                // ];
                 break;
             case '4':
                 $data = $this->getPartData($part, "このパートでは会話に出てくる少しレベルの高い語彙を学習する！<br class='br-none'>ここまで来たら二年生修了レベルだ！");
-
-                // $limit_start = 793;
-                // $limit_end = 6;
-                // $totalNum = $limit_end - $limit_start;
-
-                // $twocorrect = DB::table('words')
-                //     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                //     ->select('words.id as word_id')
-                //     ->offset($limit_start)
-                //     ->limit($limit_end)
-                //     ->where('answers.users_id', '=', Auth::id())
-                //     ->where('answers.correct', '>=', '2')
-                //     ->get();
-                // $twocorrect = json_decode(json_encode($twocorrect), true);
-
-                // $masterNum = count($twocorrect);
-
-                // $data = [
-                //     'title' => 'PART 4',
-                //     'explanation' => "このパートでは会話に出てくる少しレベルの高い語彙を学習する！<br class='br-none'>ここまで来たら二年生修了レベルだ！",
-                //     // 'level_bar'=>"",
-                //     'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
-                //     'part' => $part,
-                //     'masterNum' => $masterNum,
-                //     'totalNum' => $limit_end
-                // ];
                 break;
             case '5':
                 $data = $this->getPartData($part, "このパートではニュースや本で頻出する語彙を学習していく！<br class='br-none'>このパートを修了すると三年次でとる翻訳の授業に自信をもって参加できるぞ！");
-
-                // $limit_start = 799;
-                // $limit_end = 70;
-                // $totalNum = $limit_end - $limit_start;
-
-                // $twocorrect = DB::table('words')
-                //     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                //     ->select('words.id as word_id')
-                //     ->offset($limit_start)
-                //     ->limit($limit_end)
-                //     ->where('answers.users_id', '=', Auth::id())
-                //     ->where('answers.correct', '>=', '2')
-                //     ->get();
-                // $twocorrect = json_decode(json_encode($twocorrect), true);
-
-                // $masterNum = count($twocorrect);
-
-                // $data = [
-                //     'title' => 'PART 5',
-                //     'explanation' => "このパートではニュースや本で頻出する語彙を学習していく！<br class='br-none'>このパートを修了すると三年次でとる翻訳の授業に自信をもって参加できるぞ！",
-                //     // 'level_bar'=>"",
-                //     'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
-                //     'part' => $part,
-                //     'masterNum' => $masterNum,
-                //     'totalNum' => $limit_end
-                // ];
                 break;
             case '6':
                 $data = $this->getPartData($part, "最後のパートだな。ここでは頻度が高くない名詞を学習していくぞ。<br class='br-none'>ここまで修了すると卒業レベルだ！");
-
-                // $limit_start = 870;
-                // $limit_end = 223;
-                // $totalNum = $limit_end - $limit_start;
-
-                // $twocorrect = DB::table('words')
-                //     ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
-                //     ->select('words.id as word_id')
-                //     ->offset($limit_start)
-                //     ->limit($limit_end)
-                //     ->where('answers.users_id', '=', Auth::id())
-                //     ->where('answers.correct', '>=', '2')
-                //     ->get();
-                // $twocorrect = json_decode(json_encode($twocorrect), true);
-
-                // $masterNum = count($twocorrect);
-
-                // $data = [
-                //     'title' => 'PART 6',
-                //     'explanation' => "最後のパートだな。ここでは頻度が高くない名詞を学習していくぞ。<br class='br-none'>ここまで修了すると卒業レベルだ！",
-                //     // 'level_bar'=>"",
-                //     'level' => "<b>" . $masterNum . "</b>/" . $limit_end . "語　マスター",
-                //     'part' => 'part' . $part,
-                //     'masterNum' => $masterNum,
-                //     'totalNum' => $limit_end
-                // ];
                 break;
         }
         return view('start', $data);
     }
 
-
+    /**
+     *　指定されたpartのデータを取得する
+     */
     public function getPartData($part, $explanation = null)
     {
         $whole_part = DB::table('words')
@@ -434,9 +227,7 @@ class TopController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * クイズ画面
      */
     public function quiz(Request $quantitiy, $part = 'null', $review = 'null')
     {
@@ -482,8 +273,8 @@ class TopController extends Controller
         }
         $words = $new_words;
 
-        // 「演習する」ボタン
         if ($review == 'null') {
+            // 「演習する」ボタン押した時
             // ログインユーザのanswersに存在するものすべて
             $userswords = DB::table('words')
                 ->leftJoin('answers', 'words.id', '=', 'answers.words_id')
@@ -594,7 +385,7 @@ class TopController extends Controller
                 }
             }
         } else {
-            // 「苦手を復習する」ボタン
+            // 「苦手を復習する」ボタン押した時
             // 間違えた問題
             $reviewwords = DB::table('words')
                 ->leftJoin('answers', 'words.id', '=', 'answers.words_id')

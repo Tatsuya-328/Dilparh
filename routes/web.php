@@ -13,9 +13,9 @@
 
 Auth::routes();
 
-Route::get('/home', 'TopController@index')->name('index');
-
 Route::get('/', 'TopController@index')->name('index');
+
+Route::get('/home', 'TopController@index')->name('index');
 
 Route::get('/how', 'TopController@how')->name('how');
 
@@ -42,3 +42,14 @@ Route::get('/start/{part?}', 'TopController@start')->name('start');
 Route::post('/start/{part?}/quiz', 'TopController@quiz')->name('quiz');
 
 Route::post('/start/{part?}/quiz/{review?}', 'TopController@quiz')->name('quiz');
+
+// 以下Grammar
+
+Route::get('/grammar', 'GrammarController@index')->name('index');
+
+Route::get('/grammar/home', 'GrammarController@index')->name('index');
+
+Route::get('/grammar/{part?}', 'GrammarController@part')->name('part');
+
+Route::get('/grammar/{part?}/{quiz?}', 'GrammarController@quiz')->name('quiz');
+

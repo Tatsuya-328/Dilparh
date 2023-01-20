@@ -23,6 +23,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "progressbar.js": "^1.1.0",
         "webpack": "^5.72.0"
     }
 }

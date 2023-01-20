@@ -99,3 +99,37 @@
 </script>
 
 </html>
+
+
+
+<!--語彙のまま
+                <span class="nav_toggle">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+            <nav class="nav">
+                <ul class="nav_menu_ul">
+                    <li class="nav_menu_li"><a href="{{ route('index') }}">HOME</a></li>
+                    <li class="nav_menu_li"><a href="{{ route('how') }}">使い方を学ぶ</a></li>
+                    <li class="nav_menu_li"><a href="{{ route('select_part') }}">問題をはじめる</a></li>
+                    <li class="nav_menu_li"><a href="/dictionary/japanese">単語検索</a></li>
+                    <li class="nav_menu_li"><a href="{{ route('about') }}">このサイトについて</a></li>
+                    <li class="nav_menu_li"><a href="{{ route('config') }}">設定</a></li>
+                </ul>
+            </nav>
+            <div class="account_name" id="navbarSupportedContent">
+                <a id="navbarDropdown" class="nav-link" href="/config" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                    
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </div>  
+ここまで語彙のまま-->
