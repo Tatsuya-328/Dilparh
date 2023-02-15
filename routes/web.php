@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// ssl化でmixed contentエラー 対策追記
+// ssl化でmixed contentエラー対策追記
 if (config('app.env') === 'ngrok') {
   URL::forceScheme('https');
 }
