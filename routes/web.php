@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// ssl化でmixed contentエラー 対策追記
+if (config('app.env') === 'ngrok') {
+  URL::forceScheme('https');
+}
 
 Auth::routes();
 
@@ -52,4 +56,3 @@ Route::get('/grammar/home', 'GrammarController@index')->name('index');
 Route::get('/grammar/{part?}', 'GrammarController@part')->name('part');
 
 Route::get('/grammar/{part?}/{quiz?}', 'GrammarController@quiz')->name('quiz');
-
