@@ -10,12 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// ssl化でmixed contentエラー対策 追記
+if (config('app.env') === 'ngrok') {
+  URL::forceScheme('https');
+}
 
 Auth::routes();
 
-Route::get('/home', 'TopController@index')->name('index');
-
 Route::get('/', 'TopController@index')->name('index');
+
+Route::get('/home', 'TopController@index')->name('index');
 
 Route::get('/how', 'TopController@how')->name('how');
 
@@ -42,3 +46,13 @@ Route::get('/start/{part?}', 'TopController@start')->name('start');
 Route::post('/start/{part?}/quiz', 'TopController@quiz')->name('quiz');
 
 Route::post('/start/{part?}/quiz/{review?}', 'TopController@quiz')->name('quiz');
+
+// 以下Grammar
+
+Route::get('/grammar', 'GrammarController@index')->name('grammar_index');
+
+Route::get('/grammar/home', 'GrammarController@index')->name('grammar_index');
+
+Route::get('/grammar/{part?}', 'GrammarController@part')->name('grammar_part');
+
+Route::get('/grammar/{part?}/{quiz?}', 'GrammarController@quiz')->name('grammar_quiz');
