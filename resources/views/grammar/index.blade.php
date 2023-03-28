@@ -18,7 +18,7 @@
 
   <div class=side-bar>
     <ul class="nav_menu_ul">
-      <li class="nav_menu_li first_nav_menu_li"><a href="{{ route('index') }}">Home</a></li>
+      <li class="nav_menu_li first_nav_menu_li"><a href="{{ route('grammar_index') }}">Home</a></li>
       <li class="nav_menu_li"><a href="#">Dictionary</a></li>
       <li class="nav_menu_li"><a href="#">About</a></li>
       <li class="nav_menu_li"><a href="#">Support</a></li>

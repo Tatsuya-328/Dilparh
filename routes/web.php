@@ -49,10 +49,10 @@ Route::post('/start/{part?}/quiz/{review?}', 'TopController@quiz')->name('quiz')
 
 // 以下Grammar
 
-Route::get('/grammar', 'GrammarController@index')->name('index');
+Route::get('/grammar', 'GrammarController@index')->name('grammar_index');
 
-Route::get('/grammar/home', 'GrammarController@index')->name('index');
+Route::get('/grammar/home', 'GrammarController@index')->name('grammar_index');
 
-Route::get('/grammar/{part?}', 'GrammarController@part')->name('part');
+Route::get('/grammar/{part?}', 'GrammarController@part')->name('grammar_part');
 
-Route::get('/grammar/{part?}/{quiz?}', 'GrammarController@quiz')->name('quiz');
+Route::get('/grammar/{part?}/{quiz?}', 'GrammarController@quiz')->name('grammar_quiz');
