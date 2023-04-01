@@ -1,6 +1,12 @@
+
 @extends('layouts.grammar')
 @section('content')
-<div class="content_wrapper">
+<div id="app">
+<grammar-component></grammar-component>
+<div>
+<script src="{{ asset('/js/app.js') }}"></script>
+
+<!-- <div class="content_wrapper"> -->
   <!--  e52821_24419 
   <div class="side_bar"> 
       <span  class="e52797_24420">About</span>
@@ -19,6 +25,7 @@
     </ul>
   </div> -->
 
+  <?php /* vue componetに移行
   <div class="quiz">
     <div>
       <a href="/grammar/part1/">
@@ -82,4 +89,6 @@
         </div>
     </div>
 </div> -->
+*/ ?>
+
 @endsection

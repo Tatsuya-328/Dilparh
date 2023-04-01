@@ -2164,6 +2164,217 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GrammarComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GrammarComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//  並び替え
+$(function () {
+  var answerUL = document.getElementById("answer-area"); // $( '#answer-area' ).sortable();
+
+  answerUL.sortable();
+  $('#answer-area').disableSelection();
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mounted: function mounted() {
+    console.log('Component mounted.');
+    var targetElementText = this.$refs.answer;
+    console.log('対象のDOMのテキスト：', targetElementText);
+  }
+}); // //以下 grammar.jsから移行
+// const question = [
+// {
+//     q: "パキスタンに行くつもりだよ",
+//     a: ["۔", "ہے", "ارادہ", "کا", "جانے", "پاکستان"]
+// },
+// {
+//     q: "私はその公園に行きます",
+//     a: ["I", "will", "go", "to", "the", "park"]
+// },
+// {
+//     q: "北海道は何マイル離れていますか",
+//     a: ["how", "many", "miles", "away", "is", "Hokkaido"]
+// },
+// {
+//     q: "一列に並んでください",
+//     a: ["please", "line", "up", "in", "a", "row"]
+// }
+// ];
+// //top画面
+// //game画面
+// const scecegame = document.querySelector("#game");
+// //正解不正解表示画面
+// const next = document.querySelector("#next");
+// const field = document.querySelector("#field");
+// const select = document.querySelectorAll(".select");
+// const answer = document.querySelectorAll(".answer");
+// //選択された答えを順番に格納
+// let answers = [];
+// //問題番号を管理
+// let questionnum = 0;
+// init();
+// function init() {
+// gamestart();
+// }
+// function changescene(hiddenscene, visiblescene) {
+// hiddenscene.classList.add("is-hidden");
+// hiddenscene.classList.remove("is-visible");
+// visiblescene.classList.add("is-visible");
+// }
+// function gamestart() {
+// showQuestion()
+// }
+// //並べ替えクイズの処理
+// function showQuestion() {
+// //答えを格納している配列を初期化
+// answers.length = 0; 
+// for (let i = 0; i < 6; i++) {
+//     console.log( answer );
+//     answer[i].textContent = null;
+// }
+// //問題の解答シャッフル Fisher–Yatesアルゴリズムを用いる
+// //値渡しコピーで配列に代入
+// let shufflea = question[questionnum].a.concat(); 
+// for (let i = shufflea.length - 1; i > 0; i--) {
+//     let r = Math.floor(Math.random() * (i + 1));
+//     let tmp = shufflea[i];
+//     shufflea[i] = shufflea[r];
+//     shufflea[r] = tmp;
+// }
+// //問題文挿入
+// //回答選択肢挿入
+// for (let i = 0; i < shufflea.length; i++) {
+//     select[i].classList.remove('is-hidden');
+//     select[i].textContent = shufflea[i];
+// }
+// let count = 0;
+// //選択された答えを消す 
+// for (let i = 0; i < shufflea.length; i++) {
+//     select[i].onclick = () => {
+//         console.log(count);
+//         select[i].classList.add('is-hidden');
+//         //選択された答えを移動
+//         answer[count].textContent = select[i].textContent;
+//         count += 1;
+//         if (count == shufflea.length) {
+//             count = 0;
+//         }
+//     }
+// }
+// }
+// // 回答する
+// function checkAnswer() {
+// for (let i = 0; i < document.getElementsByClassName( "answer" ).length; i++) {
+//     answers.push(document.getElementsByClassName( "answer" )[i].innerText);
+// }
+// Judgment();
+// }
+// //正解かどうか判定
+// function Judgment() {
+// changescene(scecegame, next);
+// if (JSON.stringify(question[questionnum].a) == JSON.stringify(answers)) {
+//     next.innerHTML = "<p style='font-size:3em;color:#f00;'>正解です！!</p><button onclick='nextquestion()'>次の問題</button>";
+// } else {
+//     next.innerHTML = "<p style='font-size:3em;color:#000;'>不正解...</p><button onclick='nextquestion()'>次の問題</button>";
+// }
+// // 元の順番に戻す
+// var answerUL = document.getElementById("answer-area");
+// var answer_array = Array.from(document.getElementsByClassName("answer"));
+//     function compareText (a,b) {
+//     if (a.id > b.id)
+//         return 1;
+//     else if (a.id < b.id)
+//         return -1;
+//     return 0;
+//     }
+//     answer_array.sort(compareText);
+//     // 新しい順番を DOM ツリーに反映
+//     for (var i=0; i<answer_array.length; i++) {
+//     answerUL.appendChild(answerUL.removeChild(answer_array[i]))
+//     }
+// }
+// //次の問題ボタンが押された時の処理
+// function nextquestion() {
+// questionnum++
+// if (Object.keys(question).length > questionnum) {
+//     changescene(next, scecegame);
+//     showQuestion();
+// } else {
+//     questionnum = 0;
+//     changescene(next, scecegame);
+//     showQuestion();
+// }
+// }
+// //  並び替え
+// $( function() {
+// $( '#answer-area' ).sortable();
+// $( '#answer-area' ).disableSelection();
+// } );
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SampleComponent.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SampleComponent.vue?vue&type=script&lang=js& ***!
@@ -2794,7 +3005,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // import
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 
-Vue.component('sample-component', (__webpack_require__(/*! ./components/SampleComponent.vue */ "./resources/js/components/SampleComponent.vue")["default"])); // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('sample-component', (__webpack_require__(/*! ./components/SampleComponent.vue */ "./resources/js/components/SampleComponent.vue")["default"]));
+Vue.component('grammar-component', (__webpack_require__(/*! ./components/GrammarComponent.vue */ "./resources/js/components/GrammarComponent.vue")["default"])); // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 // Vue.component('sample-component', require('./components/SampleComponent.vue').default);
 
 /**
@@ -38161,6 +38373,45 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./resources/js/components/GrammarComponent.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/GrammarComponent.vue ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _GrammarComponent_vue_vue_type_template_id_1e039881___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GrammarComponent.vue?vue&type=template&id=1e039881& */ "./resources/js/components/GrammarComponent.vue?vue&type=template&id=1e039881&");
+/* harmony import */ var _GrammarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GrammarComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/GrammarComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _GrammarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _GrammarComponent_vue_vue_type_template_id_1e039881___WEBPACK_IMPORTED_MODULE_0__.render,
+  _GrammarComponent_vue_vue_type_template_id_1e039881___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/GrammarComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/SampleComponent.vue":
 /*!*****************************************************!*\
   !*** ./resources/js/components/SampleComponent.vue ***!
@@ -38200,6 +38451,22 @@ component.options.__file = "resources/js/components/SampleComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/GrammarComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/GrammarComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GrammarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./GrammarComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GrammarComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GrammarComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/SampleComponent.vue?vue&type=script&lang=js&":
 /*!******************************************************************************!*\
   !*** ./resources/js/components/SampleComponent.vue?vue&type=script&lang=js& ***!
@@ -38216,6 +38483,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/GrammarComponent.vue?vue&type=template&id=1e039881&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/GrammarComponent.vue?vue&type=template&id=1e039881& ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GrammarComponent_vue_vue_type_template_id_1e039881___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GrammarComponent_vue_vue_type_template_id_1e039881___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GrammarComponent_vue_vue_type_template_id_1e039881___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./GrammarComponent.vue?vue&type=template&id=1e039881& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GrammarComponent.vue?vue&type=template&id=1e039881&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/SampleComponent.vue?vue&type=template&id=30d02158&":
 /*!************************************************************************************!*\
   !*** ./resources/js/components/SampleComponent.vue?vue&type=template&id=30d02158& ***!
@@ -38229,6 +38513,179 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SampleComponent_vue_vue_type_template_id_30d02158___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SampleComponent_vue_vue_type_template_id_30d02158___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SampleComponent.vue?vue&type=template&id=30d02158& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SampleComponent.vue?vue&type=template&id=30d02158&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GrammarComponent.vue?vue&type=template&id=1e039881&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GrammarComponent.vue?vue&type=template&id=1e039881& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "quiz" }, [
+    _c("div", [
+      _c("a", { attrs: { href: "/grammar/part1/" } }, [
+        _c("span", { staticClass: "progress_button" }, [
+          _c(
+            "svg",
+            {
+              staticClass: "progress_button_svg",
+              attrs: {
+                viewBox: "0 0 30 30",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+              },
+            },
+            [
+              _c("path", {
+                attrs: {
+                  "fill-rule": "evenodd",
+                  "clip-rule": "evenodd",
+                  d: "M15 0C6.705 0 0 6.705 0 15C0 23.295 6.705 30 15 30C23.295 30 30 23.295 30 15C30 6.705 23.295 0 15 0ZM15 27C8.385 27 3 21.615 3 15C3 8.385 8.385 3 15 3C21.615 3 27 8.385 27 15C27 21.615 21.615 27 15 27ZM15 12.885L20.385 7.5L22.5 9.615L17.115 15L22.5 20.385L20.385 22.5L15 17.115L9.615 22.5L7.5 20.385L12.885 15L7.5 9.615L9.615 7.5L15 12.885Z",
+                  fill: "#1C1B1F",
+                },
+              }),
+            ]
+          ),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("progress", {
+        staticClass: "quiz_progress_bar",
+        attrs: { max: "50", value: "30" },
+      }),
+    ]),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "game" } }, [
+      _c("h1", { staticClass: "quesiton_sentence" }, [
+        _vm._v("適切な順番に並び替えてください"),
+      ]),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "field" } }, [
+        _c("ul", { staticClass: "drag-list", attrs: { id: "answer-area" } }, [
+          _c("li", {
+            ref: "answer",
+            staticClass: "answer",
+            attrs: { id: "item1", draggable: "true" },
+          }),
+          _vm._v(" "),
+          _c("li", {
+            ref: "answer",
+            staticClass: "answer",
+            attrs: { id: "item2", draggable: "true" },
+          }),
+          _vm._v(" "),
+          _c("li", {
+            ref: "answer",
+            staticClass: "answer",
+            attrs: { id: "item3", draggable: "true" },
+          }),
+          _vm._v(" "),
+          _c("li", {
+            ref: "answer",
+            staticClass: "answer",
+            attrs: { id: "item4", draggable: "true" },
+          }),
+          _vm._v(" "),
+          _c("li", {
+            ref: "answer",
+            staticClass: "answer",
+            attrs: { id: "item5", draggable: "true" },
+          }),
+          _vm._v(" "),
+          _c("li", {
+            ref: "answer",
+            staticClass: "answer",
+            attrs: { id: "item6", draggable: "true" },
+          }),
+        ]),
+        _vm._v(" "),
+        _vm._m(0),
+      ]),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2),
+    ]),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "next" } }),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "drag-list", attrs: { id: "select-area" } },
+      [
+        _c("div", {
+          staticClass: "select",
+          attrs: { id: "item1", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "select",
+          attrs: { id: "item2", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "select",
+          attrs: { id: "item3", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "select",
+          attrs: { id: "item4", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "select",
+          attrs: { id: "item5", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "select",
+          attrs: { id: "item6", draggable: "true" },
+        }),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "btn" } }, [
+      _c("button", { attrs: { onclick: "showQuestion()" } }, [
+        _vm._v("リセット"),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "check" } }, [
+      _c("button", { attrs: { onclick: "checkAnswer()" } }, [
+        _vm._v("回答する"),
+      ]),
+    ])
+  },
+]
+render._withStripped = true
+
 
 
 /***/ }),

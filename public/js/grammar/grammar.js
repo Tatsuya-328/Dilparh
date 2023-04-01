@@ -167,7 +167,9 @@ function nextquestion() {
 
 //  並び替え
 $( function() {
-  $( '#answer-area' ).sortable();
+  var answerUL = document.getElementById("answer-area");
+  // $( '#answer-area' ).sortable();
+  answerUL.sortable();
   $( '#answer-area' ).disableSelection();
 } );
 
