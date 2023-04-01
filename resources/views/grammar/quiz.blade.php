@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 @extends('layouts.grammar')
 @section('content')
 <div class="content_wrapper">
@@ -58,7 +59,7 @@
             <li id="item3" draggable="true">3.入れ替わります</li>
           </ul> -->
 
-          <div id="btn">
+          <div id="btn" class="grammar_quiz_btn">
               <button onclick="showQuestion()">リセット</button>
           </div>
 

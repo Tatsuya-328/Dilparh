@@ -6,17 +6,13 @@ const question = [
 
   },
   {
-      q: "私はその公園に行きます",
-      a: ["I", "will", "go", "to", "the", "park"]
+      q: "今日は授業がないみたいです",
+      a: ["ہے۔", "نہیں", "کلاس", "آج", "ہے", "لگتا"]
   },
   {
-      q: "北海道は何マイル離れていますか",
-      a: ["how", "many", "miles", "away", "is", "Hokkaido"]
+      q: "あなたの名前を教えてください",
+      a: ["بتائیں", "نام", "اپنا", "مجھے", "کرم", "براہِ"]
   },
-  {
-      q: "一列に並んでください",
-      a: ["please", "line", "up", "in", "a", "row"]
-  }
 ];
 
 //top画面
@@ -129,12 +125,16 @@ function checkAnswer() {
 
 //正解かどうか判定
 function Judgment() {
+  let showinganswer = question[questionnum].a.reverse().join(" ");
+  // showinganswer.replace(",", " ");
+  console.log(showinganswer);
   changescene(scecegame, next);
   if (JSON.stringify(question[questionnum].a) == JSON.stringify(answers)) {
-      next.innerHTML = "<p style='font-size:3em;color:#f00;'>正解です！!</p><button onclick='nextquestion()'>次の問題</button>";
+    console.log(question[questionnum].a);
+      next.innerHTML = "<p style='font-size:3em;color:#f00;'>" +  "正解です！!" + "</p><p>答え: " + showinganswer + "</p><p>" + question[questionnum].q + "</p><button onclick='nextquestion()'>次の問題</button>";
 
   } else {
-      next.innerHTML = "<p style='font-size:3em;color:#000;'>不正解...</p><button onclick='nextquestion()'>次の問題</button>";
+      next.innerHTML = "<p style='font-size:3em;color:#000;'>" + "不正解..." + "</p><p>答え: " + showinganswer + "</p><p>" + question[questionnum].q + "</p><button onclick='nextquestion()'>次の問題</button>";
   }
    // 元の順番に戻す
   var answerUL = document.getElementById("answer-area");
