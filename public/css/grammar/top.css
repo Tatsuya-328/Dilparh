@@ -643,6 +643,9 @@ header {
 	width: 25px;
 	height: 25px;
 }
+.grammar_quiz_btn {
+	margin: 100px 0 15px 0;
+}
 /* 並び替え */
 div.is-hidden {
 	display: none;
