@@ -11,7 +11,7 @@
     <title>文法ディルパル</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" async></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/uru_top.js') }}" defer></script>
     <script src="{{ asset('js/jquery-3.5.1.min.js') }}" defer></script>
     <!-- Fonts -->

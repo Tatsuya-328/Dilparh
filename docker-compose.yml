@@ -14,7 +14,8 @@ services:
    # 先ほど作ったDockerfileを使って、コンテナをビルドするという指定
    build: ./docker/app
    # コンテナの名前を指定
-   container_name: laravel_app
+   #  container_name: laravel_app
+   container_name: dilparh_app
    # ローカルのディレクトリとコンテナ上のディレクトリのリンクを設定
    # ./src は docker-composer.yml のディレクトリ直下にある src を設定している
    # コンテナが作成されると src ディレクトリからコンテナの /var/www/html にアクセスすることができる

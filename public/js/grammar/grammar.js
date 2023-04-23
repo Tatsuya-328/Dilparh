@@ -75,7 +75,8 @@ function showQuestion() {
       select[i].textContent = shufflea[i];
   }
 
-  let count = 0;
+  // let count = 0;
+  let count = shufflea.length - 1; // 右から入力のため、単語数から引き算していく
   //選択された答えを消す 
   for (let i = 0; i < shufflea.length; i++) {
       select[i].onclick = () => {
@@ -84,7 +85,7 @@ function showQuestion() {
           //選択された答えを移動
           answer[count].textContent = select[i].textContent;
           // answers.push(answer[count].textContent);
-          count += 1;
+          count -= 1;
           if (count == shufflea.length) {
               count = 0;
               // Judgment();
@@ -116,7 +117,12 @@ function showQuestion() {
 // document.getElementsByClassName( "answer" )[0].length;
 // 回答する
 function checkAnswer() {
-  for (let i = 0; i < document.getElementsByClassName( "answer" ).length; i++) {
+  // 下記 左から入力
+  // for (let i = 0; i < document.getElementsByClassName( "answer" ).length; i++) {
+  //   answers.push(document.getElementsByClassName( "answer" )[i].innerText);
+  // }
+  // 下記 右から入力
+  for (let i = document.getElementsByClassName( "answer" ).length - 1; i > -1; i--) {
     answers.push(document.getElementsByClassName( "answer" )[i].innerText);
   }
   Judgment();
@@ -126,7 +132,9 @@ function checkAnswer() {
 function Judgment() {
   let showinganswer = question[questionnum].a.reverse().join(" ");
   // showinganswer.replace(",", " ");
-  console.log(showinganswer);
+  // console.log('答え'. showinganswer);
+  // console.log('入力' . JSON.stringify(answers));
+
   changescene(scecegame, next);
   if (JSON.stringify(question[questionnum].a) == JSON.stringify(answers)) {
     console.log(question[questionnum].a);
