@@ -21,7 +21,7 @@
   </div>
 
   <div class="lessons part">
-    <a href="{{ route('index') }}">
+    <a href="{{ route('grammar_index') }}">
     <div class="back_button">
       <svg width="16" height="26" viewBox="0 0 16 26" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M15.7185 3.4375L12.781 0.5L0.281006 13L12.781 25.5L15.7185 22.5625L6.17684 13L15.7185 3.4375Z" />

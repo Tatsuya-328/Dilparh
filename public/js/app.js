@@ -2164,6 +2164,388 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GrammarquizComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GrammarquizComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var draggable = window['vuedraggable'];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  // name: "SampleComponent",
+  // props: {
+  //   words: {
+  //     type: Array,
+  //     default: [],
+  //   },
+  //   dummywords: {
+  //     type: Array,
+  //     default: [],
+  //   },
+  //   user_id: {
+  //     type: null,
+  //   },
+  // },
+  data: function data() {
+    return {
+      items: [{
+        no: 1,
+        name: 'キャベツ',
+        categoryNo: '1'
+      }, {
+        no: 2,
+        name: 'ステーキ',
+        categoryNo: '2'
+      }, {
+        no: 3,
+        name: 'リンゴ',
+        categoryNo: '3'
+      }],
+      question: [{
+        q: "パキスタンに行くつもりだよ",
+        a: ["۔", "ہے", "ارادہ", "کا", "جانے", "پاکستان"]
+      }, {
+        q: "今日は授業がないみたいです",
+        a: ["ہے۔", "نہیں", "کلاس", "آج", "ہے", "لگتا"]
+      }, {
+        q: "あなたの名前を教えてください",
+        a: ["بتائیں", "نام", "اپنا", "مجھے", "کرم", "براہِ"]
+      }],
+      //game画面
+      scecegame: document.querySelector("#game"),
+      //正解不正解表示画面
+      next: document.querySelector("#next"),
+      field: document.querySelector("#field"),
+      select: document.querySelectorAll(".select"),
+      answer: document.querySelectorAll(".answer"),
+      //選択された答えを順番に格納
+      answers: [],
+      //問題番号を管理
+      questionnum: 0 // errors: [],
+      // answers: [], // クイズ最後の回答表示用
+      // sendanswers: [], // DB登録用
+      // correct: 0,
+      // questionIndex: 0,
+      // random1: Math.floor(Math.random() * this.dummywords.length),
+      // random2: Math.floor(Math.random() * this.dummywords.length),
+      // random3: Math.floor(Math.random() * this.dummywords.length),
+      // show_wrong: false,
+      // show_correct: false,
+
+    };
+  },
+  components: {
+    draggable: draggable
+  },
+  methods: {//   rings: function (id) {
+    //     // console.log('一問目');
+    //     // 音声再生、一問目のみ用
+    //     // document.getElementById("preaudio" + id).muted = false;
+    //   },
+    //   addAnswer: function (answerdjapanese) {
+    //     // 回答表示画面用にpush
+    //     this.answers.push(answerdjapanese);
+    //     if (answerdjapanese === this.currentWord.japanese) {
+    //       // 正解時のDB登録用配列
+    //       if (
+    //         this.words[this.questionIndex].correct ===
+    //           this.words[this.questionIndex].japanese &&
+    //         this.words[this.questionIndex].liseted != "1"
+    //       ) {
+    //         // 初めての出題
+    //         const answerd = {
+    //           users_id: this.user_id,
+    //           words_id: this.currentWord.word_id,
+    //           correct: 1,
+    //           wrong: 0,
+    //         };
+    //         this.sendanswers.push(answerd);
+    //       } else if (
+    //     this.words[this.questionIndex].correct ===
+    //     this.words[this.questionIndex].japanese
+    //   ) {
+    //     // リセット済み
+    //     const answerd = {
+    //       answers_id: this.currentWord.answers_id,
+    //       users_id: this.user_id,
+    //       words_id: this.currentWord.word_id,
+    //       correct: 1,
+    //       wrong: 0, // 正解したら不正解記録削除
+    //     };
+    //     this.sendanswers.push(answerd);
+    //   } else {
+    //     // ただの既出
+    //     const answerd = {
+    //       answers_id: this.currentWord.answers_id,
+    //       users_id: this.user_id,
+    //       words_id: this.currentWord.word_id,
+    //       correct: Number(this.words[this.questionIndex].correct) + 1,
+    //       wrong: 0, // 正解したら不正解記録削除
+    //     };
+    //     this.sendanswers.push(answerd);
+    //   }
+    //   this.correct++;
+    // } else {
+    //   // 不正解時のDB登録用配列
+    //   if (
+    //     this.words[this.questionIndex].correct ===
+    //       this.words[this.questionIndex].japanese &&
+    //     this.words[this.questionIndex].liseted != "1"
+    //   ) {
+    //     // 初めての出題
+    //     const answerd = {
+    //       users_id: this.user_id,
+    //       words_id: this.currentWord.word_id,
+    //       correct: 0,
+    //       wrong: 1,
+    //   };
+    //   this.sendanswers.push(answerd);
+    // } else if (
+    //   this.words[this.questionIndex].correct ===
+    //   this.words[this.questionIndex].japanese
+    // ) {
+    //   // リセットされた単語
+    //   const answerd = {
+    //     answers_id: this.currentWord.answers_id,
+    //     users_id: this.user_id,
+    //     words_id: this.currentWord.word_id,
+    //     correct: 1,
+    //     wrong: 1, // 不正解はフラグとして使うから数を増やさない
+    //   };
+    //   this.sendanswers.push(answerd);
+    // } else {
+    //   // ただの既出
+    //     const answerd = {
+    //       answers_id: this.currentWord.answers_id,
+    //       users_id: this.user_id,
+    //       words_id: this.currentWord.word_id,
+    //       correct: this.words[this.questionIndex].correct,
+    //       wrong: 1, // 不正解はフラグとして使うから数を増やさない
+    //     };
+    //     this.sendanswers.push(answerd);
+    //   }
+    // }
+    // // 画面切り替え時に選択肢の順番をシャッフル
+    // function shuffleContent(container) {
+    //   var content = container.find("> *");
+    //   var total = content.length;
+    //   content.each(function () {
+    //     content.eq(Math.floor(Math.random() * total)).prependTo(container);
+    //   });
+    // }
+    // $(function () {
+    //   shuffleContent($(".item_wrapper"));
+    // });
+    // // 画面切り替え時に誤答選択肢を新しくする
+    // this.random1 = Math.floor(Math.random() * this.dummywords.length);
+    // this.random2 = Math.floor(Math.random() * this.dummywords.length);
+    // while (this.random2 === this.random1) {
+    //   this.random2 = Math.floor(Math.random() * this.dummywords.length);
+    // }
+    // this.random3 = Math.floor(Math.random() * this.dummywords.length);
+    // while (this.random3 === this.random1 || this.random3 === this.random2) {
+    //   this.random3 = Math.floor(Math.random() * this.dummywords.length);
+    // }
+    // // } else {
+    // // 最終問題に答えたときにDB登録
+    // // for (var i = 0; i < this.sendanswers.length; i++) {
+    // // 同時にwordsをループさせて、correctとwrongが入ってるか確認する。
+    // if (
+    //   this.words[this.questionIndex].correct ==
+    //     this.words[this.questionIndex].japanese &&
+    //   this.words[this.questionIndex].liseted != "1"
+    // ) {
+    //   // 初めての回答なら登録
+    //   axios.post("/api/answers", this.sendanswers[this.questionIndex]);
+    // } else {
+    //   // 既出なら更新
+    //   axios.put(
+    //     "/api/answers/" +
+    //       this.sendanswers[this.questionIndex]["answers_id"] +
+    //       "/" +
+    //       this.sendanswers[this.questionIndex]["correct"] +
+    //       "/" +
+    //       this.sendanswers[this.questionIndex]["wrong"] +
+    //       "/report"
+    //   );
+    //   // axios.put("/api/answers", this.sendanswers[i]);
+    // }
+    // // }
+    // if (!this.completed) {
+    //   this.questionIndex++;
+    //   // 音声再生二問目以降
+    //   console.log("二回目");
+    //   for (let i = 0; i < 10; i++) {
+    //       console.log(this.words[i]["word_id"]);
+    //       document.getElementById("audio" + this.words[i]["word_id"]).pause();
+    //     }
+    //     document.getElementById("audio" + this.currentWord["word_id"]).play();
+    //   }
+    // },
+    // show_wrong_btn: function () {
+    //   this.show_wrong = !this.show_wrong;
+    //   // if (this.completed) {
+    //   //     this.completed = !this.completed;
+    //   // }
+    //   $(window).scrollTop(0);
+    // },
+    // show_correct_btn: function () {
+    //   this.show_correct = !this.show_correct;
+    //   // if (this.completed) {
+    //   //     this.completed = !this.completed;
+    //   // }
+    //   if (this.show_wrong == true) {
+    //     this.show_wrong = false;
+    //   }
+    //   $(window).scrollTop(0);
+    // },
+    // finish_btn: function () {},
+    // // 音声再生ボタン押したら
+    // ring: function (id) {
+    //   // console.log("audio" + (id - 1));
+    //   // 再生中のものは停止してから
+    //   for (let i = 0; i < 10; i++) {
+    //     console.log(this.words[i]["word_id"]);
+    //     document.getElementById("audio" + this.words[i]["word_id"]).pause();
+    //   }
+    //   document.getElementById("audio" + id).pause();
+    //   document.getElementById("audio" + id).play();
+    // },
+  },
+  computed: {// currentWord: function () {
+    //   return this.words[this.questionIndex];
+    // },
+    // firstWord: function () {
+    //   return this.words[0];
+    // },
+    // randomWord1: function () {
+    //   return this.dummywords[this.random1];
+    // },
+    // randomWord2: function () {
+    //   return this.dummywords[this.random2];
+    // },
+    // randomWord3: function () {
+    //   return this.dummywords[this.random3];
+    // },
+    // completed: function () {
+    //   return this.words.length == this.answers.length;
+    // },
+    // rings: function () {
+    //   alert(this.words[this.questionIndex].word_id);
+    //   document
+    //     .getElementById("audio" + this.words[this.questionIndex].word_id)
+    //     .play();
+    //   return null;
+    // },
+    // ring: function (id) {
+    //   // alert(this.words[this.questionIndex].word_id);
+    //   document
+    //     .getElementById("audio" + id)
+    //     .play();
+    //   return null;
+    // },
+  },
+  mounted: function mounted() {// console.dir(this.words[0]);
+    // alert(this.words[0][0]);
+    // alert(this.words['words_id']);
+    // var promise = document
+    //   .getElementById("preaudio" + this.words[0]["word_id"])
+    //   .play();
+    // if (promise !== undefined) {
+    //   promise
+    //     .then((_) => {
+    //       // Autoplay started!
+    //     })
+    //     .catch((error) => {
+    //       alert('hoge');
+    //       // document.getElementById("audio" + this.words[0]['word_id']).muted = false;
+    //       // document.getElementById("audio" + this.words[0]['word_id']).play();
+    //       // document.getElementById("audio_start").click();
+    //       // Autoplay was prevented.
+    //       // Show a "Play" button so that user can start playback.
+    //     });
+    // }
+  } // watch: {
+  //   rings: function() {
+  //     // alert(this.words[this.questionIndex].word_id);
+  //     return document.getElementById("audio" + this.currentWord.word_id).play();
+  //   }
+  // }
+
+}); // シャッフルが終わってから表示させる
+// document.getElementsByClassName("item_wrapper").style.visibility ="visible";
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SampleComponent.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SampleComponent.vue?vue&type=script&lang=js& ***!
@@ -2694,9 +3076,9 @@ $(function () {
     ring: function ring(id) {
       // console.log("audio" + (id - 1));
       // 再生中のものは停止してから
-      if (document.getElementById("audio" + (id - 1))) {
-        console.log("audio" + document.getElementById("audio" + (id - 1)));
-        document.getElementById("audio" + (id - 1)).pause();
+      for (var i = 0; i < 10; i++) {
+        console.log(this.words[i]["word_id"]);
+        document.getElementById("audio" + this.words[i]["word_id"]).pause();
       }
 
       document.getElementById("audio" + id).pause();
@@ -2799,7 +3181,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // import
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 
-Vue.component('sample-component', (__webpack_require__(/*! ./components/SampleComponent.vue */ "./resources/js/components/SampleComponent.vue")["default"])); // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('sample-component', (__webpack_require__(/*! ./components/SampleComponent.vue */ "./resources/js/components/SampleComponent.vue")["default"]));
+Vue.component('grammarquiz-component', (__webpack_require__(/*! ./components/GrammarquizComponent.vue */ "./resources/js/components/GrammarquizComponent.vue")["default"])); // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 // Vue.component('sample-component', require('./components/SampleComponent.vue').default);
 
 /**
@@ -38166,6 +38549,45 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./resources/js/components/GrammarquizComponent.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/GrammarquizComponent.vue ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _GrammarquizComponent_vue_vue_type_template_id_1a47024c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GrammarquizComponent.vue?vue&type=template&id=1a47024c& */ "./resources/js/components/GrammarquizComponent.vue?vue&type=template&id=1a47024c&");
+/* harmony import */ var _GrammarquizComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GrammarquizComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/GrammarquizComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _GrammarquizComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _GrammarquizComponent_vue_vue_type_template_id_1a47024c___WEBPACK_IMPORTED_MODULE_0__.render,
+  _GrammarquizComponent_vue_vue_type_template_id_1a47024c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/GrammarquizComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/SampleComponent.vue":
 /*!*****************************************************!*\
   !*** ./resources/js/components/SampleComponent.vue ***!
@@ -38205,6 +38627,22 @@ component.options.__file = "resources/js/components/SampleComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/GrammarquizComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/GrammarquizComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GrammarquizComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./GrammarquizComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GrammarquizComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GrammarquizComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/SampleComponent.vue?vue&type=script&lang=js&":
 /*!******************************************************************************!*\
   !*** ./resources/js/components/SampleComponent.vue?vue&type=script&lang=js& ***!
@@ -38221,6 +38659,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/GrammarquizComponent.vue?vue&type=template&id=1a47024c&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/GrammarquizComponent.vue?vue&type=template&id=1a47024c& ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GrammarquizComponent_vue_vue_type_template_id_1a47024c___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GrammarquizComponent_vue_vue_type_template_id_1a47024c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GrammarquizComponent_vue_vue_type_template_id_1a47024c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./GrammarquizComponent.vue?vue&type=template&id=1a47024c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GrammarquizComponent.vue?vue&type=template&id=1a47024c&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/SampleComponent.vue?vue&type=template&id=30d02158&":
 /*!************************************************************************************!*\
   !*** ./resources/js/components/SampleComponent.vue?vue&type=template&id=30d02158& ***!
@@ -38234,6 +38689,222 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SampleComponent_vue_vue_type_template_id_30d02158___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SampleComponent_vue_vue_type_template_id_30d02158___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SampleComponent.vue?vue&type=template&id=30d02158& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SampleComponent.vue?vue&type=template&id=30d02158&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GrammarquizComponent.vue?vue&type=template&id=1a47024c&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/GrammarquizComponent.vue?vue&type=template&id=1a47024c& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "quiz" }, [
+    _c("div", [
+      _c("a", { attrs: { href: "/grammar/part1/" } }, [
+        _c("span", { staticClass: "progress_button" }, [
+          _c(
+            "svg",
+            {
+              staticClass: "progress_button_svg",
+              attrs: {
+                viewBox: "0 0 30 30",
+                fill: "none",
+                xmlns: "http://www.w3.org/2000/svg",
+              },
+            },
+            [
+              _c("path", {
+                attrs: {
+                  "fill-rule": "evenodd",
+                  "clip-rule": "evenodd",
+                  d: "M15 0C6.705 0 0 6.705 0 15C0 23.295 6.705 30 15 30C23.295 30 30 23.295 30 15C30 6.705 23.295 0 15 0ZM15 27C8.385 27 3 21.615 3 15C3 8.385 8.385 3 15 3C21.615 3 27 8.385 27 15C27 21.615 21.615 27 15 27ZM15 12.885L20.385 7.5L22.5 9.615L17.115 15L22.5 20.385L20.385 22.5L15 17.115L9.615 22.5L7.5 20.385L12.885 15L7.5 9.615L9.615 7.5L15 12.885Z",
+                  fill: "#1C1B1F",
+                },
+              }),
+            ]
+          ),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("progress", {
+        staticClass: "quiz_progress_bar",
+        attrs: { max: "50", value: "30" },
+      }),
+    ]),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "game" } }, [
+      _c("h1", { staticClass: "quesiton_sentence" }, [
+        _vm._v("適切な順番に並び替えてください"),
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { attrs: { id: "field" } },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c("draggable", {
+            attrs: { "item-key": "no", tag: "ul" },
+            scopedSlots: _vm._u([
+              {
+                key: "item",
+                fn: function (ref) {
+                  var element = ref.element
+                  var index = ref.index
+                  return [
+                    _c("li", [
+                      _vm._v(
+                        _vm._s(element.name) +
+                          "-(No." +
+                          _vm._s(element.no) +
+                          ")"
+                      ),
+                    ]),
+                  ]
+                },
+              },
+            ]),
+            model: {
+              value: _vm.items,
+              callback: function ($$v) {
+                _vm.items = $$v
+              },
+              expression: "items",
+            },
+          }),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _vm._m(3),
+    ]),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "next" } }),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "ul",
+      { staticClass: "drag-list", attrs: { id: "answer-area" } },
+      [
+        _c("li", {
+          staticClass: "answer",
+          attrs: { id: "item1", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("li", {
+          staticClass: "answer",
+          attrs: { id: "item2", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("li", {
+          staticClass: "answer",
+          attrs: { id: "item3", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("li", {
+          staticClass: "answer",
+          attrs: { id: "item4", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("li", {
+          staticClass: "answer",
+          attrs: { id: "item5", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("li", {
+          staticClass: "answer",
+          attrs: { id: "item6", draggable: "true" },
+        }),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "drag-list", attrs: { id: "select-area" } },
+      [
+        _c("div", {
+          staticClass: "select",
+          attrs: { id: "item1", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "select",
+          attrs: { id: "item2", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "select",
+          attrs: { id: "item3", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "select",
+          attrs: { id: "item4", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "select",
+          attrs: { id: "item5", draggable: "true" },
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "select",
+          attrs: { id: "item6", draggable: "true" },
+        }),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "grammar_quiz_btn", attrs: { id: "btn" } },
+      [
+        _c("button", { attrs: { onclick: "showQuestion()" } }, [
+          _vm._v("リセット"),
+        ]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "check" } }, [
+      _c("button", { attrs: { onclick: "checkAnswer()" } }, [
+        _vm._v("回答する"),
+      ]),
+    ])
+  },
+]
+render._withStripped = true
+
 
 
 /***/ }),

@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "progressbar.js": "^1.1.0",
+        "vuedraggable": "^2.24.3",
         "webpack": "^5.72.0"
     }
 }
