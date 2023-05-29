@@ -3,7 +3,7 @@
 @section('content')
 <!--ホームのコンテンツ-->
 <div class="logo">
-  <input type="image" name="test" src="{{ asset('image/logo12.png') }}"
+  <input type="image" src="{{ asset('image/logo12.png') }}"
   onmouseover="this.src='{{ asset('image/logo13.png') }}'"
   onmouseout="this.src='{{ asset('image/logo12.png') }}'" />
 </div>
