@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" href="image/icons8-pencil-94.png">
 
     <title>ディルパル</title>
 
@@ -32,13 +33,13 @@
         <div class="account_name" id="navbarSupportedContent">
 
             <!-- <li class="nav-item"> -->
-            <a class="nav-link right_btn" href="{{ route('login') }}">{{ __('Login') }}</a>
+            <a class="nav-link right_btn" href="{{ route('login') }}">{{ __('ログイン') }}</a>
             <!-- </li> -->
             @if (Route::has('register'))
             <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
 
             <!-- <li class="nav-item"> -->
-            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+            <a class="nav-link" href="{{ route('register') }}">{{ __('登録') }}</a>
             <!-- </li> -->
             @endif
 
