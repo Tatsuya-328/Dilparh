@@ -1,20 +1,21 @@
+<link href="{{ asset('css/style_uru_login.css') }}" rel="stylesheet">
 @extends('layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
+            <div class="card" style="border: 1px solid rgba(0,0,0,.125)">
+                <div class="card-header">{{ __('パスワード確認') }}</div>
 
                 <div class="card-body">
-                    {{ __('Please confirm your password before continuing.') }}
+                    {{ __('パスワードを確認してください') }}
 
                     <form method="POST" action="{{ route('password.confirm') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('パスワード') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -30,12 +31,12 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Confirm Password') }}
+                                    {{ __('パスワード確認') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ __('パスワードを忘れた場合?') }}
                                     </a>
                                 @endif
                             </div>
