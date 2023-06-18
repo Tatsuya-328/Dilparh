@@ -8,21 +8,17 @@
         <div class="col-md-8">
 
             <div class="card">
-                <!-- <div class="card-header">{{ __('ログイン') }}</div> -->
                 <div class="card-body">
                     <!--ホームのコンテンツ-->
                     <div class="logo">
-                        <!-- <input type="image" src="{{ asset('image/logo_login2.jpeg') }}" /> -->
                         <input type="image" name="test" src="{{ asset('image/logo12.png') }}"
                             onmouseover="this.src='{{ asset('image/logo13.png') }}'"
                             onmouseout="this.src='{{ asset('image/logo12.png') }}'" />
                     </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('メールアドレス') }}</label>
-
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -63,9 +59,6 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <!-- <button type="submit" class="button_area">
-                                    {{ __('Login') }}
-                                </button> -->
                                 <div class="button_area">
                                     <input type="submit" id="update" value="ログイン" class="button">
                                 </div>

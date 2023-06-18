@@ -30,7 +30,7 @@
     <!-- <div id="app"> -->
     <header class="pc_page-header wrapper">
         @guest
-        <div class="account_name" id="navbarSupportedContent">
+        <div class="account_name login_bar" id="navbarSupportedContent">
 
             <!-- <li class="nav-item"> -->
             <a class="nav-link right_btn" href="{{ route('login') }}">{{ __('ログイン') }}</a>

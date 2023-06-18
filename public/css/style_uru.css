@@ -54,6 +54,9 @@ a:hover {
 .logo {
   text-align: center;
 }
+.login_bar {
+  display: block;
+}
 
 /*コンテナ全体の位置*/
 
@@ -341,8 +344,9 @@ aside {
   }
 
   .nav-link {
-   display: none; 
+    display: none;
   }
+
   .logo {
     display: none;
   }
